@@ -1,1 +1,1 @@
-# html-spec
+# html-standard
