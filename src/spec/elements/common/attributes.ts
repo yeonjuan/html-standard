@@ -1,3 +1,6 @@
 export const attributes = {
-  empty: [],
+  globalOnly: {
+    global: true,
+    specific: [],
+  },
 };

@@ -56,26 +56,83 @@ export { small } from "./text-level-semantics/small";
 export { s } from "./text-level-semantics/s";
 export { cite } from "./text-level-semantics/cite";
 export { q } from "./text-level-semantics/q";
+export { dfn } from "./text-level-semantics/dfn";
+export { abbr } from "./text-level-semantics/abbr";
+export { ruby } from "./text-level-semantics/ruby";
+export { rt } from "./text-level-semantics/rt";
+export { rp } from "./text-level-semantics/rp";
+export { data } from "./text-level-semantics/data";
+export { time } from "./text-level-semantics/time";
+export { code } from "./text-level-semantics/code";
+export { _var } from "./text-level-semantics/var";
+export { samp } from "./text-level-semantics/samp";
+export { kbd } from "./text-level-semantics/kbd";
+export { sub } from "./text-level-semantics/sub";
+export { sup } from "./text-level-semantics/sup";
+export { i } from "./text-level-semantics/i";
+export { b } from "./text-level-semantics/b";
+export { u } from "./text-level-semantics/u";
+export { mark } from "./text-level-semantics/mark";
+export { bdi } from "./text-level-semantics/bdi";
+export { bdo } from "./text-level-semantics/bdo";
+export { span } from "./text-level-semantics/span";
+export { br } from "./text-level-semantics/br";
+export { wbr } from "./text-level-semantics/wbr";
 
-// 4.5.7 The q element
-// 4.5.8 The dfn element
-// 4.5.9 The abbr element
-// 4.5.10 The ruby element
-// 4.5.11 The rt element
-// 4.5.12 The rp element
-// 4.5.13 The data element
-// 4.5.14 The time element
-// 4.5.15 The code element
-// 4.5.16 The var element
-// 4.5.17 The samp element
-// 4.5.18 The kbd element
-// 4.5.19 The sub and sup elements
-// 4.5.20 The i element
-// 4.5.21 The b element
-// 4.5.22 The u element
-// 4.5.23 The mark element
-// 4.5.24 The bdi element
-// 4.5.25 The bdo element
-// 4.5.26 The span element
-// 4.5.27 The br element
-// 4.5.28 The wbr element
+// TODO
+// 4.7 Edits
+// 4.7.1 The ins element
+// 4.7.2 The del element
+
+// 4.8 Embedded content
+// 4.8.1 The picture element
+// 4.8.2 The source element
+// 4.8.3 The img element
+// 4.8.5 The iframe element
+// 4.8.6 The embed element
+// 4.8.7 The object element
+// 4.8.8 The video element
+// 4.8.9 The audio element
+// 4.8.10 The track element
+// 4.8.12 The map element
+// 4.8.13 The area element
+
+// 4.9 Tabular data
+// 4.9.1 The table element
+// 4.9.2 The caption element
+// 4.9.3 The colgroup element
+// 4.9.4 The col element
+// 4.9.5 The tbody element
+// 4.9.6 The thead element
+// 4.9.7 The tfoot element
+// 4.9.8 The tr element
+// 4.9.9 The td element
+// 4.9.10 The th element
+
+// 4.10 Forms
+// 4.10.3 The form element
+// 4.10.4 The label element
+// 4.10.5 The input element
+// 4.10.6 The button element
+// 4.10.7 The select element
+// 4.10.8 The datalist element
+// 4.10.9 The optgroup element
+// 4.10.10 The option element
+// 4.10.11 The textarea element
+// 4.10.12 The output element
+// 4.10.13 The progress element
+// 4.10.14 The meter element
+// 4.10.15 The fieldset element
+// 4.10.16 The legend element
+
+// 4.11 Interactive elements
+// 4.11.1 The details element
+// 4.11.2 The summary element
+// 4.11.4 The dialog element
+
+// 4.12 Scripting
+// 4.12.1 The script element
+// 4.12.2 The noscript element
+// 4.12.3 The template element
+// 4.12.4 The slot element
+// 4.12.5 The canvas element
