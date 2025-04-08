@@ -79,60 +79,59 @@ export { span } from "./text-level-semantics/span";
 export { br } from "./text-level-semantics/br";
 export { wbr } from "./text-level-semantics/wbr";
 
-// TODO
-// 4.7 Edits
-// 4.7.1 The ins element
-// 4.7.2 The del element
+// Edits
+export { ins } from "./edits/ins";
+export { del } from "./edits/del";
 
-// 4.8 Embedded content
-// 4.8.1 The picture element
-// 4.8.2 The source element
-// 4.8.3 The img element
-// 4.8.5 The iframe element
-// 4.8.6 The embed element
-// 4.8.7 The object element
-// 4.8.8 The video element
-// 4.8.9 The audio element
-// 4.8.10 The track element
-// 4.8.12 The map element
-// 4.8.13 The area element
+// Embedded content
+export { picture } from "./embedded-content/picture";
+export { source } from "./embedded-content/source";
+export { img } from "./embedded-content/img";
+export { iframe } from "./embedded-content/iframe";
+export { embed } from "./embedded-content/embed";
+export { object } from "./embedded-content/object";
+export { video } from "./embedded-content/video";
+export { audio } from "./embedded-content/audio";
+export { track } from "./embedded-content/track";
+export { map } from "./embedded-content/map";
+export { area } from "./embedded-content/area";
 
-// 4.9 Tabular data
-// 4.9.1 The table element
-// 4.9.2 The caption element
-// 4.9.3 The colgroup element
-// 4.9.4 The col element
-// 4.9.5 The tbody element
-// 4.9.6 The thead element
-// 4.9.7 The tfoot element
-// 4.9.8 The tr element
-// 4.9.9 The td element
-// 4.9.10 The th element
+// Tabular data
+export { table } from "./tabular-data/table";
+export { caption } from "./tabular-data/caption";
+export { colgroup } from "./tabular-data/colgroup";
+export { col } from "./tabular-data/col";
+export { tbody } from "./tabular-data/tbody";
+export { thead } from "./tabular-data/thead";
+export { tfoot } from "./tabular-data/tfoot";
+export { tr } from "./tabular-data/tr";
+export { td } from "./tabular-data/td";
+export { th } from "./tabular-data/th";
 
-// 4.10 Forms
-// 4.10.3 The form element
-// 4.10.4 The label element
-// 4.10.5 The input element
-// 4.10.6 The button element
-// 4.10.7 The select element
-// 4.10.8 The datalist element
-// 4.10.9 The optgroup element
-// 4.10.10 The option element
-// 4.10.11 The textarea element
-// 4.10.12 The output element
-// 4.10.13 The progress element
-// 4.10.14 The meter element
-// 4.10.15 The fieldset element
-// 4.10.16 The legend element
+// Forms
+export { form } from "./forms/form";
+export { label } from "./forms/label";
+export { input } from "./forms/input";
+export { button } from "./forms/button";
+export { select } from "./forms/select";
+export { datalist } from "./forms/datalist";
+export { optgroup } from "./forms/optgroup";
+export { option } from "./forms/option";
+export { textarea } from "./forms/textarea";
+export { output } from "./forms/output";
+export { progress } from "./forms/progress";
+export { meter } from "./forms/meter";
+export { fieldset } from "./forms/fieldset";
+export { legend } from "./forms/legend";
 
-// 4.11 Interactive elements
-// 4.11.1 The details element
-// 4.11.2 The summary element
-// 4.11.4 The dialog element
+// Interactive elements
+export { details } from "./interactive-elements/details";
+export { summary } from "./interactive-elements/summary";
+export { dialog } from "./interactive-elements/dialog";
 
-// 4.12 Scripting
-// 4.12.1 The script element
-// 4.12.2 The noscript element
-// 4.12.3 The template element
-// 4.12.4 The slot element
-// 4.12.5 The canvas element
+// Scripting
+export { script } from "./scripting/script";
+export { noscript } from "./scripting/noscript";
+export { template } from "./scripting/template";
+export { slot } from "./scripting/slot";
+export { canvas } from "./scripting/canvas";
