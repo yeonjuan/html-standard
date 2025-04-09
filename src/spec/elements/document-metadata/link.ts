@@ -1,6 +1,9 @@
 import { ElementSpec } from "../types";
 
 export const link: ElementSpec = {
+  contents: {
+    model: null,
+  },
   attributes: {
     global: true,
     specific: [
