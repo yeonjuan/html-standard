@@ -1,8 +1,18 @@
+import { global } from "../common/attributes";
+import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
 
 export const data: ElementSpec = {
+  contents: {
+    model: [
+      {
+        rule: "oneOrMore",
+        contents: contents.phrasingContent,
+      },
+    ],
+  },
   attributes: {
-    global: true,
-    specific: ["value"],
+    global,
+    specific: new Set(["value"]),
   },
 };

@@ -7,7 +7,7 @@ export const article: ElementSpec = {
     model: [
       {
         rule: "oneOrMore",
-        name: contents.flowContent,
+        contents: contents.flowContent,
       },
     ],
   },

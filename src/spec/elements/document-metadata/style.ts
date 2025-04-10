@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const style: ElementSpec = {
@@ -5,12 +6,12 @@ export const style: ElementSpec = {
     model: [
       {
         rule: "required",
-        name: ["#text"],
+        contents: new Set(["#text"]),
       },
     ],
   },
   attributes: {
-    global: true,
-    specific: ["media", "blocking", "title"],
+    global,
+    specific: new Set(["media", "blocking", "title"]),
   },
 };

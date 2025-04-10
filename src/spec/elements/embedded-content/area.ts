@@ -1,9 +1,13 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const area: ElementSpec = {
+  contents: {
+    model: null,
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "alt",
       "coords",
       "shape",
@@ -13,6 +17,6 @@ export const area: ElementSpec = {
       "ping",
       "rel",
       "referrerpolicy",
-    ],
+    ]),
   },
 };

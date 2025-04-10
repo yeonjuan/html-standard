@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
 
@@ -6,13 +7,13 @@ export const body: ElementSpec = {
     model: [
       {
         rule: "oneOrMore",
-        name: contents.flowContent,
+        contents: contents.flowContent,
       },
     ],
   },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "onafterprint",
       "onbeforeprint",
       "onbeforeunload",
@@ -31,6 +32,6 @@ export const body: ElementSpec = {
       "onstorage",
       "onunhandledrejection",
       "onunload",
-    ],
+    ]),
   },
 };

@@ -1,9 +1,10 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const video: ElementSpec = {
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "src",
       "crossorigin",
       "poster",
@@ -15,6 +16,6 @@ export const video: ElementSpec = {
       "controls",
       "width",
       "height",
-    ],
+    ]),
   },
 };

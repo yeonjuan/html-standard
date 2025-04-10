@@ -1,6 +1,35 @@
+export const global = new Set([
+  "accesskey",
+  "autocapitalize",
+  "autocorrect",
+  "autofocus",
+  "contenteditable",
+  "dir",
+  "draggable",
+  "enterkeyhint",
+  "hidden",
+  "inert",
+  "inputmode",
+  "is",
+  "itemid",
+  "itemprop",
+  "itemref",
+  "itemscope",
+  "itemtype",
+  "lang",
+  "nonce",
+  "popover",
+  "spellcheck",
+  "style",
+  "tabindex",
+  "title",
+  "translate",
+  "writingsuggestions",
+]);
+
 export const attributes = {
   globalOnly: {
-    global: true,
-    specific: [],
+    global,
+    specific: new Set<string>(),
   },
 };

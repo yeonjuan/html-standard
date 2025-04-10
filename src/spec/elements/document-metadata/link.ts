@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const link: ElementSpec = {
@@ -5,8 +6,8 @@ export const link: ElementSpec = {
     model: null,
   },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "href",
       "crossorigin",
       "rel",
@@ -24,6 +25,6 @@ export const link: ElementSpec = {
       "disabled",
       "fetchpriority",
       "title",
-    ],
+    ]),
   },
 };

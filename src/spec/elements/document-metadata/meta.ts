@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const meta: ElementSpec = {
@@ -5,7 +6,7 @@ export const meta: ElementSpec = {
     model: null,
   },
   attributes: {
-    global: true,
-    specific: ["name", "http-equiv", "content", "charset", "media"],
+    global,
+    specific: new Set(["name", "http-equiv", "content", "charset", "media"]),
   },
 };

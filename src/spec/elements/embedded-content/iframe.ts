@@ -1,9 +1,13 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const iframe: ElementSpec = {
+  contents: {
+    model: null,
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "src",
       "srcdoc",
       "name",
@@ -14,6 +18,6 @@ export const iframe: ElementSpec = {
       "height",
       "referrerpolicy",
       "loading",
-    ],
+    ]),
   },
 };

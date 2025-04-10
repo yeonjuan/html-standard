@@ -6,7 +6,7 @@ export const pre: ElementSpec = {
   contents: {
     model: [
       {
-        rule: "zeroOrMore",
+        rule: "oneOrMore",
         contents: contents.phrasingContent,
       },
     ],

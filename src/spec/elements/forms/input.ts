@@ -1,9 +1,13 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const input: ElementSpec = {
+  contents: {
+    model: null,
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "accept",
       "alpha",
       "alt",
@@ -39,6 +43,6 @@ export const input: ElementSpec = {
       "value",
       "width",
       "title",
-    ],
+    ]),
   },
 };

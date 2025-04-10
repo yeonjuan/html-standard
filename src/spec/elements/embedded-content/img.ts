@@ -1,9 +1,13 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const img: ElementSpec = {
+  contents: {
+    model: null,
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "alt",
       "src",
       "srcset",
@@ -17,6 +21,6 @@ export const img: ElementSpec = {
       "decoding",
       "loading",
       "fetchpriority",
-    ],
+    ]),
   },
 };

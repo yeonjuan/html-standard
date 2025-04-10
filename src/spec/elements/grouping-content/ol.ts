@@ -1,3 +1,5 @@
+import { global } from "../common/attributes";
+import { addToSet } from "../../utils/set";
 import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
 
@@ -6,12 +8,12 @@ export const ol: ElementSpec = {
     model: [
       {
         rule: "zeroOrMore",
-        contents: ["li", ...contents.scriptSupportingElements],
+        contents: addToSet(contents.scriptSupportingElements, "li"),
       },
     ],
   },
   attributes: {
-    global: true,
-    specific: ["reversed", "start", "type"],
+    global,
+    specific: new Set(["reversed", "start", "type"]),
   },
 };

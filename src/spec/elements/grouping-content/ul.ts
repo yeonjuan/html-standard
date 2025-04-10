@@ -1,3 +1,4 @@
+import { addToSet } from "../../utils/set";
 import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
@@ -7,7 +8,7 @@ export const ul: ElementSpec = {
     model: [
       {
         rule: "zeroOrMore",
-        contents: ["li", ...contents.scriptSupportingElements],
+        contents: addToSet(contents.scriptSupportingElements, "li"),
       },
     ],
   },

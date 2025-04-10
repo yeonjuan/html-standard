@@ -9,11 +9,11 @@ export const html: ElementSpec = {
     model: [
       {
         rule: "required",
-        name: ["head"],
+        contents: new Set(["head"]),
       },
       {
         rule: "required",
-        name: ["body"],
+        contents: new Set(["body"]),
       },
     ],
   },

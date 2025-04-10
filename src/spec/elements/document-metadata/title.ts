@@ -6,7 +6,7 @@ export const title: ElementSpec = {
     model: [
       {
         rule: "required",
-        name: ["#text"],
+        contents: new Set(["#text"]),
       },
     ],
   },

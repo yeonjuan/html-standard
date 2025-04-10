@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
 
@@ -11,7 +12,7 @@ export const blockquote: ElementSpec = {
     ],
   },
   attributes: {
-    global: true,
-    specific: ["cite"],
+    global,
+    specific: new Set(["cite"]),
   },
 };

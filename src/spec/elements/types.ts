@@ -1,23 +1,41 @@
+type ContentConstraint = Map<
+  string,
+  {
+    required?: boolean;
+    disallow?: boolean;
+    max?: number;
+    min?: number;
+  }
+>;
+
 type ContentModel =
   | {
       rule: "required";
-      name: string[];
+      contents: Set<string>;
+      disallow?: {
+        child: Set<string>;
+      };
     }
   | {
       rule: "optional";
-      name: string[];
+      contents: Set<string>;
     }
   | {
       rule: "zeroOrMore";
-      name: string[];
+      contents: Set<string>;
+      disallow?: {
+        child: Set<string>;
+      };
     }
   | {
       rule: "oneOrMore";
-      name: string[];
+      contents: Set<string>;
+      childrenConstraints?: ContentConstraint;
+      descendantsConstraints?: ContentConstraint;
     }
   | {
-      rule: "choice";
-      choice: ContentModel[];
+      rule: "either";
+      options: ContentModel[][];
     };
 
 export type ElementSpec = {
@@ -25,7 +43,7 @@ export type ElementSpec = {
     model: ContentModel[] | null;
   };
   attributes: {
-    global: boolean;
-    specific: string[];
+    global: Set<string>;
+    specific: Set<string>;
   };
 };

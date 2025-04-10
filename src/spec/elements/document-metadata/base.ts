@@ -1,3 +1,4 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const base: ElementSpec = {
@@ -5,7 +6,7 @@ export const base: ElementSpec = {
     model: null,
   },
   attributes: {
-    global: true,
-    specific: ["href", "target"],
+    global,
+    specific: new Set(["href", "target"]),
   },
 };

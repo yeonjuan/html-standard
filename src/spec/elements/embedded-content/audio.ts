@@ -1,9 +1,13 @@
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const audio: ElementSpec = {
+  contents: {
+    model: null, //TODO
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "src",
       "crossorigin",
       "preload",
@@ -11,6 +15,6 @@ export const audio: ElementSpec = {
       "loop",
       "muted",
       "controls",
-    ],
+    ]),
   },
 };
