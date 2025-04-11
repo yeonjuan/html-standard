@@ -1,10 +1,19 @@
-import { attributes } from "../common/attributes";
+import { global } from "../common/attributes";
+import { contents } from "../common/contents";
 import { ElementSpec } from "../types";
 
 export const script: ElementSpec = {
+  contents: {
+    model: [
+      {
+        rule: "zeroOrMore",
+        contents: contents.text,
+      },
+    ],
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "src",
       "type",
       "nomodule",
@@ -15,6 +24,6 @@ export const script: ElementSpec = {
       "referrerpolicy",
       "blocking",
       "fetchpriority",
-    ],
+    ]),
   },
 };

@@ -1,9 +1,12 @@
-import { attributes } from "../common/attributes";
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const option: ElementSpec = {
+  contents: {
+    model: [], // TODO
+  },
   attributes: {
-    global: true,
-    specific: ["disabled", "label", "selected", "value"],
+    global,
+    specific: new Set(["disabled", "label", "selected", "value"]),
   },
 };

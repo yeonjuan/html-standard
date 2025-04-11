@@ -1,10 +1,13 @@
-import { attributes } from "../common/attributes";
+import { global } from "../common/attributes";
 import { ElementSpec } from "../types";
 
 export const select: ElementSpec = {
+  contents: {
+    model: [], // TODO
+  },
   attributes: {
-    global: true,
-    specific: [
+    global,
+    specific: new Set([
       "autocomplete",
       "disabled",
       "form",
@@ -12,6 +15,6 @@ export const select: ElementSpec = {
       "name",
       "required",
       "size",
-    ],
+    ]),
   },
 };

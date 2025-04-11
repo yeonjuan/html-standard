@@ -3,7 +3,7 @@ import { ElementSpec } from "../types";
 
 export const template: ElementSpec = {
   contents: {
-    model: null, // TODO
+    model: null,
   },
   attributes: {
     global,

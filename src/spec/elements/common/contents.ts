@@ -178,4 +178,14 @@ export const contents = {
     "video",
   ]),
   text: new Set("#text"),
+  mediaElements: new Set(["audio", "video"]),
+  labelableElements: new Set([
+    "button",
+    "input",
+    "meter",
+    "output",
+    "progress",
+    "select",
+    "textarea",
+  ]),
 };

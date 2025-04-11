@@ -36,6 +36,15 @@ type ContentModel =
   | {
       rule: "either";
       options: ContentModel[][];
+    }
+  | {
+      rule: "conditional";
+      conditions: {
+        ifAttributes?: (
+          attributes: Record<string, boolean | string>,
+        ) => boolean;
+        model: ContentModel[] | null;
+      }[];
     };
 
 export type ElementSpec = {

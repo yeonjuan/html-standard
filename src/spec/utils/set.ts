@@ -10,3 +10,11 @@ export const addToSet = (set: Set<string>, ...keys: string[]): Set<string> => {
   keys.forEach((key) => set.add(key));
   return result;
 };
+
+export const unionSets = (
+  setA: Set<string>,
+  setB: Set<string>,
+): Set<string> => {
+  const set = new Set(...setA, ...setB);
+  return set;
+};
