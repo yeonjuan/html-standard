@@ -1,6 +1,16 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { addToSet } from "../../utils/set";
+import { contents } from "../common/contents";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const thead: ElementSpec = {
-  attributes: attributes.globalOnly,
+const theadSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.scriptSupportingElements, "tr"),
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const thead: GetElementSpec = () => theadSpec;

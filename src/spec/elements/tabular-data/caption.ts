@@ -1,16 +1,18 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const caption: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-        descendantsConstraints: new Map([["table", { disallow: true }]]),
+const captionSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+      constraints: {
+        descendants: new Map([["table", { disallow: true }]]),
       },
-    ],
-  },
-  attributes: attributes.globalOnly,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const caption: GetElementSpec = () => captionSpec;

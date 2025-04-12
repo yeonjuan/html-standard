@@ -1,14 +1,14 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const form: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-        descendantsConstraints: new Map([
+const formSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+      constraints: {
+        descendants: new Map([
           [
             "form",
             {
@@ -17,20 +17,20 @@ export const form: ElementSpec = {
           ],
         ]),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "accept-charset",
-      "action",
-      "autocomplete",
-      "enctype",
-      "method",
-      "name",
-      "novalidate",
-      "target",
-      "rel",
-    ]),
-  },
+    },
+  ],
+
+  attributes: contentAttributes(true, [
+    "accept-charset",
+    "action",
+    "autocomplete",
+    "enctype",
+    "method",
+    "name",
+    "novalidate",
+    "target",
+    "rel",
+  ]),
 };
+
+export const form: GetElementSpec = () => formSpec;

@@ -1,22 +1,19 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const area: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "alt",
-      "coords",
-      "shape",
-      "href",
-      "target",
-      "download",
-      "ping",
-      "rel",
-      "referrerpolicy",
-    ]),
-  },
+const areaSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "alt",
+    "coords",
+    "shape",
+    "href",
+    "target",
+    "download",
+    "ping",
+    "rel",
+    "referrerpolicy",
+  ]),
 };
+
+export const area: GetElementSpec = () => areaSpec;

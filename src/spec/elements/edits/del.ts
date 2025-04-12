@@ -1,18 +1,15 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const del: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.transparentContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["cite", "datetime"]),
-  },
+const delSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["cite", "datetime"]),
 };
+
+export const del: GetElementSpec = () => delSpec;

@@ -1,15 +1,15 @@
 import { setsToMap } from "../../utils/set";
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const dt: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-        descendantsConstraints: setsToMap(
+const dtSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+      constraints: {
+        descendants: setsToMap(
           {
             disallow: true,
           },
@@ -18,7 +18,9 @@ export const dt: ElementSpec = {
           contents.headingContent,
         ),
       },
-    ],
-  },
-  attributes: attributes.globalOnly,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const dt: GetElementSpec = () => dtSpec;

@@ -1,19 +1,16 @@
-import { global } from "../common/attributes";
 import { addToSet } from "../../utils/set";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const ol: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: addToSet(contents.scriptSupportingElements, "li"),
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["reversed", "start", "type"]),
-  },
+const olSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.scriptSupportingElements, "li"),
+    },
+  ],
+  attributes: contentAttributes(true, ["reversed", "start", "type"]),
 };
+
+export const ol: GetElementSpec = () => olSpec;

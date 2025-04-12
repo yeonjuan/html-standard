@@ -1,9 +1,15 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { contents } from "../common/contents";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const noscript: ElementSpec = {
-  contents: {
-    model: [], //TODO
-  },
-  attributes: attributes.globalOnly,
+const noscriptSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: contents.text,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const noscript: GetElementSpec = () => noscriptSpec;

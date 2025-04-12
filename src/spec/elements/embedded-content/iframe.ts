@@ -1,23 +1,20 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const iframe: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "src",
-      "srcdoc",
-      "name",
-      "sandbox",
-      "allow",
-      "allowfullscreen",
-      "width",
-      "height",
-      "referrerpolicy",
-      "loading",
-    ]),
-  },
+const iframeSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "src",
+    "srcdoc",
+    "name",
+    "sandbox",
+    "allow",
+    "allowfullscreen",
+    "width",
+    "height",
+    "referrerpolicy",
+    "loading",
+  ]),
 };
+
+export const iframe: GetElementSpec = () => iframeSpec;

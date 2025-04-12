@@ -1,16 +1,16 @@
 import { addToSet } from "../../utils/set";
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const menu: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: addToSet(contents.scriptSupportingElements, "li"),
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const menuSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.scriptSupportingElements, "li"),
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const menu: GetElementSpec = () => menuSpec;

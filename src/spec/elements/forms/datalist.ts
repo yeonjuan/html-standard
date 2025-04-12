@@ -1,29 +1,29 @@
 import { addToSet } from "../../utils/set";
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const datalist: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "either",
-        options: [
-          [
-            {
-              rule: "oneOrMore",
-              contents: contents.phrasingContent,
-            },
-          ],
-          [
-            {
-              rule: "zeroOrMore",
-              contents: addToSet(contents.scriptSupportingElements, "option"),
-            },
-          ],
+const datalistSpec: ElementSpec = {
+  contents: [
+    {
+      type: "either",
+      options: [
+        [
+          {
+            type: "oneOrMore",
+            contents: contents.phrasingContent,
+          },
         ],
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+        [
+          {
+            type: "zeroOrMore",
+            contents: addToSet(contents.scriptSupportingElements, "option"),
+          },
+        ],
+      ],
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const datalist: GetElementSpec = () => datalistSpec;

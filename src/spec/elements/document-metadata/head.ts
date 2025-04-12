@@ -1,22 +1,21 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-/**
- * @see https://html.spec.whatwg.org/#the-html-element
- */
-export const head: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.metadataContent,
-        childrenConstraints: new Map([
+const headSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.metadataContent,
+      constraints: {
+        children: new Map([
           ["title", { required: true }],
           ["base", { max: 1 }],
         ]),
       },
-    ],
-  },
-  attributes: attributes.globalOnly,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const head: GetElementSpec = () => headSpec;

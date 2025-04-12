@@ -1,42 +1,42 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const figure: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "either",
-        options: [
-          [
-            {
-              rule: "required",
-              contents: new Set("figcaption"),
-            },
-            {
-              rule: "oneOrMore",
-              contents: contents.flowContent,
-            },
-          ],
-          [
-            {
-              rule: "oneOrMore",
-              contents: contents.flowContent,
-            },
-            {
-              rule: "required",
-              contents: new Set("figcaption"),
-            },
-          ],
-          [
-            {
-              rule: "oneOrMore",
-              contents: contents.flowContent,
-            },
-          ],
+const figureSpec: ElementSpec = {
+  contents: [
+    {
+      type: "either",
+      options: [
+        [
+          {
+            type: "required",
+            contents: new Set("figcaption"),
+          },
+          {
+            type: "oneOrMore",
+            contents: contents.flowContent,
+          },
         ],
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+        [
+          {
+            type: "oneOrMore",
+            contents: contents.flowContent,
+          },
+          {
+            type: "required",
+            contents: new Set("figcaption"),
+          },
+        ],
+        [
+          {
+            type: "oneOrMore",
+            contents: contents.flowContent,
+          },
+        ],
+      ],
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const figure: GetElementSpec = () => figureSpec;

@@ -1,4 +1,4 @@
-export const global = new Set([
+export const globalAttributes = new Set([
   "accesskey",
   "autocapitalize",
   "autocorrect",

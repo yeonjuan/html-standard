@@ -1,20 +1,18 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const label: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.phrasingContent,
-        // TODO: Phrasing content, but with no descendant labelable elements unless it is the element's labeled control, and no descendant label elements.
-        descendantsConstraints: new Map([["label", { disallow: true }]]),
+const labelSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.phrasingContent,
+      constraints: {
+        descendants: new Map([["label", { disallow: true }]]),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["for"]),
-  },
+    },
+  ],
+  attributes: contentAttributes(true, ["for"]),
 };
+
+export const label: GetElementSpec = () => labelSpec;

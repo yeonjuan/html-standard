@@ -1,15 +1,15 @@
 import { setsToMap } from "../../utils/set";
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const th: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-        descendantsConstraints: setsToMap(
+const thSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+      constraints: {
+        descendants: setsToMap(
           {
             disallow: true,
           },
@@ -18,10 +18,15 @@ export const th: ElementSpec = {
           contents.headingContent,
         ),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["colspan", "rowspan", "headers", "scope", "abbr"]),
-  },
+    },
+  ],
+  attributes: contentAttributes(true, [
+    "colspan",
+    "rowspan",
+    "headers",
+    "scope",
+    "abbr",
+  ]),
 };
+
+export const th: GetElementSpec = () => thSpec;

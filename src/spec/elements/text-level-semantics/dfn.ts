@@ -1,19 +1,18 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const dfn: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.phrasingContent,
-        descendantsConstraints: new Map([["dfn", { disallow: true }]]),
+const dfnSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.phrasingContent,
+      constraints: {
+        descendants: new Map([["dfn", { disallow: true }]]),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["title"]),
-  },
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const dfn: GetElementSpec = () => dfnSpec;

@@ -1,18 +1,15 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const blockquote: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["cite"]),
-  },
+const blockquoteSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["cite"]),
 };
+
+export const blockquote: GetElementSpec = () => blockquoteSpec;

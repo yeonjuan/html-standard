@@ -1,18 +1,15 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const ins: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.transparentContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["cite", "datetime"]),
-  },
+const insSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["cite", "datetime"]),
 };
+
+export const ins: GetElementSpec = () => insSpec;

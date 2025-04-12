@@ -1,16 +1,16 @@
 import { addToSet } from "../../utils/set";
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const ruby: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: addToSet(contents.phrasingContent, "rt", "rp"),
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const rubySpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.phrasingContent, "rt", "rp"),
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const ruby: GetElementSpec = () => rubySpec;

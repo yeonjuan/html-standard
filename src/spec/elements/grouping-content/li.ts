@@ -1,18 +1,31 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const li: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["value"]),
-  },
+const liInMenuOrUl: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+    },
+  ],
+  attributes: contentAttributes(true),
+};
+
+const liNotInMenuOrUl: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["value"]),
+};
+
+export const li: GetElementSpec = (state) => {
+  const parent = state?.parent;
+  if (parent === "menu" || parent === "ul") {
+    return liInMenuOrUl;
+  }
+  return liNotInMenuOrUl;
 };

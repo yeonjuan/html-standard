@@ -1,57 +1,70 @@
-type ContentConstraint = Map<
-  string,
-  {
-    required?: boolean;
-    disallow?: boolean;
-    max?: number;
-    min?: number;
-  }
->;
+export type ContentConstraintValue = {
+  ifAttributes?(attributes: Record<string, string>): boolean;
+  required?: boolean;
+  disallow?: boolean;
+  max?: number;
+  min?: number;
+};
+
+type ContentConstraint = Map<string, ContentConstraintValue>;
+
+type Constraints = {
+  children?: ContentConstraint;
+  descendants?: ContentConstraint;
+};
 
 type ContentModel =
   | {
-      rule: "required";
-      contents: Set<string>;
-      disallow?: {
-        child: Set<string>;
-      };
-    }
-  | {
-      rule: "optional";
+      type: "required";
       contents: Set<string>;
     }
   | {
-      rule: "zeroOrMore";
+      type: "optional";
       contents: Set<string>;
-      disallow?: {
-        child: Set<string>;
-      };
     }
   | {
-      rule: "oneOrMore";
+      type: "zeroOrMore";
       contents: Set<string>;
-      childrenConstraints?: ContentConstraint;
-      descendantsConstraints?: ContentConstraint;
+      constraints?: Constraints;
     }
   | {
-      rule: "either";
+      type: "oneOrMore";
+      contents: Set<string>;
+      constraints?: Constraints;
+    }
+  | {
+      type: "either";
       options: ContentModel[][];
     }
   | {
-      rule: "conditional";
+      type: "conditional";
       conditions: {
         ifAttributes?: (
           attributes: Record<string, boolean | string>,
         ) => boolean;
+        ifParent?: (parent: { name: string }) => void;
         model: ContentModel[] | null;
       }[];
     };
 
+type ElementState = {
+  parent?: string;
+  attributes?: Record<string, string>;
+};
+
 export type ElementSpec = {
-  contents: {
-    model: ContentModel[] | null;
-  };
+  contents: ContentModel[] | null;
   attributes: {
+    has(name: string): boolean;
+    global: Set<string>;
+    specific: Set<string>;
+  };
+};
+
+export type GetElementSpec = (state?: ElementState) => {
+  contents: ContentModel[] | null;
+  attributes: {
+    has(name: string): boolean;
     global: Set<string>;
     specific: Set<string>;
   };

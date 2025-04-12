@@ -1,35 +1,26 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const colgroup: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "conditional",
-        conditions: [
-          {
-            ifAttributes(attributes) {
-              return !!attributes["span"];
-            },
-            model: null,
-          },
-          {
-            ifAttributes(attributes) {
-              return !attributes["span"];
-            },
-            model: [
-              {
-                rule: "zeroOrMore",
-                contents: new Set(["col", "template"]),
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["span"]),
-  },
+const attributes = contentAttributes(true, ["span"]);
+
+const colgroupWithSpanSpec: ElementSpec = {
+  contents: null,
+  attributes,
+};
+const colgroupWithoutSpanSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: new Set(["col", "template"]),
+    },
+  ],
+  attributes,
+};
+
+export const colgroup: GetElementSpec = (state) => {
+  const attributes = state?.attributes || {};
+  if (attributes["span"]) {
+    return colgroupWithSpanSpec;
+  }
+  return colgroupWithoutSpanSpec;
 };

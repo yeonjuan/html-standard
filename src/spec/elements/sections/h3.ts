@@ -1,15 +1,2 @@
-import { attributes } from "../common/attributes";
-import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
-
-export const h3: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.phrasingContent,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
-};
+import { h1 } from "./h1";
+export const h3 = h1;

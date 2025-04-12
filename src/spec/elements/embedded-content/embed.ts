@@ -1,12 +1,9 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const embed: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set(["src", "type", "width", "height"]),
-  },
+const embedSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, ["src", "type", "width", "height"]),
 };
+
+export const embed: GetElementSpec = () => embedSpec;

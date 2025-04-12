@@ -1,9 +1,9 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const hr: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: attributes.globalOnly,
+const hrSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true),
 };
+
+export const hr: GetElementSpec = () => hrSpec;

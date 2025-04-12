@@ -1,12 +1,9 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const col: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set(["span"]),
-  },
+const colSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, ["span"]),
 };
+
+export const col: GetElementSpec = () => colSpec;

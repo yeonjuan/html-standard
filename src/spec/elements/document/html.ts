@@ -1,21 +1,18 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
+import { ElementSpec, GetElementSpec } from "../types";
 
-/**
- * @see https://html.spec.whatwg.org/#the-html-element
- */
-export const html: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "required",
-        contents: new Set(["head"]),
-      },
-      {
-        rule: "required",
-        contents: new Set(["body"]),
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const htmlSpec: ElementSpec = {
+  contents: [
+    {
+      type: "required",
+      contents: new Set(["head"]),
+    },
+    {
+      type: "required",
+      contents: new Set(["body"]),
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const html: GetElementSpec = () => htmlSpec;

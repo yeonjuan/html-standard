@@ -1,9 +1,9 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const wbr: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: attributes.globalOnly,
+const wbrSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true),
 };
+
+export const wbr: GetElementSpec = () => wbrSpec;

@@ -1,18 +1,15 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const abbr: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.phrasingContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["title"]),
-  },
+const abbrSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.phrasingContent,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const abbr: GetElementSpec = () => abbrSpec;

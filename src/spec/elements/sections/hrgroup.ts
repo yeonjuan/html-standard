@@ -1,39 +1,39 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const hrgroup: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-      {
-        rule: "zeroOrMore",
-        contents: new Set(["p"]),
-      },
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-      {
-        rule: "required",
-        contents: new Set(["h1", "h2", "h3", "h4", "h5", "h6"]),
-      },
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-      {
-        rule: "zeroOrMore",
-        contents: new Set(["p"]),
-      },
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const hrgroupSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+    {
+      type: "zeroOrMore",
+      contents: new Set(["p"]),
+    },
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+    {
+      type: "required",
+      contents: new Set(["h1", "h2", "h3", "h4", "h5", "h6"]),
+    },
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+    {
+      type: "zeroOrMore",
+      contents: new Set(["p"]),
+    },
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const hrgroup: GetElementSpec = () => hrgroupSpec;

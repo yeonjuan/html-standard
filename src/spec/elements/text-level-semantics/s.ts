@@ -1,15 +1,16 @@
 import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const s: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.phrasingContent,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const sSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.phrasingContent,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const s: GetElementSpec = () => sSpec;

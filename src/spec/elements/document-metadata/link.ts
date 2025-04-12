@@ -1,30 +1,27 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const link: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "href",
-      "crossorigin",
-      "rel",
-      "media",
-      "integrity",
-      "hreflang",
-      "type",
-      "referrerpolicy",
-      "sizes",
-      "imagesrcset",
-      "imagesizes",
-      "as",
-      "blocking",
-      "color",
-      "disabled",
-      "fetchpriority",
-      "title",
-    ]),
-  },
+const linkSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "href",
+    "crossorigin",
+    "rel",
+    "media",
+    "integrity",
+    "hreflang",
+    "type",
+    "referrerpolicy",
+    "sizes",
+    "imagesrcset",
+    "imagesizes",
+    "as",
+    "blocking",
+    "color",
+    "disabled",
+    "fetchpriority",
+    "title",
+  ]),
 };
+
+export const link: GetElementSpec = () => linkSpec;

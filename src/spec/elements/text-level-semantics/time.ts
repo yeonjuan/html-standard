@@ -1,31 +1,30 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const time: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "either",
-        options: [
-          [
-            {
-              rule: "oneOrMore",
-              contents: contents.phrasingContent,
-            },
-          ],
-          [
-            {
-              rule: "oneOrMore",
-              contents: contents.text,
-            },
-          ],
-        ],
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["datetime"]),
-  },
+const timeWihthoutDatetimeSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.phrasingContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["datetime"]),
+};
+const timeWithDatetimeSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.text,
+    },
+  ],
+  attributes: contentAttributes(true, ["datetime"]),
+};
+
+export const time: GetElementSpec = (state) => {
+  const attributes = state?.attributes || {};
+  if (!!attributes["datetime"]) {
+    return timeWihthoutDatetimeSpec;
+  }
+  return timeWithDatetimeSpec;
 };

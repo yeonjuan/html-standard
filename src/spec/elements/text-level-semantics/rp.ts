@@ -1,15 +1,15 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const rp: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.text,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const rpSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.text,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const rp: GetElementSpec = () => rpSpec;

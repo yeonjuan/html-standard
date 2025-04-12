@@ -1,17 +1,14 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const template: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "shadowrootmode",
-      "shadowrootdelegatesfocus",
-      "shadowrootclonable",
-      "shadowrootserializable",
-    ]),
-  },
+const templateSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "shadowrootmode",
+    "shadowrootdelegatesfocus",
+    "shadowrootclonable",
+    "shadowrootserializable",
+  ]),
 };
+
+export const template: GetElementSpec = () => templateSpec;

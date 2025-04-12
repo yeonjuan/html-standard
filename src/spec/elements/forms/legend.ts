@@ -1,16 +1,16 @@
 import { unionSets } from "../../utils/set";
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const legend: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: unionSets(contents.phrasingContent, contents.headingContent),
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const legendSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: unionSets(contents.phrasingContent, contents.headingContent),
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const legend: GetElementSpec = () => legendSpec;

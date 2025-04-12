@@ -1,15 +1,30 @@
 import { setsToMap } from "../../utils/set";
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ContentConstraintValue, ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const a: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.transparentContent,
-        descendantsConstraints: setsToMap(
+const descendantsConstraints = setsToMap<ContentConstraintValue>(
+  {
+    disallow: true,
+  },
+  contents.interactiveContent,
+  new Set(["a"]),
+);
+
+descendantsConstraints.set("*", {
+  disallow: true,
+  ifAttributes(attributes) {
+    return !!attributes["tabindex"];
+  },
+});
+
+const aSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+      constraints: {
+        descendants: setsToMap(
           {
             disallow: true,
           },
@@ -17,19 +32,18 @@ export const a: ElementSpec = {
           new Set(["a"]),
         ),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "href",
-      "target",
-      "download",
-      "ping",
-      "rel",
-      "hreflang",
-      "type",
-      "referrerpolicy",
-    ]),
-  },
+    },
+  ],
+  attributes: contentAttributes(true, [
+    "href",
+    "target",
+    "download",
+    "ping",
+    "rel",
+    "hreflang",
+    "type",
+    "referrerpolicy",
+  ]),
 };
+
+export const a: GetElementSpec = () => aSpec;

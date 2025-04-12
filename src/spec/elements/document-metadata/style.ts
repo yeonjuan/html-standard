@@ -1,17 +1,14 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const style: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "required",
-        contents: new Set(["#text"]),
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["media", "blocking", "title"]),
-  },
+const styleSpec: ElementSpec = {
+  contents: [
+    {
+      type: "required",
+      contents: new Set(["#text"]),
+    },
+  ],
+  attributes: contentAttributes(true, ["media", "blocking", "title"]),
 };
+
+export const style: GetElementSpec = () => styleSpec;

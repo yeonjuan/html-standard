@@ -1,14 +1,19 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { setsToMap } from "../../utils/set";
+import { contents } from "../common/contents";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const canvas: ElementSpec = {
-  contents: {
-    model: [
-      // TODO
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["width", "height"]),
-  },
+const canvasSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+      constraints: {
+        descendants: setsToMap({ disallow: true }, contents.interactiveContent),
+      },
+    },
+  ],
+  attributes: contentAttributes(true, ["width", "height"]),
 };
+
+export const canvas: GetElementSpec = () => canvasSpec;

@@ -1,52 +1,52 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const dl: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "either",
-        options: [
-          [
-            {
-              rule: "zeroOrMore",
-              contents: contents.scriptSupportingElements,
-            },
-            {
-              rule: "oneOrMore",
-              contents: new Set(["dt"]),
-            },
-            {
-              rule: "zeroOrMore",
-              contents: contents.scriptSupportingElements,
-            },
-            {
-              rule: "oneOrMore",
-              contents: new Set(["dd"]),
-            },
-            {
-              rule: "zeroOrMore",
-              contents: contents.scriptSupportingElements,
-            },
-          ],
-          [
-            {
-              rule: "zeroOrMore",
-              contents: contents.scriptSupportingElements,
-            },
-            {
-              rule: "oneOrMore",
-              contents: new Set(["div"]),
-            },
-            {
-              rule: "zeroOrMore",
-              contents: contents.scriptSupportingElements,
-            },
-          ],
+const dlSpec: ElementSpec = {
+  contents: [
+    {
+      type: "either",
+      options: [
+        [
+          {
+            type: "zeroOrMore",
+            contents: contents.scriptSupportingElements,
+          },
+          {
+            type: "oneOrMore",
+            contents: new Set(["dt"]),
+          },
+          {
+            type: "zeroOrMore",
+            contents: contents.scriptSupportingElements,
+          },
+          {
+            type: "oneOrMore",
+            contents: new Set(["dd"]),
+          },
+          {
+            type: "zeroOrMore",
+            contents: contents.scriptSupportingElements,
+          },
         ],
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+        [
+          {
+            type: "zeroOrMore",
+            contents: contents.scriptSupportingElements,
+          },
+          {
+            type: "oneOrMore",
+            contents: new Set(["div"]),
+          },
+          {
+            type: "zeroOrMore",
+            contents: contents.scriptSupportingElements,
+          },
+        ],
+      ],
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const dl: GetElementSpec = () => dlSpec;

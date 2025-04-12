@@ -1,12 +1,16 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const track: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set(["kind", "src", "srclang", "label", "label", "default"]),
-  },
+const trackSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "kind",
+    "src",
+    "srclang",
+    "label",
+    "label",
+    "default",
+  ]),
 };
+
+export const track: GetElementSpec = () => trackSpec;

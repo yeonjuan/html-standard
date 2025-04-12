@@ -1,19 +1,16 @@
 import { addToSet } from "../../utils/set";
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const optgroup: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: addToSet(contents.scriptSupportingElements, "option"),
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["disabled", "label"]),
-  },
+const optgroupSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.scriptSupportingElements, "option"),
+    },
+  ],
+  attributes: contentAttributes(true, ["disabled", "label"]),
 };
+
+export const optgroup: GetElementSpec = () => optgroupSpec;

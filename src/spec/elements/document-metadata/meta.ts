@@ -1,12 +1,15 @@
-import { global } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const meta: ElementSpec = {
-  contents: {
-    model: null,
-  },
-  attributes: {
-    global,
-    specific: new Set(["name", "http-equiv", "content", "charset", "media"]),
-  },
+const metaSpec: ElementSpec = {
+  contents: null,
+  attributes: contentAttributes(true, [
+    "name",
+    "http-equiv",
+    "content",
+    "charset",
+    "media",
+  ]),
 };
+
+export const meta: GetElementSpec = () => metaSpec;

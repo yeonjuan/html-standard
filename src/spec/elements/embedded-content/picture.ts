@@ -1,31 +1,31 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const picture: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-      {
-        rule: "zeroOrMore",
-        contents: new Set(["source"]),
-      },
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-      {
-        rule: "required",
-        contents: new Set(["img"]),
-      },
-      {
-        rule: "zeroOrMore",
-        contents: contents.scriptSupportingElements,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const pictureSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+    {
+      type: "zeroOrMore",
+      contents: new Set(["source"]),
+    },
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+    {
+      type: "required",
+      contents: new Set(["img"]),
+    },
+    {
+      type: "zeroOrMore",
+      contents: contents.scriptSupportingElements,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const picture: GetElementSpec = () => pictureSpec;

@@ -1,31 +1,16 @@
-import { attributes } from "../common/attributes";
-import { ElementSpec } from "../types";
+import { addToSet } from "../../utils/set";
+import { contents } from "../common/contents";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const tbody: ElementSpec = {
-  contents: {
-    allowed: ["caption", "colgroup", "thead", "tbody", "tr", "tfoot"],
-    rules: {
-      caption: {
-        required: false,
-        followedBy: "colgroup",
-        max: 1,
-      },
-      colgroup: {
-        required: false,
-        followedBy: "thead",
-      },
-      thead: {
-        required: false,
-        max: 1,
-      },
-      tbody: {
-        required: false,
-        followedBy: "tfoot",
-      },
-      tfoot: {
-        required: false,
-      },
+const tbodySpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: addToSet(contents.scriptSupportingElements, "tr"),
     },
-  },
-  attributes: attributes.globalOnly,
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const tbody: GetElementSpec = () => tbodySpec;

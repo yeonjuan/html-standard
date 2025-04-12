@@ -1,67 +1,57 @@
 import { setsToMap } from "../../utils/set";
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const audio: ElementSpec = {
-  contents: {
-    // sequence?
-    model: [
-      {
-        rule: "conditional",
-        conditions: [
-          {
-            ifAttributes(attributes) {
-              return !!attributes["src"];
-            },
-            model: [
-              {
-                rule: "zeroOrMore",
-                contents: new Set(["track"]),
-              },
-              {
-                rule: "oneOrMore",
-                contents: contents.transparentContent,
-              },
-            ],
-          },
-          {
-            ifAttributes(attributes) {
-              return !attributes["src"];
-            },
-            model: [
-              {
-                rule: "zeroOrMore",
-                contents: new Set("source"),
-              },
-              {
-                rule: "zeroOrMore",
-                contents: new Set("track"),
-              },
-              {
-                rule: "oneOrMore",
-                contents: contents.transparentContent,
-                descendantsConstraints: setsToMap(
-                  { disallow: true },
-                  contents.mediaElements,
-                ),
-              },
-            ],
-          },
-        ],
+const attributes = contentAttributes(true, [
+  "src",
+  "crossorigin",
+  "preload",
+  "autoplay",
+  "loop",
+  "muted",
+  "controls",
+]);
+
+const audioWithSrcSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: new Set(["track"]),
+    },
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+    },
+  ],
+  attributes,
+};
+
+const audioWithoutSrcSpec: ElementSpec = {
+  contents: [
+    {
+      type: "zeroOrMore",
+      contents: new Set("source"),
+    },
+    {
+      type: "zeroOrMore",
+      contents: new Set("track"),
+    },
+    {
+      type: "oneOrMore",
+      contents: contents.transparentContent,
+      constraints: {
+        descendants: setsToMap({ disallow: true }, contents.mediaElements),
       },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set([
-      "src",
-      "crossorigin",
-      "preload",
-      "autoplay",
-      "loop",
-      "muted",
-      "controls",
-    ]),
-  },
+    },
+  ],
+  attributes,
+};
+
+export const audio: GetElementSpec = (state) => {
+  const attributes = state?.attributes || {};
+  if (!!attributes["src"]) {
+    return audioWithSrcSpec;
+  }
+  return audioWithoutSrcSpec;
 };

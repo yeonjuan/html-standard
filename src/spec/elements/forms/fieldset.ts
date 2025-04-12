@@ -1,22 +1,19 @@
-import { global } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const fieldset: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "optional",
-        contents: new Set("legend"),
-      },
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-      },
-    ],
-  },
-  attributes: {
-    global,
-    specific: new Set(["disabled", "form", "name"]),
-  },
+const fieldsetSpec: ElementSpec = {
+  contents: [
+    {
+      type: "optional",
+      contents: new Set("legend"),
+    },
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+    },
+  ],
+  attributes: contentAttributes(true, ["disabled", "form", "name"]),
 };
+
+export const fieldset: GetElementSpec = () => fieldsetSpec;

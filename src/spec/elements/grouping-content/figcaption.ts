@@ -1,15 +1,15 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
-import { ElementSpec } from "../types";
+import { ElementSpec, GetElementSpec } from "../types";
+import { contentAttributes } from "../utils/contentAttributes";
 
-export const figcaption: ElementSpec = {
-  contents: {
-    model: [
-      {
-        rule: "oneOrMore",
-        contents: contents.flowContent,
-      },
-    ],
-  },
-  attributes: attributes.globalOnly,
+const figcaptionSpec: ElementSpec = {
+  contents: [
+    {
+      type: "oneOrMore",
+      contents: contents.flowContent,
+    },
+  ],
+  attributes: contentAttributes(true),
 };
+
+export const figcaption: GetElementSpec = () => figcaptionSpec;
