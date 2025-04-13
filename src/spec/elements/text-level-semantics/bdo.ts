@@ -1,4 +1,3 @@
-import { attributes } from "../common/attributes";
 import { contents } from "../common/contents";
 import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../utils/contentAttributes";

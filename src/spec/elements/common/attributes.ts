@@ -26,10 +26,3 @@ export const globalAttributes = new Set([
   "translate",
   "writingsuggestions",
 ]);
-
-export const attributes = {
-  globalOnly: {
-    global,
-    specific: new Set<string>(),
-  },
-};
