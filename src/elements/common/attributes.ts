@@ -25,4 +25,10 @@ export const globalAttributes = new Set([
   "title",
   "translate",
   "writingsuggestions",
+  "class",
+  "id",
+  "slot",
+  "xmlns",
+  "xml:lang",
+  "xml:space",
 ]);

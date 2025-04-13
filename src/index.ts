@@ -1,0 +1,1 @@
+export { getElementSpec } from "./getElementSpec";

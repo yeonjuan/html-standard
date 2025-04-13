@@ -49,7 +49,7 @@ type ContentModel =
 
 type ElementState = {
   parent?: string;
-  attributes?: Record<string, string>;
+  attributes?: Record<string, string | boolean>;
 };
 
 export type ElementSpec = {
