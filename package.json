@@ -1,21 +1,24 @@
 {
   "name": "html-standard",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.mjs",
+    "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "ts": "tsc --noEmit",
     "test": "jest"
   },
-  "author": "",
+  "author": "yeonjuan",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.14",
