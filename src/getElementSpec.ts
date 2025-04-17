@@ -1,4 +1,4 @@
-import { ElementSpec, GetElementSpec } from "./elements/types";
+import { ElementSpec, GetElementSpec } from "./types";
 import * as elementsSpecs from "./elements";
 
 const specsRecord: Record<string, GetElementSpec> = elementsSpecs;
