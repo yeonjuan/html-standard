@@ -1,2 +1,10 @@
 export { getElementSpec } from "./getElementSpec";
-export * from "./types";
+export type {
+  AttributesSpecMap,
+  ContentConstraintValue,
+  ContentConstraints,
+  ContentConstraint,
+  ContentModel,
+  ElementSpec,
+  GetElementSpec,
+} from "./types";

@@ -14,7 +14,11 @@ export const contentAttributes = (
   const specificAttributes = new Set(specific);
   return {
     has(name) {
-      return globalAttributes.has(name) || specificAttributes.has(name);
+      const key = name.toLowerCase();
+      if (key.startsWith("data-")) {
+        return true;
+      }
+      return globalAttributes.has(key) || specificAttributes.has(key);
     },
   };
 };
