@@ -9,7 +9,7 @@ const figureSpec: ElementSpec = {
         [
           {
             type: "required",
-            contents: new Set("figcaption"),
+            contents: contents.fromKeys("figcaption"),
           },
           {
             type: "oneOrMore",

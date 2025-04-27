@@ -4,33 +4,25 @@ import type { ReadonlySet } from "./readonly-set";
 export type ContentModel =
   | {
       type: "required";
-      contents: ReadonlySet<string>;
+      contents: ReadonlySet;
+      constraints?: ContentConstraints;
     }
   | {
       type: "optional";
-      contents: ReadonlySet<string>;
+      contents: ReadonlySet;
+      constraints?: ContentConstraints;
     }
   | {
       type: "zeroOrMore";
-      contents: ReadonlySet<string>;
+      contents: ReadonlySet;
       constraints?: ContentConstraints;
     }
   | {
       type: "oneOrMore";
-      contents: ReadonlySet<string>;
+      contents: ReadonlySet;
       constraints?: ContentConstraints;
     }
   | {
       type: "either";
       options: ContentModel[][];
-    }
-  | {
-      type: "conditional";
-      conditions: {
-        ifAttributes?: (
-          attributes: Record<string, boolean | string>,
-        ) => boolean;
-        ifParent?: (parent: { name: string }) => void;
-        model: ContentModel[] | null;
-      }[];
     };

@@ -1,5 +1,5 @@
 import type { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contents, contentsPreset } from "../helpers";
+import { contentAttributes, contentsPreset } from "../helpers";
 
 const titleSpec: ElementSpec = {
   contents: [

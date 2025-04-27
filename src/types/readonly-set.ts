@@ -1,3 +1,4 @@
-export interface ReadonlySet<T extends NonNullable<unknown>> {
+export interface ReadonlySet {
   has(name: string): boolean;
+  keys(): IterableIterator<string>;
 }

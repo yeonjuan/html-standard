@@ -9,7 +9,13 @@ const headSpec: ElementSpec = {
       contents: contentsPreset.metadataContent,
       constraints: {
         children: contentConstraint.fromEntries([
-          ["title", required],
+          [
+            "title",
+            {
+              required: true,
+              max: 1,
+            },
+          ],
           ["base", onlyOne],
         ]),
       },

@@ -177,7 +177,7 @@ export const contentsPreset = {
     "area",
     "video",
   ]),
-  text: new Set("#text"),
+  text: new Set(["#text"]),
   mediaElements: new Set(["audio", "video"]),
   labelableElements: new Set([
     "button",
