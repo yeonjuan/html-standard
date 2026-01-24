@@ -4,7 +4,6 @@ export type {
   ContentConstraintValue,
   ContentConstraints,
   ContentConstraint,
-  ContentModel,
   ElementSpec,
   GetElementSpec,
 } from "./types";

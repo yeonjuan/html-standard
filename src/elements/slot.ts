@@ -1,13 +1,7 @@
 import type { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contentsPreset } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const slotSpec: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.transparentContent,
-    },
-  ],
   attributes: contentAttributes(true, ["name"]),
 };
 

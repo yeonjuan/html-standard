@@ -1,23 +1,11 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contents, contentsPreset } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const liInMenuOrUl: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.flowContent,
-    },
-  ],
   attributes: contentAttributes(true),
 };
 
 const liNotInMenuOrUl: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.flowContent,
-    },
-  ],
   attributes: contentAttributes(true, ["value"]),
 };
 

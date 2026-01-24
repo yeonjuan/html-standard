@@ -1,11 +1,5 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import {
-  contentAttributes,
-  contentsPreset,
-  contentConstraint,
-  disallow,
-  contents,
-} from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const attributes = contentAttributes(true, [
   "src",
@@ -22,45 +16,9 @@ const attributes = contentAttributes(true, [
 ]);
 
 const videoWithSrcSpec: ElementSpec = {
-  contents: [
-    {
-      type: "zeroOrMore",
-      contents: contents.fromKeys("track"),
-    },
-    {
-      type: "zeroOrMore",
-      contents: contentsPreset.transparentContent,
-      constraints: {
-        descendants: contentConstraint.fromSets(
-          disallow,
-          contentsPreset.mediaElements,
-        ),
-      },
-    },
-  ],
   attributes,
 };
 const videoWitoutSrcSpec: ElementSpec = {
-  contents: [
-    {
-      type: "zeroOrMore",
-      contents: contents.fromKeys("source"),
-    },
-    {
-      type: "zeroOrMore",
-      contents: contents.fromKeys("track"),
-    },
-    {
-      type: "zeroOrMore",
-      contents: contentsPreset.transparentContent,
-      constraints: {
-        descendants: contentConstraint.fromSets(
-          disallow,
-          contentsPreset.mediaElements,
-        ),
-      },
-    },
-  ],
   attributes,
 };
 

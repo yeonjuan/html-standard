@@ -1,5 +1,5 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contentsPreset } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const attributes = contentAttributes(true, [
   "disabled",
@@ -9,26 +9,13 @@ const attributes = contentAttributes(true, [
 ]);
 
 const optionWithLabelAndValueSpec: ElementSpec = {
-  contents: null,
   attributes,
 };
 
 const optionWithLabelSpec: ElementSpec = {
-  contents: [
-    {
-      type: "required",
-      contents: contentsPreset.text,
-    },
-  ],
   attributes,
 };
 const optionWithoutLabelAndValueSpec: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.text,
-    },
-  ],
   attributes,
 };
 

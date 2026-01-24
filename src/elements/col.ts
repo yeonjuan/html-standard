@@ -2,7 +2,6 @@ import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../helpers";
 
 const colSpec: ElementSpec = {
-  contents: null,
   attributes: contentAttributes(true, ["span"]),
 };
 

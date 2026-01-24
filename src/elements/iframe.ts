@@ -2,7 +2,6 @@ import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../helpers";
 
 const iframeSpec: ElementSpec = {
-  contents: null,
   attributes: contentAttributes(true, [
     "src",
     "srcdoc",

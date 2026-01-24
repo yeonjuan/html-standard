@@ -1,40 +1,7 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contents, contentsPreset } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const figureSpec: ElementSpec = {
-  contents: [
-    {
-      type: "either",
-      options: [
-        [
-          {
-            type: "required",
-            contents: contents.fromKeys("figcaption"),
-          },
-          {
-            type: "oneOrMore",
-            contents: contentsPreset.flowContent,
-          },
-        ],
-        [
-          {
-            type: "oneOrMore",
-            contents: contentsPreset.flowContent,
-          },
-          {
-            type: "required",
-            contents: contents.fromKeys("figcaption"),
-          },
-        ],
-        [
-          {
-            type: "oneOrMore",
-            contents: contentsPreset.flowContent,
-          },
-        ],
-      ],
-    },
-  ],
   attributes: contentAttributes(true),
 };
 

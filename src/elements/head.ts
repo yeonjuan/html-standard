@@ -1,26 +1,7 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contentsPreset } from "../helpers";
-import { contentConstraint, onlyOne, required } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const headSpec: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.metadataContent,
-      constraints: {
-        children: contentConstraint.fromEntries([
-          [
-            "title",
-            {
-              required: true,
-              max: 1,
-            },
-          ],
-          ["base", onlyOne],
-        ]),
-      },
-    },
-  ],
   attributes: contentAttributes(true),
 };
 

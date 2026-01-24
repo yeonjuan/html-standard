@@ -1,13 +1,7 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import { contentAttributes, contentsPreset } from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const textareaSpec: ElementSpec = {
-  contents: [
-    {
-      type: "zeroOrMore",
-      contents: contentsPreset.text,
-    },
-  ],
   attributes: contentAttributes(true, [
     "autocomplete",
     "cols",

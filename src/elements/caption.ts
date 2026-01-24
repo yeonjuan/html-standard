@@ -1,21 +1,7 @@
 import { ElementSpec, GetElementSpec } from "../types";
-import {
-  contentAttributes,
-  contentConstraint,
-  contentsPreset,
-  disallow,
-} from "../helpers";
+import { contentAttributes } from "../helpers";
 
 const captionSpec: ElementSpec = {
-  contents: [
-    {
-      type: "oneOrMore",
-      contents: contentsPreset.flowContent,
-      constraints: {
-        descendants: contentConstraint.fromEntries([["table", disallow]]),
-      },
-    },
-  ],
   attributes: contentAttributes(true),
 };
 

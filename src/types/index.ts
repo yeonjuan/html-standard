@@ -1,5 +1,4 @@
 export * from "./content-constraints";
-export * from "./content-model";
 export * from "./attributes-spec-map";
 export * from "./element-spec";
 export * from "./readonly-map";

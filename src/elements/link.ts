@@ -2,7 +2,6 @@ import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../helpers";
 
 const linkSpec: ElementSpec = {
-  contents: null,
   attributes: contentAttributes(true, [
     "href",
     "crossorigin",

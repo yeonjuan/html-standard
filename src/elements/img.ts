@@ -2,7 +2,6 @@ import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../helpers";
 
 const imgSpec: ElementSpec = {
-  contents: null,
   attributes: contentAttributes(true, [
     "alt",
     "src",

@@ -2,7 +2,6 @@ import { ElementSpec, GetElementSpec } from "../types";
 import { contentAttributes } from "../helpers";
 
 const inputSpec: ElementSpec = {
-  contents: null,
   attributes: contentAttributes(true, [
     "accept",
     "alpha",
