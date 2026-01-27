@@ -1,8 +1,4 @@
 export namespace MicroSyntaxes {
-  export enum Type {
-    BooleanAttributes = "BooleanAttributes",
-  }
-
   export type Value = undefined | string | number;
 
   export interface CheckResult {
@@ -10,8 +6,7 @@ export namespace MicroSyntaxes {
     message?: string;
   }
 
-  export interface Spec<T extends Type> {
-    type: T;
+  export interface Spec {
     check(value: Value): CheckResult;
   }
 }
