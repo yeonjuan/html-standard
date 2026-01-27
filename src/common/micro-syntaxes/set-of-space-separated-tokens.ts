@@ -16,7 +16,6 @@ export class SetOfSpaceSeparatedTokens implements MicroSyntaxes.Spec {
   constructor(
     private options: {
       unique?: boolean;
-      ordered?: boolean;
       allowedValues?: Set<string>;
     } = {},
   ) {}
