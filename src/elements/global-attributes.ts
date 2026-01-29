@@ -42,4 +42,11 @@ export const globalAttributes = new Map<string, MicroSyntaxes.Spec>([
       keywords: ["ltr", "rtl", "auto"],
     }),
   ],
+  [
+    "draggable",
+    EnumeratedAttributes.create({
+      emptyValueDefault: false,
+      keywords: ["true", "false"],
+    }),
+  ],
 ]);
