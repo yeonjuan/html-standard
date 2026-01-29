@@ -13,11 +13,19 @@ const REG_SPACES = /[\t\n\f\r ]+/;
  * Sets of space-separated tokens sometimes have a defined set of allowed values. When a set of allowed values is defined, the tokens must all be from that list of allowed values; other values are non-conforming. If no such set of allowed values is provided, then all values are conforming.
  */
 export class SetOfSpaceSeparatedTokens implements MicroSyntaxes.Spec {
-  constructor(
-    private options: {
-      unique?: boolean;
-      allowedValues?: Set<string>;
-    } = {},
+  public static create({
+    unique,
+    allowedValues,
+  }: {
+    unique: boolean;
+    allowedValues: Set<string> | null;
+  }) {
+    return new SetOfSpaceSeparatedTokens(unique, allowedValues);
+  }
+
+  private constructor(
+    private unique: boolean,
+    private allowedValues: Set<string> | null,
   ) {}
 
   check(value: MicroSyntaxes.Value): MicroSyntaxes.CheckResult {
@@ -37,7 +45,7 @@ export class SetOfSpaceSeparatedTokens implements MicroSyntaxes.Spec {
 
     const tokens = value.split(REG_SPACES).filter((token) => token !== "");
 
-    if (this.options.unique) {
+    if (this.unique) {
       const seen = new Set<string>();
       for (const token of tokens) {
         if (seen.has(token)) {
@@ -47,9 +55,9 @@ export class SetOfSpaceSeparatedTokens implements MicroSyntaxes.Spec {
       }
     }
 
-    if (this.options.allowedValues) {
+    if (this.allowedValues) {
       for (const token of tokens) {
-        if (!this.options.allowedValues.has(token)) {
+        if (!this.allowedValues.has(token)) {
           return invalid(
             `Token "${token}" is not in the list of allowed values`,
           );

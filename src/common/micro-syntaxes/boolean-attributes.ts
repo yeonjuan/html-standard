@@ -8,7 +8,11 @@ import { valid, invalid } from "./helpers";
  * If the attribute is present, its value must either be the empty string or a value that is an ASCII case-insensitive match for the attribute's canonical name, with no leading or trailing whitespace.
  */
 export class BooleanAttributes implements MicroSyntaxes.Spec {
-  constructor(private attribute: string) {}
+  static create({ attribute }: { attribute: string }) {
+    return new BooleanAttributes(attribute);
+  }
+
+  private constructor(private attribute: string) {}
 
   check(value: MicroSyntaxes.Value): MicroSyntaxes.CheckResult {
     if (value === undefined || value === "") {
