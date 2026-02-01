@@ -1,6 +1,10 @@
 import { GetAttributeValue } from "./types";
 import { ROLES } from "../../constants/roles";
 
+/**
+ * https://www.w3.org/TR/html-aria/?utm_source=chatgpt.com#docconformance
+ */
+
 const IMPLICIT_ROLE: Record<
   string,
   (args: {
