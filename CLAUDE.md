@@ -4,69 +4,108 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`html-standard` is a TypeScript library that provides structured data from the HTML Living Standard. The library exports element specifications that describe valid attributes for each HTML element, with context-aware specs that vary based on parent elements or element state.
+`html-standard` is a TypeScript library that provides utilities for working with the HTML Living Standard specification. Currently, the library focuses on providing ARIA-related utilities, specifically the `getImplicitRole` function that returns implicit ARIA roles for HTML elements.
+
+**Status**: This project is in an experimental stage and may introduce breaking changes frequently.
 
 ## Commands
 
 ### Development
 - `npm run build` - Build the library using tsup (outputs to `dist/` with ESM and CJS formats)
 - `npm run ts` - Type-check TypeScript without emitting files
-- `npm test` - Run tests using Jest
+- `npm test` - Run tests using Vitest
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:ui` - Run tests with UI
 
 ## Architecture
 
 ### Core Concepts
 
-**Element Specifications**: Each HTML element has a specification that describes its valid attributes. These specs are context-aware and can vary based on the element's parent or attributes.
+**Implicit ARIA Roles**: The library provides utilities to determine the implicit ARIA role of HTML elements according to the [HTML-ARIA specification](https://www.w3.org/TR/html-aria/). These roles can be static or vary based on element attributes.
 
-**Public API**: The library exports a single function `getElementSpec(name, options?)` that returns element specifications. Options include:
-- `parent?: string` - The parent element name (affects which spec variant is returned)
-- `attributes?: Record<string, string | boolean>` - Element attributes (for future attribute-dependent specs)
+**Public API**: The library exports the `getImplicitRole(element, options?)` function:
+- `element: string` - The HTML element name (case-insensitive)
+- `options?: GetImplicitRoleOptions` - Optional configuration
+  - `attribute: (key: string) => string | number | null` - Function to retrieve attribute values
 
 ### Directory Structure
 
 ```
 src/
-├── elements/          # Individual element spec definitions (one file per element)
-├── helpers/           # Helper functions for creating attribute and content specs
-├── types/             # Type definitions and core interfaces
-├── getElementSpec.ts  # Main entry point function
-└── index.ts           # Public exports
+├── html-aria/
+│   └── implicit-role/
+│       ├── get-implicit-role.ts    # Public API function
+│       ├── implicit-role.ts        # Core implementation with role mappings
+│       ├── types.ts                # Type definitions
+│       ├── index.ts                # Exports
+│       └── tests/
+│           └── get-implicit-role.test.ts  # Comprehensive test suite
+├── constants/
+│   └── roles.ts                    # ARIA role constants
+└── index.ts                        # Main entry point
 ```
 
 ### Key Files
 
-**[src/getElementSpec.ts](src/getElementSpec.ts)**: Main entry point that looks up element specs by name from the elements record and calls the getter function with options.
+**[src/html-aria/implicit-role/get-implicit-role.ts](src/html-aria/implicit-role/get-implicit-role.ts)**: Public API that accepts element name and options, provides default attribute getter.
 
-**[src/elements/index.ts](src/elements/index.ts)**: Exports all element spec getters, organized by HTML spec section (Document metadata, Sections, Grouping content, Text-level semantics, etc.).
+**[src/html-aria/implicit-role/implicit-role.ts](src/html-aria/implicit-role/implicit-role.ts)**: Core implementation containing the `IMPLICIT_ROLE` mapping object. Each element has a function that receives `get` and `has` helpers to check attributes and return the appropriate role.
 
-**[src/types/element-spec.ts](src/types/element-spec.ts)**: Core `ElementSpec` interface that contains an `attributes` map.
+**[src/html-aria/implicit-role/types.ts](src/html-aria/implicit-role/types.ts)**: Defines `GetAttributeValue` type and `GetImplicitRoleOptions` interface.
 
-**[src/types/get-element-spec.ts](src/types/get-element-spec.ts)**: Defines `GetElementSpec` function type - each element exports a getter function that accepts optional state and returns an `ElementSpec`.
+**[src/constants/roles.ts](src/constants/roles.ts)**: Defines the `ROLES` constant object with all ARIA role string literals.
 
-**[src/helpers/content-attributes.ts](src/helpers/content-attributes.ts)**: Factory function for creating attribute specs. Handles global attributes (including `data-*` attributes and event handlers) and element-specific attributes.
+**[src/html-aria/implicit-role/tests/get-implicit-role.test.ts](src/html-aria/implicit-role/tests/get-implicit-role.test.ts)**: Comprehensive test suite with 45+ tests covering all HTML elements and their attribute-dependent behaviors.
 
-**[src/helpers/attributes.ts](src/helpers/attributes.ts)**: Defines `globalAttributes` set (includes standard global attributes and all event handlers like `onclick`, `onload`, etc.).
+### How Implicit Role Mapping Works
 
-### How Element Specs Work
+The implicit role system follows this pattern:
 
-Each element file in `src/elements/` exports a `GetElementSpec` function. The pattern is:
+1. Each HTML element has an entry in the `IMPLICIT_ROLE` object
+2. Each entry is a function that receives `{ get, has }` helpers for checking attributes
+3. The function returns a role string or `null` (no implicit role)
+4. Element names are normalized to lowercase for case-insensitive matching
 
-1. Define one or more `ElementSpec` objects (different variants for different contexts)
-2. Export a getter function that returns the appropriate spec based on state
-3. Simple elements return the same spec always, context-aware elements use `state.parent` or `state.attributes` to determine which spec to return
+**Example (static role)**:
+```typescript
+button: () => ROLES.BUTTON,  // Always returns "button"
+```
 
-**Example (context-aware)**: [src/elements/div.ts](src/elements/div.ts) returns different specs when the parent is `dl` vs other parents.
+**Example (attribute-dependent role)**:
+```typescript
+a: ({ has }) => (has("href") ? ROLES.LINK : ROLES.GENERIC),
+// Returns "link" with href, "generic" without
+```
 
-**Example (simple)**: [src/elements/a.ts](src/elements/a.ts) always returns the same spec with global attributes plus specific attributes like `href`, `target`, etc.
+**Example (complex attribute logic)**:
+```typescript
+input: ({ get }) => {
+  const type = get("type") || "text";
+  switch (type) {
+    case "button": return ROLES.BUTTON;
+    case "checkbox": return ROLES.CHECKBOX;
+    case "text": return ROLES.TEXTBOX;
+    // ... more cases
+  }
+}
+```
 
-### Attribute System
+### Testing Strategy
 
-Attributes are managed through `AttributesSpecMap` interface which has a single `has(name: string): boolean` method. The `contentAttributes()` helper creates these maps by:
+Tests are organized by element categories:
+- Elements with no implicit role
+- Generic role elements
+- Structural elements (article, aside, nav, etc.)
+- Heading elements (h1-h6)
+- List, table, and form elements
+- Text semantic elements
+- Attribute-dependent roles (detailed tests for `<a>`, `<area>`, `<img>`, `<input>`, `<select>`)
+- Case insensitivity
 
-1. Checking if attribute name starts with `data-` (always valid)
-2. Checking global attributes set (includes event handlers)
-3. Checking element-specific attributes if provided
+Use **Vitest** for testing:
+- Configuration in [vitest.config.ts](vitest.config.ts)
+- Tests use `describe`, `it`, `expect` from Vitest
+- Run with `npm test`, `npm run test:watch`, or `npm run test:ui`
 
 ### Build Configuration
 
@@ -76,20 +115,43 @@ The project uses **tsup** for building ([tsup.config.ts](tsup.config.ts)):
 - Generates TypeScript declarations (`dist/index.d.ts`)
 - Creates sourcemaps
 
-## Adding New Elements
+## Adding New Features
 
-When adding a new HTML element:
+### Adding Support for a New HTML Element
 
-1. Create a new file in `src/elements/{element-name}.ts`
-2. Import types and helpers: `ElementSpec`, `GetElementSpec`, `contentAttributes`
-3. Define the element spec(s) with appropriate attributes
-4. Export a `GetElementSpec` function (name it after the element)
-5. Add the export to `src/elements/index.ts` in the appropriate section
-6. The element will automatically be available via `getElementSpec()`
+1. Open [src/html-aria/implicit-role/implicit-role.ts](src/html-aria/implicit-role/implicit-role.ts)
+2. Add an entry to the `IMPLICIT_ROLE` object with the element name
+3. Implement the role function:
+   - For static roles: `elementName: () => ROLES.ROLE_NAME`
+   - For attribute-dependent: Use `get` or `has` to check attributes
+4. Add tests in [src/html-aria/implicit-role/tests/get-implicit-role.test.ts](src/html-aria/implicit-role/tests/get-implicit-role.test.ts)
+5. If adding a new role constant, update [src/constants/roles.ts](src/constants/roles.ts)
 
-**Attribute specification**:
-- Use `contentAttributes(true)` for global attributes only
-- Use `contentAttributes(true, ['attr1', 'attr2'])` for global + specific attributes
-- Use `contentAttributes(false, ['attr1'])` for specific attributes only (no globals)
+### Adding New Role Constants
 
-**Context-aware specs**: If an element has different valid attributes based on context, create multiple `ElementSpec` objects and use `state?.parent` or `state?.attributes` in the getter to return the appropriate one.
+1. Open [src/constants/roles.ts](src/constants/roles.ts)
+2. Add the new role to the `ROLES` object:
+   ```typescript
+   export const ROLES = {
+     // ... existing roles
+     NEW_ROLE: "new-role",
+   } as const;
+   ```
+
+### Writing Tests
+
+Follow the existing test structure:
+```typescript
+describe("element category", () => {
+  it("should return correct role", () => {
+    expect(getImplicitRole("element")).toBe("expected-role");
+  });
+
+  it("should handle attributes", () => {
+    const result = getImplicitRole("element", {
+      attribute: (key) => key === "attr" ? "value" : null,
+    });
+    expect(result).toBe("expected-role");
+  });
+});
+```
