@@ -9,6 +9,7 @@ export const ROLES = {
   CODE: "code",
   COMBOBOX: "combobox",
   COMPLEMENTARY: "complementary",
+  CONTENTINFO: "contentinfo",
   DELETION: "deletion",
   DIALOG: "dialog",
   DOCUMENT: "document",

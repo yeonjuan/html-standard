@@ -6,37 +6,59 @@ A TypeScript library that provides utilities for working with the HTML Living St
 
 ## Features
 
-### `getImplicitRole`
+### Element API
 
-Returns the implicit ARIA role of an HTML element according to the [HTML-ARIA specification](https://www.w3.org/TR/html-aria/). This provides the default role that each HTML element has.
+Create an element instance to access various HTML standard utilities:
 
 ```typescript
-import { getImplicitRole } from "html-standard";
+import { element } from "html-standard";
 
-// Basic usage
-getImplicitRole("button"); // 'button'
-getImplicitRole("nav"); // 'navigation'
-getImplicitRole("div"); // 'generic'
+// Basic usage without attributes
+const button = element("button");
+button.accessibility.implicitRole(); // 'button'
 
-// Elements with attribute-dependent roles
-getImplicitRole("a", {
-  attribute: (key) => (key === "href" ? "https://example.com" : null),
-}); // 'link'
+const nav = element("nav");
+nav.accessibility.implicitRole(); // 'navigation'
 
-getImplicitRole("a", {
-  attribute: () => null,
-}); // 'generic' (without href)
+// Elements with attributes
+const anchor = element("a", {
+  attributes: {
+    get: (key) => (key === "href" ? "https://example.com" : null),
+  },
+});
+anchor.accessibility.implicitRole(); // 'link'
 
-getImplicitRole("input", {
-  attribute: (key) => (key === "type" ? "checkbox" : null),
-}); // 'checkbox'
+const anchorWithoutHref = element("a");
+anchorWithoutHref.accessibility.implicitRole(); // 'generic'
+
+const checkbox = element("input", {
+  attributes: {
+    get: (key) => (key === "type" ? "checkbox" : null),
+  },
+});
+checkbox.accessibility.implicitRole(); // 'checkbox'
+```
+
+### Accessibility API
+
+Access accessibility utilities directly:
+
+```typescript
+import { accessibility } from "html-standard";
+
+const buttonA11y = accessibility("button", {
+  attributes: {
+    get: () => null,
+  },
+});
+buttonA11y.implicitRole(); // 'button'
 ```
 
 **Key Features:**
 
-- Implements implicit role mapping from the HTML Living Standard
-- Supports attribute-dependent roles (e.g., `<a>`, `<input>`, `<img>`, `<select>`)
-- Case-insensitive element name handling
+- **Implicit ARIA Roles**: Get the default ARIA role for HTML elements according to the [HTML-ARIA specification](https://www.w3.org/TR/html-aria/)
+- **Attribute-Dependent Roles**: Supports roles that vary based on element attributes (e.g., `<a>`, `<input>`, `<img>`, `<select>`)
+- **Case-Insensitive**: Element names are handled case-insensitively
 
 ## Installation
 

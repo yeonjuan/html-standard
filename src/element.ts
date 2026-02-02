@@ -1,14 +1,21 @@
 import { accessibility } from "./accessibility";
-import { ElementState } from "./types";
+import { DEFAULT_ELEMENT_OPTIONS } from "./constants";
+import { ElementSpec, ElementOptions } from "./types";
 
-class Element {
-  constructor(public state: ElementState) {}
+class Element implements ElementSpec {
+  constructor(
+    private name: string,
+    private options: ElementOptions,
+  ) {}
 
   get accessibility() {
-    return accessibility(this.state);
+    return accessibility(this.name, this.options);
   }
 }
 
-export function element(state: ElementState) {
-  return new Element(state);
+export function element(
+  name: string,
+  options: ElementOptions = DEFAULT_ELEMENT_OPTIONS,
+): ElementSpec {
+  return new Element(name, options);
 }

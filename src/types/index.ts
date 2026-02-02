@@ -1,3 +1,7 @@
-export type * from "./attribute-state";
 export type * from "./attribute-value";
-export type * from "./element-state";
+export {
+  AccessibilitySpec,
+  AttributesOptions,
+  ElementOptions,
+  ElementSpec,
+} from "./api";

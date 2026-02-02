@@ -1,2 +1,3 @@
 export { element } from "./element";
-export type { ElementState, AttributeState, AttributeValue } from "./types";
+export { accessibility } from "./accessibility";
+export type { AttributeValue, ElementSpec } from "./types";

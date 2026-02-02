@@ -1,20 +1,18 @@
 import { ROLES } from "../../constants/roles";
-import { AttributeValue } from "../../types";
+import { ElementState } from "../../core";
 
 /**
- * https://www.w3.org/TR/html-aria/?utm_source=chatgpt.com#docconformance
+ * https://www.w3.org/TR/html-aria/
  */
 export const IMPLICIT_ROLE: Record<
   string,
-  (args: {
-    get: (key: string) => AttributeValue;
-    has: (key: string) => boolean;
-  }) => string | null
+  (element: ElementState) => string | null
 > = {
-  a: ({ has }) => (has("href") ? ROLES.LINK : ROLES.GENERIC),
+  a: (element) => (element.attributes.has("href") ? ROLES.LINK : ROLES.GENERIC),
   abbr: () => null,
   address: () => ROLES.GROUP,
-  area: ({ has }) => (has("href") ? ROLES.LINK : ROLES.GENERIC),
+  area: (element) =>
+    element.attributes.has("href") ? ROLES.LINK : ROLES.GENERIC,
   article: () => ROLES.ARTICLE,
   aside: () => ROLES.COMPLEMENTARY,
   audio: () => null,
@@ -47,7 +45,15 @@ export const IMPLICIT_ROLE: Record<
   fieldset: () => ROLES.GROUP,
   figcaption: () => null,
   figure: () => ROLES.FIGURE,
-  footer: () => null,
+  footer: (element) => {
+    const sectioningElements = ["article", "aside", "main", "nav", "section"];
+    for (const ancestor of element.anceters()) {
+      if (sectioningElements.includes(ancestor.name.toLowerCase())) {
+        return ROLES.GENERIC;
+      }
+    }
+    return ROLES.CONTENTINFO;
+  },
   form: () => ROLES.FORM,
   h1: () => ROLES.HEADING,
   h2: () => ROLES.HEADING,
@@ -56,19 +62,19 @@ export const IMPLICIT_ROLE: Record<
   h5: () => ROLES.HEADING,
   h6: () => ROLES.HEADING,
   head: () => null,
-  header: () => null,
+  header: () => null, // TODO: banner if not descendant of article/aside/main/nav/section, otherwise generic
   hgroup: () => ROLES.GROUP,
   hr: () => ROLES.SEPARATOR,
   html: () => ROLES.DOCUMENT,
   i: () => ROLES.GENERIC,
   iframe: () => null,
-  img: ({ get }) => {
-    const alt = get("alt");
+  img: (element) => {
+    const alt = element.attributes.get("alt");
     if (alt === "") return null;
     return ROLES.IMG;
   },
-  input: ({ get }) => {
-    const type = get("type") || "text";
+  input: (element) => {
+    const type = element.attributes.get("type") || "text";
     switch (type) {
       case "button":
       case "image":
@@ -108,7 +114,7 @@ export const IMPLICIT_ROLE: Record<
   kbd: () => null,
   label: () => null,
   legend: () => null,
-  li: () => null,
+  li: () => null, // TODO: listitem if child of ol/ul/menu, otherwise generic
   link: () => null,
   main: () => ROLES.MAIN,
   map: () => null,
@@ -137,7 +143,8 @@ export const IMPLICIT_ROLE: Record<
   script: () => null,
   search: () => ROLES.SEARCH,
   section: () => null,
-  select: ({ has }) => (has("multiple") ? ROLES.LISTBOX : ROLES.COMBOBOX),
+  select: (element) =>
+    element.attributes.has("multiple") ? ROLES.LISTBOX : ROLES.COMBOBOX,
   slot: () => null,
   small: () => ROLES.GENERIC,
   span: () => ROLES.GENERIC,
