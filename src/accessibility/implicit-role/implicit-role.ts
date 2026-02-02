@@ -1,14 +1,13 @@
-import { GetAttributeValue } from "./types";
 import { ROLES } from "../../constants/roles";
+import { AttributeValue } from "../../types";
 
 /**
  * https://www.w3.org/TR/html-aria/?utm_source=chatgpt.com#docconformance
  */
-
-const IMPLICIT_ROLE: Record<
+export const IMPLICIT_ROLE: Record<
   string,
   (args: {
-    get: (key: string) => string | number | null;
+    get: (key: string) => AttributeValue;
     has: (key: string) => boolean;
   }) => string | null
 > = {
@@ -165,18 +164,4 @@ const IMPLICIT_ROLE: Record<
   var: () => null,
   video: () => null,
   wbr: () => null,
-};
-
-export const getImplicitRoleInternal = (
-  name: string,
-  attribute: GetAttributeValue,
-): string | null => {
-  const getRoleFn = IMPLICIT_ROLE[name.toLowerCase()];
-  if (!getRoleFn) {
-    return null;
-  }
-  return getRoleFn({
-    get: (key) => attribute(key),
-    has: (key) => attribute(key) !== null,
-  });
 };
