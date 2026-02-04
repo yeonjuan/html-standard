@@ -1,4 +1,8 @@
 import {
+  BooleanAttributes,
+  BooleanAttributesOptions,
+} from "./boolean-attributes";
+import {
   EnumeratedAttributes,
   EnumeratedAttributesOptions,
 } from "./enumerated-attributes";
@@ -15,4 +19,8 @@ export type AttributeSpecDefinition =
   | {
       type: typeof EnumeratedAttributes.type;
       options: EnumeratedAttributesOptions;
+    }
+  | {
+      type: typeof BooleanAttributes.type;
+      options: BooleanAttributesOptions;
     };
