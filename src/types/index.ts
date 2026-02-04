@@ -4,4 +4,6 @@ export {
   AttributesOptions,
   ElementOptions,
   ElementSpec,
+  AttributeSpec,
+  AttributeSpecValidateResult,
 } from "./api";

@@ -59,3 +59,11 @@ export interface ElementSpec {
    */
   accessibility: AccessibilitySpec;
 }
+
+export type AttributeSpecValidateResult = {
+  success: boolean;
+  message?: string;
+};
+export interface AttributeSpec {
+  validate(value: AttributeValue): AttributeSpecValidateResult;
+}
