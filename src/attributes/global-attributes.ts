@@ -1,6 +1,7 @@
 import {
   AttributeSpecDefinition,
   SpaceSeperatedTokens,
+  Text,
 } from "../common/microsyntaxes";
 import { BooleanAttributes } from "../common/microsyntaxes/boolean-attributes";
 import { EnumeratedAttributes } from "../common/microsyntaxes/enumerated-attributes";
@@ -34,7 +35,7 @@ export const globalAttributes: Record<string, AttributeSpecDefinition> = {
   contenteditable: {
     type: EnumeratedAttributes.type,
     options: {
-      keywords: ["true", "false", "plaintext-only"],
+      keywords: ["", "true", "false", "plaintext-only"],
     },
   },
   dir: {
@@ -46,7 +47,7 @@ export const globalAttributes: Record<string, AttributeSpecDefinition> = {
   draggable: {
     type: EnumeratedAttributes.type,
     options: {
-      keywords: ["true", "false"],
+      keywords: ["", "true", "false"],
     },
   },
   enterkeyhint: {
@@ -84,22 +85,41 @@ export const globalAttributes: Record<string, AttributeSpecDefinition> = {
     },
   },
   // TODO: is - custom element name, need specific validator
-  // is: {},
-  // TODO: itemid - URL type, need specific validator
-  // itemid: {},
-  // TODO: itemprop - space-separated tokens
-  // itemprop: {},
-  // TODO: itemref - space-separated tokens (IDREFs)
-  // itemref: {},
+  is: {
+    type: Text.type,
+  },
+  itemid: {
+    type: Text.type,
+  },
+  itemprop: {
+    type: SpaceSeperatedTokens.type,
+    options: {
+      unique: true,
+    },
+  },
+  itemref: {
+    type: SpaceSeperatedTokens.type,
+    options: {
+      unique: true,
+    },
+  },
   itemscope: {
     type: BooleanAttributes.type,
   },
-  // TODO: itemtype - space-separated valid URLs
-  // itemtype: {},
+  // TODO: valid url
+  itemtype: {
+    type: SpaceSeperatedTokens.type,
+    options: {
+      unique: true,
+    },
+  },
   // TODO: lang - BCP 47 language tag, need specific validator
-  // lang: {},
-  // TODO: nonce - text value, need specific validator
-  // nonce: {},
+  lang: {
+    type: Text.type,
+  },
+  nonce: {
+    type: Text.type,
+  },
   popover: {
     type: EnumeratedAttributes.type,
     options: {
@@ -117,8 +137,9 @@ export const globalAttributes: Record<string, AttributeSpecDefinition> = {
   tabindex: {
     type: SignedIntegers.type,
   },
-  // TODO: title - text value, need specific validator
-  // title: {},
+  title: {
+    type: Text.type,
+  },
   translate: {
     type: EnumeratedAttributes.type,
     options: {

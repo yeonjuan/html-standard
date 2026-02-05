@@ -11,6 +11,7 @@ import {
   SpaceSeperatedTokens,
   SpaceSeperatedTokensOptions,
 } from "./space-seperated-tokens";
+import { Text } from "./text";
 
 export type AttributeSpecDefinition =
   | {
@@ -26,4 +27,7 @@ export type AttributeSpecDefinition =
     }
   | {
       type: typeof SignedIntegers.type;
+    }
+  | {
+      type: typeof Text.type;
     };
