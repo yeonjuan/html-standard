@@ -6,6 +6,7 @@ import {
   EnumeratedAttributes,
   EnumeratedAttributesOptions,
 } from "./enumerated-attributes";
+import { SignedIntegers } from "./signed-integers";
 import {
   SpaceSeperatedTokens,
   SpaceSeperatedTokensOptions,
@@ -22,4 +23,7 @@ export type AttributeSpecDefinition =
     }
   | {
       type: typeof BooleanAttributes.type;
+    }
+  | {
+      type: typeof SignedIntegers.type;
     };

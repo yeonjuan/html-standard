@@ -4,6 +4,7 @@ import {
 } from "../common/microsyntaxes";
 import { BooleanAttributes } from "../common/microsyntaxes/boolean-attributes";
 import { EnumeratedAttributes } from "../common/microsyntaxes/enumerated-attributes";
+import { SignedIntegers } from "../common/microsyntaxes/signed-integers";
 
 /**
  * https://html.spec.whatwg.org/multipage/dom.html#global-attributes
@@ -113,8 +114,9 @@ export const globalAttributes: Record<string, AttributeSpecDefinition> = {
   },
   // TODO: style - CSS declarations, need specific validator
   // style: {},
-  // TODO: tabindex - valid integer, need specific validator
-  // tabindex: {},
+  tabindex: {
+    type: SignedIntegers.type,
+  },
   // TODO: title - text value, need specific validator
   // title: {},
   translate: {
