@@ -10,7 +10,7 @@ export type BooleanAttributesOptions = {
  */
 export class BooleanAttributes implements AttributeSpec {
   static type = "BooleanAttributes" as const;
-  constructor(private options: BooleanAttributesOptions) {}
+  constructor(private attributeKey: string) {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (!value) {
@@ -19,7 +19,7 @@ export class BooleanAttributes implements AttributeSpec {
       };
     }
 
-    if (this.options.attributeKey === value?.toLowerCase()) {
+    if (this.attributeKey === value?.toLowerCase()) {
       return {
         success: true,
       };
@@ -27,7 +27,7 @@ export class BooleanAttributes implements AttributeSpec {
 
     return {
       success: false,
-      message: `Boolean attribute value must be empty or match the attribute name "${this.options.attributeKey}", got: "${value}"`,
+      message: `Boolean attribute value must be empty or match the attribute name "${this.attributeKey}", got: "${value}"`,
     };
   }
 }

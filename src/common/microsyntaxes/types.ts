@@ -22,5 +22,4 @@ export type AttributeSpecDefinition =
     }
   | {
       type: typeof BooleanAttributes.type;
-      options: BooleanAttributesOptions;
     };
