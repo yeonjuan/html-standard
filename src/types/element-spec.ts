@@ -1,3 +1,5 @@
+import { ElementState } from "../element-state";
+
 export interface ElementSpec {
-  implicitRole: () => string | null;
+  implicitRole: (element: ElementState) => string | null;
 }
