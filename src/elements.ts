@@ -1,4 +1,3 @@
-import { IMPLICIT_ROLE } from "./accessibility/implicit-role";
 import {
   BooleanAttribute,
   EnumeratedAttribute,
@@ -7,6 +6,7 @@ import {
   SpaceSeperatedTokens,
   Text,
   ValidURL,
+  ID,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -806,8 +806,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1296,8 +1295,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "for",
         {
-          // TODO: ID of a labelable element
-          type: Text.type,
+          type: ID.type,
         },
       ],
     ],
@@ -1346,8 +1344,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1403,8 +1400,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "list",
         {
-          // TODO: ID of a datalist element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1574,8 +1570,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1676,8 +1671,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1790,8 +1784,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1870,8 +1863,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -1960,8 +1952,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "form",
         {
-          // TODO: ID of a form element
-          type: Text.type,
+          type: ID.type,
         },
       ],
       [
@@ -2073,7 +2064,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "blocking",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
           options: { unique: true },
         },

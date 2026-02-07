@@ -3,6 +3,7 @@ import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
 } from "./enumerated-attribute";
+import { ID } from "./id";
 import {
   NonNegativeInteger,
   NonNegativeIntegerOptions,
@@ -39,4 +40,7 @@ export type AnyAttribute =
   | {
       type: typeof NonNegativeInteger.type;
       options: NonNegativeIntegerOptions;
+    }
+  | {
+      type: typeof ID.type;
     };
