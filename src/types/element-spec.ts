@@ -4,5 +4,5 @@ export interface ElementSpec {
   /**
    * https://www.w3.org/TR/html-aria/
    */
-  implicitRole: (element: ElementState) => string | null;
+  // implicitRole: (element: ElementState) => string | null;
 }
