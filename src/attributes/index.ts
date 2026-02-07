@@ -6,3 +6,4 @@ export * from "./text";
 export * from "./valid-url";
 export * from "./non-negative-integer";
 export * from "./id";
+export * from "./floating-point-number";

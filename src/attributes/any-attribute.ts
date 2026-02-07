@@ -3,6 +3,7 @@ import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
 } from "./enumerated-attribute";
+import { FloatingPointNumber } from "./floating-point-number";
 import { ID } from "./id";
 import {
   NonNegativeInteger,
@@ -43,4 +44,11 @@ export type AnyAttribute =
     }
   | {
       type: typeof ID.type;
+    }
+  | {
+      type: typeof FloatingPointNumber.type;
+    }
+  | {
+      type: "#or";
+      items: Exclude<AnyAttribute, { type: "#or" }>[];
     };

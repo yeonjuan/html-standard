@@ -7,6 +7,7 @@ import {
   Text,
   ValidURL,
   ID,
+  FloatingPointNumber,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -1504,9 +1505,20 @@ export const elements: Record<string, ElementSpec> = {
       ],
       [
         "step",
+        // valid floating-point number or "any"
         {
-          // TODO: valid floating-point number or "any"
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: FloatingPointNumber.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["any"],
+              },
+            },
+          ],
         },
       ],
       [
