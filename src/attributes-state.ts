@@ -6,7 +6,7 @@ export class AttributesState {
     private options: AttributesOptions = DEFAULT_ATTRIBUTES_OPTIONS,
   ) {}
 
-  get(key: string): AttributeValue {
+  get(key: string): AttributeValue | null {
     return this.options.get(key);
   }
 

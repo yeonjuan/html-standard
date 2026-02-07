@@ -10,5 +10,5 @@ export interface AttributesOptions {
    * @param key - The attribute name to retrieve
    * @returns The attribute value, or `null` if the attribute does not exist
    */
-  get(key: string): AttributeValue;
+  get(key: string): AttributeValue | null;
 }

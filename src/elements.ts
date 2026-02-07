@@ -1,359 +1,320 @@
-import { ARIA_ROLES } from "./constants";
+import { IMPLICIT_ROLE } from "./accessibility/implicit-role";
 import { ElementSpec } from "./types";
 
 export const elements: Record<string, ElementSpec> = {
   html: {
-    implicitRole: () => ARIA_ROLES.DOCUMENT,
+    implicitRole: IMPLICIT_ROLE.html,
   },
   head: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.head,
   },
   title: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.title,
   },
   base: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.base,
   },
   link: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.link,
   },
   meta: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.meta,
   },
   style: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.style,
   },
   body: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.body,
   },
   article: {
-    implicitRole: () => ARIA_ROLES.ARTICLE,
+    implicitRole: IMPLICIT_ROLE.article,
   },
   section: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.section,
   },
   nav: {
-    implicitRole: () => ARIA_ROLES.NAVIGATION,
+    implicitRole: IMPLICIT_ROLE.nav,
   },
   aside: {
-    implicitRole: () => ARIA_ROLES.COMPLEMENTARY,
+    implicitRole: IMPLICIT_ROLE.aside,
   },
   hgroup: {
-    implicitRole: () => ARIA_ROLES.GROUP,
+    implicitRole: IMPLICIT_ROLE.hgroup,
   },
   header: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.header,
   },
   footer: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.footer,
   },
   address: {
-    implicitRole: () => ARIA_ROLES.GROUP,
+    implicitRole: IMPLICIT_ROLE.address,
   },
   p: {
-    implicitRole: () => ARIA_ROLES.PARAGRAPH,
+    implicitRole: IMPLICIT_ROLE.p,
   },
   hr: {
-    implicitRole: () => ARIA_ROLES.SEPARATOR,
+    implicitRole: IMPLICIT_ROLE.hr,
   },
   pre: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.pre,
   },
   blockquote: {
-    implicitRole: () => ARIA_ROLES.BLOCKQUOTE,
+    implicitRole: IMPLICIT_ROLE.blockquote,
   },
   ol: {
-    implicitRole: () => ARIA_ROLES.LIST,
+    implicitRole: IMPLICIT_ROLE.ol,
   },
   ul: {
-    implicitRole: () => ARIA_ROLES.LIST,
+    implicitRole: IMPLICIT_ROLE.ul,
   },
   menu: {
-    implicitRole: () => ARIA_ROLES.LIST,
+    implicitRole: IMPLICIT_ROLE.menu,
   },
   li: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.li,
   },
   dl: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.dl,
   },
   dt: {
-    implicitRole: () => ARIA_ROLES.TERM,
+    implicitRole: IMPLICIT_ROLE.dt,
   },
   dd: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.dd,
   },
   figure: {
-    implicitRole: () => ARIA_ROLES.FIGURE,
+    implicitRole: IMPLICIT_ROLE.figure,
   },
   figcaption: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.figcaption,
   },
   main: {
-    implicitRole: () => ARIA_ROLES.MAIN,
+    implicitRole: IMPLICIT_ROLE.main,
   },
   search: {
-    implicitRole: () => ARIA_ROLES.SEARCH,
+    implicitRole: IMPLICIT_ROLE.search,
   },
   div: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.div,
   },
   a: {
-    implicitRole: (element) =>
-      element.attributes.has("href") ? ARIA_ROLES.LINK : ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.a,
   },
   em: {
-    implicitRole: () => ARIA_ROLES.EMPHASIS,
+    implicitRole: IMPLICIT_ROLE.em,
   },
   strong: {
-    implicitRole: () => ARIA_ROLES.STRONG,
+    implicitRole: IMPLICIT_ROLE.strong,
   },
   small: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.small,
   },
   s: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.s,
   },
   cite: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.cite,
   },
   q: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.q,
   },
   dfn: {
-    implicitRole: () => ARIA_ROLES.TERM,
+    implicitRole: IMPLICIT_ROLE.dfn,
   },
   abbr: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.abbr,
   },
   ruby: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.ruby,
   },
   rt: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.rt,
   },
   rp: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.rp,
   },
   data: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.data,
   },
   time: {
-    implicitRole: () => ARIA_ROLES.TIME,
+    implicitRole: IMPLICIT_ROLE.time,
   },
   code: {
-    implicitRole: () => ARIA_ROLES.CODE,
+    implicitRole: IMPLICIT_ROLE.code,
   },
   var: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.var,
   },
   samp: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.samp,
   },
   kbd: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.kbd,
   },
   i: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.i,
   },
   b: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.b,
   },
   u: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.u,
   },
   mark: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.mark,
   },
   bdi: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.bdi,
   },
   bdo: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.bdo,
   },
   span: {
-    implicitRole: () => ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.span,
   },
   br: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.br,
   },
   wbr: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.wbr,
   },
   ins: {
-    implicitRole: () => ARIA_ROLES.INSERTION,
+    implicitRole: IMPLICIT_ROLE.ins,
   },
   del: {
-    implicitRole: () => ARIA_ROLES.DELETION,
+    implicitRole: IMPLICIT_ROLE.del,
   },
   picture: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.picture,
   },
   source: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.source,
   },
   img: {
-    implicitRole: (element) =>
-      !element.attributes.get("alt") ? null : ARIA_ROLES.IMG,
+    implicitRole: IMPLICIT_ROLE.img,
   },
   iframe: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.iframe,
   },
   embed: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.embed,
   },
   object: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.object,
   },
   video: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.video,
   },
   audio: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.audio,
   },
   track: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.track,
   },
   map: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.map,
   },
   area: {
-    implicitRole: (element) =>
-      element.attributes.has("href") ? ARIA_ROLES.LINK : ARIA_ROLES.GENERIC,
+    implicitRole: IMPLICIT_ROLE.area,
   },
   table: {
-    implicitRole: () => ARIA_ROLES.TABLE,
+    implicitRole: IMPLICIT_ROLE.table,
   },
   caption: {
-    implicitRole: () => ARIA_ROLES.CAPTION,
+    implicitRole: IMPLICIT_ROLE.caption,
   },
   colgroup: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.colgroup,
   },
   col: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.col,
   },
   tbody: {
-    implicitRole: () => ARIA_ROLES.ROWGROUP,
+    implicitRole: IMPLICIT_ROLE.tbody,
   },
   thead: {
-    implicitRole: () => ARIA_ROLES.ROWGROUP,
+    implicitRole: IMPLICIT_ROLE.thead,
   },
   tfoot: {
-    implicitRole: () => ARIA_ROLES.ROWGROUP,
+    implicitRole: IMPLICIT_ROLE.tfoot,
   },
   tr: {
-    implicitRole: () => ARIA_ROLES.ROW,
+    implicitRole: IMPLICIT_ROLE.tr,
   },
   td: {
-    implicitRole: () => ARIA_ROLES.CELL,
+    implicitRole: IMPLICIT_ROLE.td,
   },
   th: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.th,
   },
   form: {
-    implicitRole: () => ARIA_ROLES.FORM,
+    implicitRole: IMPLICIT_ROLE.form,
   },
   label: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.label,
   },
   input: {
-    implicitRole: (element) => {
-      const type = element.attributes.get("type") || "text";
-      switch (type) {
-        case "button":
-          return ARIA_ROLES.BUTTON;
-        case "checkbox":
-          return ARIA_ROLES.CHECKBOX;
-        case "email":
-          return ARIA_ROLES.TEXTBOX;
-        case "image":
-          return ARIA_ROLES.BUTTON;
-        case "number":
-          return ARIA_ROLES.SPINBUTTON;
-        case "radio":
-          return ARIA_ROLES.RADIO;
-        case "range":
-          return ARIA_ROLES.SLIDER;
-        case "reset":
-          return ARIA_ROLES.BUTTON;
-        case "search":
-          return ARIA_ROLES.SEARCHBOX;
-        case "submit":
-          return ARIA_ROLES.BUTTON;
-        case "tel":
-          return ARIA_ROLES.TEXTBOX;
-        case "text":
-          return ARIA_ROLES.TEXTBOX;
-        case "url":
-          return ARIA_ROLES.TEXTBOX;
-        default:
-          return ARIA_ROLES.TEXTBOX;
-      }
-    },
+    implicitRole: IMPLICIT_ROLE.input,
   },
   button: {
-    implicitRole: () => ARIA_ROLES.BUTTON,
+    implicitRole: IMPLICIT_ROLE.button,
   },
   select: {
-    implicitRole: (element) =>
-      element.attributes.has("multiple") ||
-      Number(element.attributes.get("size")) > 1
-        ? ARIA_ROLES.LISTBOX
-        : ARIA_ROLES.COMBOBOX,
+    implicitRole: IMPLICIT_ROLE.select,
   },
   datalist: {
-    implicitRole: () => ARIA_ROLES.LISTBOX,
+    implicitRole: IMPLICIT_ROLE.datalist,
   },
   optgroup: {
-    implicitRole: () => ARIA_ROLES.GROUP,
+    implicitRole: IMPLICIT_ROLE.optgroup,
   },
   option: {
-    implicitRole: () => ARIA_ROLES.OPTION,
+    implicitRole: IMPLICIT_ROLE.option,
   },
   textarea: {
-    implicitRole: () => ARIA_ROLES.TEXTBOX,
+    implicitRole: IMPLICIT_ROLE.textarea,
   },
   output: {
-    implicitRole: () => ARIA_ROLES.STATUS,
+    implicitRole: IMPLICIT_ROLE.output,
   },
   progress: {
-    implicitRole: () => ARIA_ROLES.PROGRESSBAR,
+    implicitRole: IMPLICIT_ROLE.progress,
   },
   meter: {
-    implicitRole: () => ARIA_ROLES.METER,
+    implicitRole: IMPLICIT_ROLE.meter,
   },
   fieldset: {
-    implicitRole: () => ARIA_ROLES.GROUP,
+    implicitRole: IMPLICIT_ROLE.fieldset,
   },
   legend: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.legend,
   },
   selectedcontent: {
     implicitRole: () => null,
   },
   details: {
-    implicitRole: () => ARIA_ROLES.GROUP,
+    implicitRole: IMPLICIT_ROLE.details,
   },
   summary: {
-    implicitRole: () => ARIA_ROLES.BUTTON,
+    implicitRole: IMPLICIT_ROLE.summary,
   },
   dialog: {
-    implicitRole: () => ARIA_ROLES.DIALOG,
+    implicitRole: IMPLICIT_ROLE.dialog,
   },
   script: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.script,
   },
   noscript: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.noscript,
   },
   template: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.template,
   },
   slot: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.slot,
   },
   canvas: {
-    implicitRole: () => null,
+    implicitRole: IMPLICIT_ROLE.canvas,
   },
 };

@@ -1,2 +1,3 @@
 export * from "./default-options";
-export * from "./aria-roles";
+export * from "../accessibility/aria-roles";
+export * from "./regex";
