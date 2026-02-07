@@ -1,4 +1,5 @@
 import { BooleanAttribute } from "./boolean-attribute";
+import { CommaSeparatedTokens } from "./comma-separated-tokens";
 import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
@@ -47,6 +48,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof FloatingPointNumber.type;
+    }
+  | {
+      type: typeof CommaSeparatedTokens.type;
     }
   | {
       type: "#or";

@@ -1,5 +1,6 @@
 import {
   BooleanAttribute,
+  CommaSeparatedTokens,
   EnumeratedAttribute,
   NonNegativeInteger,
   SignedInteger,
@@ -1307,8 +1308,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "accept",
         {
-          // TODO: set of comma-separated tokens
-          type: Text.type,
+          type: CommaSeparatedTokens.type,
         },
       ],
       [
