@@ -1,4 +1,2 @@
-export {
-  DEFAULT_ATTRIBUTES_OPTIONS,
-  DEFAULT_ELEMENT_OPTIONS,
-} from "./defaults";
+export * from "./default-options";
+export * from "./aria-roles";

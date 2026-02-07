@@ -1,7 +1,7 @@
-import { DEFAULT_ATTRIBUTES_OPTIONS } from "../constants/defaults";
-import { AttributesOptions, AttributeValue } from "../types";
+import { DEFAULT_ATTRIBUTES_OPTIONS } from "./constants";
+import { AttributesOptions, AttributeValue } from "./types";
 
-export class AttributeState {
+export class AttributesState {
   constructor(
     private options: AttributesOptions = DEFAULT_ATTRIBUTES_OPTIONS,
   ) {}

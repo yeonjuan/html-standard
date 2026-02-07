@@ -1,5 +1,5 @@
-import { ElementOptions } from "../types";
-import { AttributeState } from "./attribute-state";
+import { ElementOptions } from "./types";
+import { AttributesState } from "./attributes-state";
 
 export class ElementState {
   public readonly name: string;
@@ -11,8 +11,8 @@ export class ElementState {
     this.name = name.toLowerCase();
   }
 
-  get attributes(): AttributeState {
-    return new AttributeState(this.options.attributes);
+  get attributes(): AttributesState {
+    return new AttributesState(this.options.attributes);
   }
 
   parent(): ElementState | null {
