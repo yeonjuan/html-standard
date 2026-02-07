@@ -3,7 +3,10 @@ import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
 } from "./enumerated-attribute";
-import { NonNegativeInteger } from "./non-negative-integer";
+import {
+  NonNegativeInteger,
+  NonNegativeIntegerOptions,
+} from "./non-negative-integer";
 import { SignedInteger } from "./signed-integer";
 import {
   SpaceSeperatedTokens,
@@ -35,4 +38,5 @@ export type AnyAttribute =
     }
   | {
       type: typeof NonNegativeInteger.type;
+      options: NonNegativeIntegerOptions;
     };

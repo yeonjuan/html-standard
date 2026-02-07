@@ -4,6 +4,10 @@ import {
   AttributeValue,
 } from "../types";
 
+export type NonNegativeIntegerOptions = {
+  greaterThanZero?: boolean;
+};
+
 /**
  * A string is a valid non-negative integer if it consists of one or more ASCII digits.
  *
@@ -11,6 +15,8 @@ import {
  */
 export class NonNegativeInteger implements AttributeSpec {
   static type = "NonNegativeInteger" as const;
+
+  constructor(private options?: NonNegativeIntegerOptions) {}
 
   // Matches: one or more digits (no hyphen-minus allowed)
   private static readonly PATTERN = /^\d+$/;
@@ -28,6 +34,16 @@ export class NonNegativeInteger implements AttributeSpec {
         success: false,
         message: `Invalid non-negative integer: "${value}"`,
       };
+    }
+
+    if (this.options?.greaterThanZero) {
+      const numValue = parseInt(value, 10);
+      if (numValue === 0) {
+        return {
+          success: false,
+          message: `Value must be greater than zero: "${value}"`,
+        };
+      }
     }
 
     return {
