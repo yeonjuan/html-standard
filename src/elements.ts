@@ -194,7 +194,7 @@ export const elements: Record<string, ElementSpec> = {
   },
   img: {
     implicitRole: (element) =>
-      element.attributes.get("alt") === "" ? null : ARIA_ROLES.IMG,
+      !element.attributes.get("alt") ? null : ARIA_ROLES.IMG,
   },
   iframe: {
     implicitRole: () => null,
