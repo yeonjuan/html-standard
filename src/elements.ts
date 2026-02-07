@@ -9,6 +9,7 @@ import {
   ValidURL,
   ID,
   FloatingPointNumber,
+  CSSColor,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -61,9 +62,32 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rel",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            allowed: [
+              "alternate",
+              "canonical",
+              "author",
+              "dns-prefetch",
+              "expect",
+              "help",
+              "icon",
+              "manifest",
+              "modulepreload",
+              "license",
+              "next",
+              "pingback",
+              "preconnect",
+              "prefetch",
+              "preload",
+              "prev",
+              "privacy-policy",
+              "search",
+              "stylesheet",
+              "terms-of-service",
+            ],
+          },
         },
       ],
       [
@@ -143,16 +167,14 @@ export const elements: Record<string, ElementSpec> = {
       [
         "blocking",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: true },
+          options: { unique: true, allowed: ["render"] },
         },
       ],
       [
         "color",
         {
-          // TODO: CSS <color>
-          type: Text.type,
+          type: CSSColor.type,
         },
       ],
       [
@@ -233,9 +255,8 @@ export const elements: Record<string, ElementSpec> = {
       [
         "blocking",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: true },
+          options: { unique: true, allowed: ["render"] },
         },
       ],
     ],
@@ -343,9 +364,28 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rel",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            allowed: [
+              "alternate",
+              "author",
+              "bookmark",
+              "external",
+              "help",
+              "license",
+              "next",
+              "nofollow",
+              "noopener",
+              "noreferrer",
+              "opener",
+              "prev",
+              "privacy-policy",
+              "search",
+              "tag",
+              "terms-of-service",
+            ],
+          },
         },
       ],
       [
@@ -674,9 +714,25 @@ export const elements: Record<string, ElementSpec> = {
       [
         "sandbox",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: true },
+          options: {
+            unique: true,
+            allowed: [
+              "allow-downloads",
+              "allow-forms",
+              "allow-modals",
+              "allow-orientation-lock",
+              "allow-pointer-lock",
+              "allow-popups",
+              "allow-popups-to-escape-sandbox",
+              "allow-presentation",
+              "allow-same-origin",
+              "allow-scripts",
+              "allow-top-navigation",
+              "allow-top-navigation-by-user-activation",
+              "allow-top-navigation-to-custom-protocols",
+            ],
+          },
         },
       ],
       [
@@ -1078,9 +1134,28 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rel",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            allowed: [
+              "alternate",
+              "author",
+              "bookmark",
+              "external",
+              "help",
+              "license",
+              "next",
+              "nofollow",
+              "noopener",
+              "noreferrer",
+              "opener",
+              "prev",
+              "privacy-policy",
+              "search",
+              "tag",
+              "terms-of-service",
+            ],
+          },
         },
       ],
       [
@@ -1161,7 +1236,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "headers",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
           options: { unique: true },
         },
@@ -1192,7 +1266,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "headers",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
           options: { unique: true },
         },
@@ -1220,7 +1293,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "accept-charset",
         {
-          // TODO: ordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
           options: { unique: true },
         },
@@ -1284,9 +1356,22 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rel",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            allowed: [
+              "external",
+              "help",
+              "license",
+              "next",
+              "nofollow",
+              "noopener",
+              "noreferrer",
+              "opener",
+              "prev",
+              "search",
+            ],
+          },
         },
       ],
     ],
@@ -1320,7 +1405,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "autocomplete",
         {
-          // TODO: autofill field name
           type: Text.type,
         },
       ],
@@ -1768,7 +1852,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "autocomplete",
         {
-          // TODO: autofill field name
           type: Text.type,
         },
       ],
@@ -1867,7 +1950,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "for",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
           options: { unique: true },
         },

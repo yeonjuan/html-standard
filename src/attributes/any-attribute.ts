@@ -1,5 +1,6 @@
 import { BooleanAttribute } from "./boolean-attribute";
 import { CommaSeparatedTokens } from "./comma-separated-tokens";
+import { CSSColor } from "./css-color";
 import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
@@ -51,6 +52,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof CommaSeparatedTokens.type;
+    }
+  | {
+      type: typeof CSSColor.type;
     }
   | {
       type: "#or";

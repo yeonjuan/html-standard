@@ -7,6 +7,7 @@ import { REGEX_ASCII_WHITESPACE } from "../constants";
 
 export type SpaceSeperatedTokensOptions = {
   unique: boolean;
+  allowed?: string[];
 };
 
 /**
@@ -29,8 +30,10 @@ export class SpaceSeperatedTokens implements AttributeSpec {
       };
     }
 
+    const tokens = this.parse(value).filter((token) => token !== "");
+
+    // Check uniqueness
     if (this.options.unique) {
-      const tokens = this.parse(value).filter((token) => token !== "");
       const uniqueTokens = new Set(tokens);
 
       if (tokens.length !== uniqueTokens.size) {
@@ -38,6 +41,22 @@ export class SpaceSeperatedTokens implements AttributeSpec {
           success: false,
           message: "Tokens must be unique",
         };
+      }
+    }
+
+    // Check allowed tokens
+    if (this.options.allowed) {
+      for (const token of tokens) {
+        const isAllowed = this.options.allowed.some((allowedToken) => {
+          return token.toLowerCase() === allowedToken.toLowerCase();
+        });
+
+        if (!isAllowed) {
+          return {
+            success: false,
+            message: `Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`,
+          };
+        }
       }
     }
 
