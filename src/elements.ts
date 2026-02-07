@@ -10,6 +10,7 @@ import {
   ID,
   FloatingPointNumber,
   CSSColor,
+  BCP47,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -106,8 +107,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "hreflang",
         {
-          // TODO: valid BCP 47 language tag
-          type: Text.type,
+          type: BCP47.type,
         },
       ],
       [
@@ -391,8 +391,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "hreflang",
         {
-          // TODO: valid BCP 47 language tag
-          type: Text.type,
+          type: BCP47.type,
         },
       ],
       [
@@ -1050,8 +1049,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "srclang",
         {
-          // TODO: valid BCP 47 language tag
-          type: Text.type,
+          type: BCP47.type,
         },
       ],
       [

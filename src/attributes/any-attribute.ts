@@ -1,3 +1,4 @@
+import { BCP47 } from "./bcp-47";
 import { BooleanAttribute } from "./boolean-attribute";
 import { CommaSeparatedTokens } from "./comma-separated-tokens";
 import { CSSColor } from "./css-color";
@@ -55,6 +56,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof CSSColor.type;
+    }
+  | {
+      type: typeof BCP47.type;
     }
   | {
       type: "#or";

@@ -9,3 +9,4 @@ export * from "./id";
 export * from "./floating-point-number";
 export * from "./comma-separated-tokens";
 export * from "./css-color";
+export * from "./bcp-47";
