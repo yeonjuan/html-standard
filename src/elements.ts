@@ -2,6 +2,7 @@ import { IMPLICIT_ROLE } from "./accessibility/implicit-role";
 import {
   BooleanAttribute,
   EnumeratedAttribute,
+  NonNegativeInteger,
   SignedInteger,
   SpaceSeperatedTokens,
   Text,
@@ -513,15 +514,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],
@@ -580,15 +579,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -684,15 +681,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -743,15 +738,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],
@@ -796,15 +789,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],
@@ -875,15 +866,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],
@@ -1120,8 +1109,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rowspan",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -1147,8 +1135,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "rowspan",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -1357,8 +1344,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -1378,8 +1364,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "maxlength",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -1392,8 +1377,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "minlength",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -1509,8 +1493,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],
@@ -1746,15 +1729,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "maxlength",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "minlength",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
@@ -2082,15 +2063,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "width",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
       [
         "height",
         {
-          // TODO: valid non-negative integer
-          type: Text.type,
+          type: NonNegativeInteger.type,
         },
       ],
     ],

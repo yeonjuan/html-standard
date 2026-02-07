@@ -3,6 +3,7 @@ import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
 } from "./enumerated-attribute";
+import { NonNegativeInteger } from "./non-negative-integer";
 import { SignedInteger } from "./signed-integer";
 import {
   SpaceSeperatedTokens,
@@ -31,4 +32,7 @@ export type AnyAttribute =
     }
   | {
       type: typeof ValidURL.type;
+    }
+  | {
+      type: typeof NonNegativeInteger.type;
     };
