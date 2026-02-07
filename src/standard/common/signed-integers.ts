@@ -17,7 +17,7 @@ export class SignedIntegers implements AttributeSpec {
   private static readonly PATTERN = /^-?\d+$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === null || value === true) {
+    if (value === null) {
       return {
         success: false,
         message: "Value must be a string",

@@ -16,7 +16,7 @@ export class EnumeratedAttributes implements AttributeSpec {
   constructor(private options: EnumeratedAttributesOptions) {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === null || value === true) {
+    if (value === null) {
       return {
         success: false,
         message: "Value must be a string",

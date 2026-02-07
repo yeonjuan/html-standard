@@ -1,5 +1,5 @@
-import { ROLES } from "../../constants/roles";
-import { ElementState } from "../../core";
+import { ROLES } from "../constants/roles";
+import { ElementState } from "../core";
 
 /**
  * https://www.w3.org/TR/html-aria/

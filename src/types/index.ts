@@ -6,4 +6,5 @@ export {
   ElementSpec,
   AttributeSpec,
   AttributeSpecValidateResult,
+  ContentAttributesSpec,
 } from "./api";

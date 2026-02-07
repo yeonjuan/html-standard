@@ -1,1 +1,0 @@
-export { accessibility } from "./accessibility";

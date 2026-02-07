@@ -1,4 +1,4 @@
-import { AttributeValue } from "../../../dist";
+import { AttributeValue } from "../../types";
 import { AttributeSpec, AttributeSpecValidateResult } from "../../types";
 
 export type BooleanAttributesOptions = {

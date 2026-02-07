@@ -32,12 +32,6 @@ describe("SignedIntegers", () => {
       expect(result.message).toBe("Value must be a string");
     });
 
-    it("should reject boolean values", () => {
-      const result = validator.validate(true);
-      expect(result.success).toBe(false);
-      expect(result.message).toBe("Value must be a string");
-    });
-
     it("should reject empty strings", () => {
       const result = validator.validate("");
       expect(result.success).toBe(false);

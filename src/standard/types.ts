@@ -1,18 +1,3 @@
-import {
-  BooleanAttributes,
-  BooleanAttributesOptions,
-} from "./boolean-attributes";
-import {
-  EnumeratedAttributes,
-  EnumeratedAttributesOptions,
-} from "./enumerated-attributes";
-import { SignedIntegers } from "./signed-integers";
-import {
-  SpaceSeperatedTokens,
-  SpaceSeperatedTokensOptions,
-} from "./space-seperated-tokens";
-import { Text } from "./text";
-
 export type AttributeSpecDefinition =
   | {
       type: typeof SpaceSeperatedTokens.type;
@@ -30,4 +15,7 @@ export type AttributeSpecDefinition =
     }
   | {
       type: typeof Text.type;
+    }
+  | {
+      type: typeof ValidURL.type;
     };

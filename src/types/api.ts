@@ -58,6 +58,8 @@ export interface ElementSpec {
    * Accessibility-related functionality for the element.
    */
   accessibility: AccessibilitySpec;
+
+  attributes: ContentAttributesSpec;
 }
 
 export type AttributeSpecValidateResult = {
@@ -66,4 +68,9 @@ export type AttributeSpecValidateResult = {
 };
 export interface AttributeSpec {
   validate(value: AttributeValue): AttributeSpecValidateResult;
+}
+
+export interface ContentAttributesSpec {
+  get(key: string): AttributeSpec | null;
+  has(key: string): boolean;
 }
