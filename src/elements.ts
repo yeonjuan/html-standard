@@ -1892,15 +1892,13 @@ export const elements: Record<string, ElementSpec> = {
       [
         "value",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "max",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
     ],
@@ -1911,43 +1909,37 @@ export const elements: Record<string, ElementSpec> = {
       [
         "value",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "min",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "max",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "low",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "high",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
       [
         "optimum",
         {
-          // TODO: valid floating-point number
-          type: Text.type,
+          type: FloatingPointNumber.type,
         },
       ],
     ],
