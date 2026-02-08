@@ -18,6 +18,7 @@ import {
   NavigableTargetName,
   SrcsetAttribute,
   MediaQueryList,
+  SourceSizeList,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -194,8 +195,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "imagesizes",
         {
-          // TODO: valid source size list
-          type: Text.type,
+          type: SourceSizeList.type,
         },
       ],
       [
@@ -607,8 +607,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "sizes",
         {
-          // TODO: valid source size list
-          type: Text.type,
+          type: SourceSizeList.type,
         },
       ],
       [
@@ -655,8 +654,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "sizes",
         {
-          // TODO: valid source size list
-          type: Text.type,
+          type: SourceSizeList.type,
         },
       ],
       [

@@ -26,6 +26,7 @@ import { HashNameReference } from "./hash-name-reference";
 import { NavigableTargetName } from "./navigable-target-name";
 import { SrcsetAttribute } from "./srcset-attribute";
 import { MediaQueryList } from "./media-query-list";
+import { SourceSizeList } from "./source-size-list";
 
 export type AnyAttribute =
   | {
@@ -87,6 +88,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof MediaQueryList.type;
+    }
+  | {
+      type: typeof SourceSizeList.type;
     }
   | {
       type: "#or";
