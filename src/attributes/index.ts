@@ -15,3 +15,4 @@ export * from "./date-string";
 export * from "./regular-expression";
 export * from "./hash-name-reference";
 export * from "./navigable-target-name";
+export * from "./srcset-attribute";

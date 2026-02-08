@@ -16,6 +16,7 @@ import {
   RegularExpression,
   HashNameReference,
   NavigableTargetName,
+  SrcsetAttribute,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -187,8 +188,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "imagesrcset",
         {
-          // TODO: comma-separated list of image candidate strings
-          type: Text.type,
+          type: SrcsetAttribute.type,
         },
       ],
       [
@@ -604,8 +604,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "srcset",
         {
-          // TODO: comma-separated list of image candidate strings
-          type: Text.type,
+          type: SrcsetAttribute.type,
         },
       ],
       [
@@ -653,8 +652,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "srcset",
         {
-          // TODO: comma-separated list of image candidate strings
-          type: Text.type,
+          type: SrcsetAttribute.type,
         },
       ],
       [

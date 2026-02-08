@@ -24,6 +24,7 @@ import { Text } from "./text";
 import { ValidURL } from "./valid-url";
 import { HashNameReference } from "./hash-name-reference";
 import { NavigableTargetName } from "./navigable-target-name";
+import { SrcsetAttribute } from "./srcset-attribute";
 
 export type AnyAttribute =
   | {
@@ -79,6 +80,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof NavigableTargetName.type;
+    }
+  | {
+      type: typeof SrcsetAttribute.type;
     }
   | {
       type: "#or";
