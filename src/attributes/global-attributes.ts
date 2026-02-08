@@ -6,23 +6,29 @@ import { SpaceSeperatedTokens } from "./space-seperated-tokens";
 import { Text } from "./text";
 import { ValidURL } from "./valid-url";
 import { BCP47 } from "./bcp-47";
+import { NonNegativeInteger } from "./non-negative-integer";
 
 /**
- * Global attributes that can be used on any HTML element.
- *
  * @see https://html.spec.whatwg.org/multipage/dom.html#global-attributes
  */
 export const globalAttributes = new Map<string, AnyAttribute>([
-  // accesskey: space-separated list of single characters
   [
+    // If specified, the value must be an ordered set of unique space-separated tokens
+    // none of which are identical to another token and each of which must be exactly one code point in length.
     "accesskey",
     {
       type: SpaceSeperatedTokens.type,
-      options: { unique: false },
+      options: {
+        unique: true,
+        validateToken(value) {
+          // Each token must be exactly one code point in length
+          // Use Array.from to properly handle Unicode code points (e.g., emojis, surrogate pairs)
+          const codePoints = Array.from(value);
+          return codePoints.length === 1;
+        },
+      },
     },
   ],
-
-  // autocapitalize: controls automatic capitalization
   [
     "autocapitalize",
     {
@@ -32,8 +38,6 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // autocorrect: controls automatic correction
   [
     "autocorrect",
     {
@@ -43,16 +47,12 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // autofocus: boolean attribute
   [
     "autofocus",
     {
       type: BooleanAttribute.type,
     },
   ],
-
-  // contenteditable: controls whether element is editable
   [
     "contenteditable",
     {
@@ -62,8 +62,6 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // dir: text directionality
   [
     "dir",
     {
@@ -73,8 +71,6 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // draggable: controls whether element is draggable
   [
     "draggable",
     {
@@ -84,72 +80,43 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // enterkeyhint: hint for enter key label on virtual keyboards
   [
     "enterkeyhint",
     {
       type: EnumeratedAttribute.type,
       options: {
-        keywords: [
-          "enter",
-          "done",
-          "go",
-          "next",
-          "previous",
-          "search",
-          "send",
-        ],
+        keywords: ["enter", "done", "go", "next", "previous", "search", "send"],
       },
     },
   ],
-
-  // headingoffset
-  // TODO: implementation needed
   [
     "headingoffset",
     {
-      type: Text.type,
+      type: NonNegativeInteger.type,
+      options: {},
     },
   ],
-
-  // headingreset
-  // TODO: implementation needed
   [
     "headingreset",
     {
-      type: Text.type,
+      type: BooleanAttribute.type,
     },
   ],
-
-  // hidden: controls visibility
   [
     "hidden",
     {
-      type: "#or",
-      items: [
-        {
-          type: BooleanAttribute.type,
-        },
-        {
-          type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["until-found"],
-          },
-        },
-      ],
+      type: EnumeratedAttribute.type,
+      options: {
+        keywords: ["until-found", "hidden"],
+      },
     },
   ],
-
-  // inert: boolean attribute
   [
     "inert",
     {
       type: BooleanAttribute.type,
     },
   ],
-
-  // inputmode: hint for input modality
   [
     "inputmode",
     {
@@ -168,33 +135,25 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // is: custom element type
   [
     "is",
     {
       type: Text.type,
     },
   ],
-
-  // itemid: global identifier for microdata item
   [
     "itemid",
     {
       type: ValidURL.type,
     },
   ],
-
-  // itemprop: microdata property names
   [
     "itemprop",
     {
       type: SpaceSeperatedTokens.type,
-      options: { unique: false },
+      options: { unique: true },
     },
   ],
-
-  // itemref: references to other elements for microdata
   [
     "itemref",
     {
@@ -202,41 +161,48 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       options: { unique: true },
     },
   ],
-
-  // itemscope: boolean attribute for microdata scope
   [
     "itemscope",
     {
       type: BooleanAttribute.type,
     },
   ],
-
-  // itemtype: microdata item types
+  /**
+   * The itemtype attribute, if specified, must have a value that is an unordered set of unique space-separated tokens,
+   * none of which are identical to another token and each of which is a valid URL string that is an absolute URL,
+   * and all of which are defined to use the same vocabulary. The attribute's value must have at least one token.
+   */
   [
     "itemtype",
     {
       type: SpaceSeperatedTokens.type,
-      options: { unique: true },
+      options: {
+        unique: true,
+        validateToken(value) {
+          // Each token must be a valid absolute URL
+          try {
+            new URL(value);
+            // URL constructor only accepts absolute URLs, so if it succeeds, it's absolute
+            return true;
+          } catch {
+            return false;
+          }
+        },
+      },
     },
   ],
-
-  // lang: language of element's content
   [
     "lang",
     {
       type: BCP47.type,
     },
   ],
-
-  // nonce: cryptographic nonce for CSP
   [
     "nonce",
     {
       type: Text.type,
     },
   ],
-
-  // popover: popover state
   [
     "popover",
     {
@@ -248,14 +214,12 @@ export const globalAttributes = new Map<string, AnyAttribute>([
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["auto", "manual"],
+            keywords: ["auto", "manual", "hint"],
           },
         },
       ],
     },
   ],
-
-  // spellcheck: controls spellchecking
   [
     "spellcheck",
     {
@@ -265,32 +229,24 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // style: inline CSS styles
   [
     "style",
     {
       type: Text.type,
     },
   ],
-
-  // tabindex: tab navigation order
   [
     "tabindex",
     {
       type: SignedInteger.type,
     },
   ],
-
-  // title: advisory information
   [
     "title",
     {
       type: Text.type,
     },
   ],
-
-  // translate: controls translation
   [
     "translate",
     {
@@ -300,8 +256,6 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-
-  // writingsuggestions: controls writing suggestions
   [
     "writingsuggestions",
     {
