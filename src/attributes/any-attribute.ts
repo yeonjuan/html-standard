@@ -27,6 +27,7 @@ import { NavigableTargetName } from "./navigable-target-name";
 import { SrcsetAttribute } from "./srcset-attribute";
 import { MediaQueryList } from "./media-query-list";
 import { SourceSizeList } from "./source-size-list";
+import { FloatingPointNumberList } from "./floating-point-number-list";
 
 export type AnyAttribute =
   | {
@@ -91,6 +92,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof SourceSizeList.type;
+    }
+  | {
+      type: typeof FloatingPointNumberList.type;
     }
   | {
       type: "#or";

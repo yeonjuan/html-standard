@@ -19,6 +19,7 @@ import {
   SrcsetAttribute,
   MediaQueryList,
   SourceSizeList,
+  FloatingPointNumberList,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -424,9 +425,26 @@ export const elements: Record<string, ElementSpec> = {
       [
         "ping",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            validateToken(value) {
+              // URLs of the resources that are interested in being notified if the user follows the hyperlink.
+              // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
+              if (value.length === 0) {
+                return false;
+              }
+
+              try {
+                const url = new URL(value);
+                // Check if the scheme is http or https
+                return url.protocol === "http:" || url.protocol === "https:";
+              } catch {
+                // Invalid URL format
+                return false;
+              }
+            },
+          },
         },
       ],
       [
@@ -1157,8 +1175,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "coords",
         {
-          // TODO: valid list of integers
-          type: Text.type,
+          type: FloatingPointNumberList.type,
         },
       ],
       [
@@ -1202,9 +1219,26 @@ export const elements: Record<string, ElementSpec> = {
       [
         "ping",
         {
-          // TODO: set of space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: false },
+          options: {
+            unique: false,
+            validateToken(value) {
+              // URLs of the resources that are interested in being notified if the user follows the hyperlink.
+              // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
+              if (value.length === 0) {
+                return false;
+              }
+
+              try {
+                const url = new URL(value);
+                // Check if the scheme is http or https
+                return url.protocol === "http:" || url.protocol === "https:";
+              } catch {
+                // Invalid URL format
+                return false;
+              }
+            },
+          },
         },
       ],
       [

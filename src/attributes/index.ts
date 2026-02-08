@@ -18,3 +18,4 @@ export * from "./navigable-target-name";
 export * from "./srcset-attribute";
 export * from "./media-query-list";
 export * from "./source-size-list";
+export * from "./floating-point-number-list";
