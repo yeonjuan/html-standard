@@ -287,8 +287,10 @@ export const elements: Record<string, ElementSpec> = {
       [
         "charset",
         {
-          // TODO: encoding label
-          type: Text.type,
+          type: EnumeratedAttribute.type,
+          options: {
+            keywords: ["utf-8"],
+          },
         },
       ],
       [
