@@ -8,6 +8,7 @@ import { REGEX_ASCII_WHITESPACE } from "../constants";
 export type SpaceSeperatedTokensOptions = {
   unique: boolean;
   allowed?: string[];
+  validateToken?: (value: string) => boolean;
 };
 
 /**
@@ -55,6 +56,17 @@ export class SpaceSeperatedTokens implements AttributeSpec {
           return {
             success: false,
             message: `Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`,
+          };
+        }
+      }
+    }
+    // Custom token validation
+    if (typeof this.options.validateToken === "function") {
+      for (const token of tokens) {
+        if (!this.options.validateToken(token)) {
+          return {
+            success: false,
+            message: `Invalid token: "${token}"`,
           };
         }
       }

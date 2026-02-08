@@ -152,9 +152,36 @@ export const elements: Record<string, ElementSpec> = {
       [
         "sizes",
         {
-          // TODO: unordered set of unique space-separated tokens
           type: SpaceSeperatedTokens.type,
-          options: { unique: true },
+          options: {
+            unique: true,
+            validateToken(value) {
+              // Accept "any" (case-insensitive)
+              if (value.toLowerCase() === "any") {
+                return true;
+              }
+
+              // Accept dimension pairs: NNNxMMM or NNNxMMM (e.g., "100x200")
+              // Must be two non-negative integers without leading zeros, separated by 'x' or 'X'
+              const dimensionPattern = /^([1-9]\d*|0)[xX]([1-9]\d*|0)$/;
+              const match = value.match(dimensionPattern);
+
+              if (!match) {
+                return false;
+              }
+
+              // Check that neither number has a leading zero (except for "0" itself)
+              const [, width, height] = match;
+              if (
+                (width.length > 1 && width.startsWith("0")) ||
+                (height.length > 1 && height.startsWith("0"))
+              ) {
+                return false;
+              }
+
+              return true;
+            },
+          },
         },
       ],
       [
@@ -1662,7 +1689,6 @@ export const elements: Record<string, ElementSpec> = {
       ],
       [
         "step",
-        // valid floating-point number or "any"
         {
           type: "#or",
           items: [
