@@ -11,3 +11,4 @@ export * from "./comma-separated-tokens";
 export * from "./css-color";
 export * from "./bcp-47";
 export * from "./mime-type";
+export * from "./date-string";

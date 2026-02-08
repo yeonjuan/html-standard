@@ -2,6 +2,7 @@ import { BCP47 } from "./bcp-47";
 import { BooleanAttribute } from "./boolean-attribute";
 import { CommaSeparatedTokens } from "./comma-separated-tokens";
 import { CSSColor } from "./css-color";
+import { DateString } from "./date-string";
 import {
   EnumeratedAttribute,
   EnumeratedAttributeOptions,
@@ -63,6 +64,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof MIMEType.type;
+    }
+  | {
+      type: typeof DateString.type;
     }
   | {
       type: "#or";

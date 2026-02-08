@@ -12,6 +12,7 @@ import {
   CSSColor,
   BCP47,
   MIMEType,
+  DateString,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -475,8 +476,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "datetime",
         {
-          // TODO: valid datetime value
-          type: Text.type,
+          type: DateString.type,
         },
       ],
     ],
@@ -506,8 +506,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "datetime",
         {
-          // TODO: valid datetime value
-          type: Text.type,
+          type: DateString.type,
         },
       ],
     ],
@@ -524,8 +523,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "datetime",
         {
-          // TODO: valid datetime value
-          type: Text.type,
+          type: DateString.type,
         },
       ],
     ],
