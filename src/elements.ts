@@ -11,6 +11,7 @@ import {
   FloatingPointNumber,
   CSSColor,
   BCP47,
+  MIMEType,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -113,8 +114,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [
@@ -160,8 +160,25 @@ export const elements: Record<string, ElementSpec> = {
       [
         "as",
         {
-          // TODO: potential destination
-          type: Text.type,
+          type: EnumeratedAttribute.type,
+          options: {
+            keywords: [
+              "fetch",
+              "font",
+              "image",
+              "script",
+              "style",
+              "track",
+              "json",
+              "style",
+              "audioworklet",
+              "paintworklet",
+              "script",
+              "serviceworker",
+              "sharedworker",
+              "worker",
+            ],
+          },
         },
       ],
       [
@@ -397,8 +414,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [
@@ -521,8 +537,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [
@@ -737,7 +752,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "allow",
         {
-          // TODO: permissions policy
           type: Text.type,
         },
       ],
@@ -806,8 +820,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [
@@ -842,8 +855,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [
@@ -2090,8 +2102,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "type",
         {
-          // TODO: valid MIME type string
-          type: Text.type,
+          type: MIMEType.type,
         },
       ],
       [

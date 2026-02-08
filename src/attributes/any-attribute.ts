@@ -8,6 +8,7 @@ import {
 } from "./enumerated-attribute";
 import { FloatingPointNumber } from "./floating-point-number";
 import { ID } from "./id";
+import { MIMEType } from "./mime-type";
 import {
   NonNegativeInteger,
   NonNegativeIntegerOptions,
@@ -59,6 +60,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof BCP47.type;
+    }
+  | {
+      type: typeof MIMEType.type;
     }
   | {
       type: "#or";

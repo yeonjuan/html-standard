@@ -10,3 +10,4 @@ export * from "./floating-point-number";
 export * from "./comma-separated-tokens";
 export * from "./css-color";
 export * from "./bcp-47";
+export * from "./mime-type";
