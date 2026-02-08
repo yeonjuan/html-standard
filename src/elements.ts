@@ -15,6 +15,7 @@ import {
   DateString,
   RegularExpression,
   HashNameReference,
+  NavigableTargetName,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -40,8 +41,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "target",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
     ],
@@ -363,8 +374,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "target",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [
@@ -720,8 +741,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "name",
         {
-          // TODO: valid browsing context name
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [
@@ -860,8 +891,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "name",
         {
-          // TODO: valid browsing context name
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
 
@@ -1116,8 +1157,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "target",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [
@@ -1352,8 +1403,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "target",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [
@@ -1472,8 +1533,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "formtarget",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [
@@ -1708,8 +1779,18 @@ export const elements: Record<string, ElementSpec> = {
       [
         "formtarget",
         {
-          // TODO: valid browsing context name or keyword
-          type: Text.type,
+          type: "#or",
+          items: [
+            {
+              type: NavigableTargetName.type,
+            },
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["_blank", "_self", "_parent", "_top"],
+              },
+            },
+          ],
         },
       ],
       [

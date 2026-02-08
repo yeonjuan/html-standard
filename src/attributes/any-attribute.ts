@@ -23,6 +23,7 @@ import {
 import { Text } from "./text";
 import { ValidURL } from "./valid-url";
 import { HashNameReference } from "./hash-name-reference";
+import { NavigableTargetName } from "./navigable-target-name";
 
 export type AnyAttribute =
   | {
@@ -75,6 +76,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof HashNameReference.type;
+    }
+  | {
+      type: typeof NavigableTargetName.type;
     }
   | {
       type: "#or";
