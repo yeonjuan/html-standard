@@ -1,3 +1,4 @@
+import { RegularExpression } from "./regular-expression";
 import { BCP47 } from "./bcp-47";
 import { BooleanAttribute } from "./boolean-attribute";
 import { CommaSeparatedTokens } from "./comma-separated-tokens";
@@ -67,6 +68,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof DateString.type;
+    }
+  | {
+      type: typeof RegularExpression.type;
     }
   | {
       type: "#or";

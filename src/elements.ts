@@ -13,6 +13,7 @@ import {
   BCP47,
   MIMEType,
   DateString,
+  RegularExpression,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -1543,8 +1544,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "pattern",
         {
-          // TODO: valid regular expression
-          type: Text.type,
+          type: RegularExpression.type,
         },
       ],
       [
