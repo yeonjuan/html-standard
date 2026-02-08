@@ -22,6 +22,7 @@ import {
 } from "./space-seperated-tokens";
 import { Text } from "./text";
 import { ValidURL } from "./valid-url";
+import { HashNameReference } from "./hash-name-reference";
 
 export type AnyAttribute =
   | {
@@ -71,6 +72,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof RegularExpression.type;
+    }
+  | {
+      type: typeof HashNameReference.type;
     }
   | {
       type: "#or";

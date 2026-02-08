@@ -14,6 +14,7 @@ import {
   MIMEType,
   DateString,
   RegularExpression,
+  HashNameReference,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -627,8 +628,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "usemap",
         {
-          // TODO: valid hash-name reference to a <map> element
-          type: Text.type,
+          type: HashNameReference.type,
         },
       ],
       [
@@ -864,13 +864,7 @@ export const elements: Record<string, ElementSpec> = {
           type: Text.type,
         },
       ],
-      [
-        "usemap",
-        {
-          // TODO: valid hash-name reference to a <map> element
-          type: Text.type,
-        },
-      ],
+
       [
         "form",
         {
@@ -1762,7 +1756,6 @@ export const elements: Record<string, ElementSpec> = {
       [
         "autocomplete",
         {
-          // TODO: autofill field name
           type: Text.type,
         },
       ],
