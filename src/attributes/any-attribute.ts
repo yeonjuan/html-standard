@@ -25,6 +25,7 @@ import { ValidURL } from "./valid-url";
 import { HashNameReference } from "./hash-name-reference";
 import { NavigableTargetName } from "./navigable-target-name";
 import { SrcsetAttribute } from "./srcset-attribute";
+import { MediaQueryList } from "./media-query-list";
 
 export type AnyAttribute =
   | {
@@ -83,6 +84,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof SrcsetAttribute.type;
+    }
+  | {
+      type: typeof MediaQueryList.type;
     }
   | {
       type: "#or";

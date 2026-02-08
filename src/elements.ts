@@ -17,6 +17,7 @@ import {
   HashNameReference,
   NavigableTargetName,
   SrcsetAttribute,
+  MediaQueryList,
 } from "./attributes";
 import { AnyAttribute } from "./attributes/any-attribute";
 import { ElementSpec } from "./types";
@@ -110,8 +111,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "media",
         {
-          // TODO: valid media query list
-          type: Text.type,
+          type: MediaQueryList.type,
         },
       ],
       [
@@ -294,8 +294,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "media",
         {
-          // TODO: valid media query list
-          type: Text.type,
+          type: MediaQueryList.type,
         },
       ],
     ],
@@ -306,8 +305,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "media",
         {
-          // TODO: valid media query list
-          type: Text.type,
+          type: MediaQueryList.type,
         },
       ],
       [
@@ -591,8 +589,7 @@ export const elements: Record<string, ElementSpec> = {
       [
         "media",
         {
-          // TODO: valid media query list
-          type: Text.type,
+          type: MediaQueryList.type,
         },
       ],
       [
