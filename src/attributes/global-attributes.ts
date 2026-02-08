@@ -93,7 +93,10 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "headingoffset",
     {
       type: NonNegativeInteger.type,
-      options: {},
+      options: {
+        min: 0,
+        max: 8,
+      },
     },
   ],
   [

@@ -5,7 +5,8 @@ import {
 } from "../types";
 
 export type NonNegativeIntegerOptions = {
-  greaterThanZero?: boolean;
+  min?: number;
+  max?: number;
 };
 
 /**
@@ -36,12 +37,22 @@ export class NonNegativeInteger implements AttributeSpec {
       };
     }
 
-    if (this.options?.greaterThanZero) {
-      const numValue = parseInt(value, 10);
-      if (numValue === 0) {
+    const numValue = parseInt(value, 10);
+
+    if (this.options?.min !== undefined) {
+      if (numValue < this.options.min) {
         return {
           success: false,
-          message: `Value must be greater than zero: "${value}"`,
+          message: `Value must be at least ${this.options.min}: "${value}"`,
+        };
+      }
+    }
+
+    if (this.options?.max !== undefined) {
+      if (numValue > this.options.max) {
+        return {
+          success: false,
+          message: `Value must be at most ${this.options.max}: "${value}"`,
         };
       }
     }

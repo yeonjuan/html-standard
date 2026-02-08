@@ -634,18 +634,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
@@ -702,18 +698,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -835,18 +827,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -897,18 +885,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
@@ -956,18 +940,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
@@ -1039,18 +1019,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
@@ -1298,7 +1274,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1312,7 +1288,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1330,7 +1306,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1338,9 +1314,7 @@ export const elements: Record<string, ElementSpec> = {
         "rowspan",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -1360,7 +1334,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1368,9 +1342,7 @@ export const elements: Record<string, ElementSpec> = {
         "rowspan",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -1607,9 +1579,7 @@ export const elements: Record<string, ElementSpec> = {
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -1629,9 +1599,7 @@ export const elements: Record<string, ElementSpec> = {
         "maxlength",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -1645,9 +1613,7 @@ export const elements: Record<string, ElementSpec> = {
         "minlength",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -1706,7 +1672,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1775,9 +1741,7 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
@@ -1930,7 +1894,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -1997,7 +1961,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -2023,18 +1987,14 @@ export const elements: Record<string, ElementSpec> = {
         "maxlength",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "minlength",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
@@ -2066,7 +2026,7 @@ export const elements: Record<string, ElementSpec> = {
         {
           type: NonNegativeInteger.type,
           options: {
-            greaterThanZero: true,
+            min: 1,
           },
         },
       ],
@@ -2352,18 +2312,14 @@ export const elements: Record<string, ElementSpec> = {
         "width",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
       [
         "height",
         {
           type: NonNegativeInteger.type,
-          options: {
-            greaterThanZero: false,
-          },
+          options: {},
         },
       ],
     ],
