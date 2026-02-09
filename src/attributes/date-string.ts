@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * Validates date strings and global date-time strings.
@@ -26,10 +27,7 @@ export class DateString implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     // Check if it matches either date or datetime format
@@ -37,10 +35,7 @@ export class DateString implements AttributeSpec {
       !DateString.DATE_PATTERN.test(value) &&
       !DateString.DATETIME_PATTERN.test(value)
     ) {
-      return {
-        success: false,
-        message: `Invalid date or datetime string: "${value}"`,
-      };
+      return invalid(`Invalid date or datetime string: "${value}"`);
     }
 
     // Additional validation for date components
@@ -51,25 +46,16 @@ export class DateString implements AttributeSpec {
       const day = parseInt(dateMatch[3], 10);
 
       if (year === 0) {
-        return {
-          success: false,
-          message: `Year must be greater than 0: "${value}"`,
-        };
+        return invalid(`Year must be greater than 0: "${value}"`);
       }
 
       if (month < 1 || month > 12) {
-        return {
-          success: false,
-          message: `Month must be between 1 and 12: "${value}"`,
-        };
+        return invalid(`Month must be between 1 and 12: "${value}"`);
       }
 
       // Check day range (simplified - doesn't account for leap years and month lengths)
       if (day < 1 || day > 31) {
-        return {
-          success: false,
-          message: `Day must be between 1 and 31: "${value}"`,
-        };
+        return invalid(`Day must be between 1 and 31: "${value}"`);
       }
     }
 
@@ -80,17 +66,11 @@ export class DateString implements AttributeSpec {
       const minute = parseInt(timeMatch[2], 10);
 
       if (hour > 23) {
-        return {
-          success: false,
-          message: `Hour must be between 0 and 23: "${value}"`,
-        };
+        return invalid(`Hour must be between 0 and 23: "${value}"`);
       }
 
       if (minute > 59) {
-        return {
-          success: false,
-          message: `Minute must be between 0 and 59: "${value}"`,
-        };
+        return invalid(`Minute must be between 0 and 59: "${value}"`);
       }
 
       // Check seconds if present
@@ -98,16 +78,11 @@ export class DateString implements AttributeSpec {
       if (secondMatch) {
         const second = parseInt(secondMatch[1], 10);
         if (second > 59) {
-          return {
-            success: false,
-            message: `Second must be between 0 and 59: "${value}"`,
-          };
+          return invalid(`Second must be between 0 and 59: "${value}"`);
         }
       }
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

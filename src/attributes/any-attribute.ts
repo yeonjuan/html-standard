@@ -1,33 +1,33 @@
-import { RegularExpression } from "./regular-expression";
-import { BCP47 } from "./bcp-47";
-import { BooleanAttribute } from "./boolean-attribute";
-import { CommaSeparatedTokens } from "./comma-separated-tokens";
-import { CSSColor } from "./css-color";
-import { DateString } from "./date-string";
+import { RegularExpression } from "./regular-expression.js";
+import { BCP47 } from "./bcp-47.js";
+import { BooleanAttribute } from "./boolean-attribute.js";
+import { CommaSeparatedTokens } from "./comma-separated-tokens.js";
+import { CSSColor } from "./css-color.js";
+import { DateString } from "./date-string.js";
 import {
   EnumeratedAttribute,
-  EnumeratedAttributeOptions,
-} from "./enumerated-attribute";
-import { FloatingPointNumber } from "./floating-point-number";
-import { ID } from "./id";
-import { MIMEType } from "./mime-type";
+  type EnumeratedAttributeOptions,
+} from "./enumerated-attribute.js";
+import { FloatingPointNumber } from "./floating-point-number.js";
+import { ID } from "./id.js";
+import { MIMEType } from "./mime-type.js";
 import {
   NonNegativeInteger,
-  NonNegativeIntegerOptions,
-} from "./non-negative-integer";
-import { SignedInteger } from "./signed-integer";
+  type NonNegativeIntegerOptions,
+} from "./non-negative-integer.js";
+import { SignedInteger } from "./signed-integer.js";
 import {
   SpaceSeperatedTokens,
-  SpaceSeperatedTokensOptions,
-} from "./space-seperated-tokens";
-import { Text } from "./text";
-import { ValidURL } from "./valid-url";
-import { HashNameReference } from "./hash-name-reference";
-import { NavigableTargetName } from "./navigable-target-name";
-import { SrcsetAttribute } from "./srcset-attribute";
-import { MediaQueryList } from "./media-query-list";
-import { SourceSizeList } from "./source-size-list";
-import { FloatingPointNumberList } from "./floating-point-number-list";
+  type SpaceSeperatedTokensOptions,
+} from "./space-seperated-tokens.js";
+import { Text } from "./text.js";
+import { ValidURL } from "./valid-url.js";
+import { HashNameReference } from "./hash-name-reference.js";
+import { NavigableTargetName } from "./navigable-target-name.js";
+import { SrcsetAttribute } from "./srcset-attribute.js";
+import { MediaQueryList } from "./media-query-list.js";
+import { SourceSizeList } from "./source-size-list.js";
+import { FloatingPointNumberList } from "./floating-point-number-list.js";
 
 export type AnyAttribute =
   | {
@@ -97,6 +97,6 @@ export type AnyAttribute =
       type: typeof FloatingPointNumberList.type;
     }
   | {
-      type: "#or";
+      type: "#or.js";
       items: Exclude<AnyAttribute, { type: "#or" }>[];
     };

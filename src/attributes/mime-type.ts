@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * A valid MIME type string represents a MIME type.
@@ -24,21 +25,13 @@ export class MIMEType implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     if (!MIMEType.PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Invalid MIME type: "${value}"`,
-      };
+      return invalid(`Invalid MIME type: "${value}"`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

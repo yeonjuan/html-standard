@@ -3,6 +3,7 @@ import {
   AttributeSpecValidateResult,
   AttributeValue,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * A string is a valid floating-point number if it consists of:
@@ -38,21 +39,13 @@ export class FloatingPointNumber implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     if (!FloatingPointNumber.PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Invalid floating-point number: "${value}"`,
-      };
+      return invalid(`Invalid floating-point number: "${value}"`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

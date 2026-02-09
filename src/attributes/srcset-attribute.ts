@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * Validates srcset attribute values.
@@ -24,17 +25,11 @@ export class SrcsetAttribute implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     if (value.trim() === "") {
-      return {
-        success: false,
-        message: "Srcset cannot be empty",
-      };
+      return invalid("Srcset cannot be empty");
     }
 
     // Split by commas to get image candidate strings
@@ -44,10 +39,7 @@ export class SrcsetAttribute implements AttributeSpec {
       const candidate = candidates[i].trim();
 
       if (candidate === "") {
-        return {
-          success: false,
-          message: `Image candidate string ${i + 1} is empty`,
-        };
+        return invalid(`Image candidate string ${i + 1} is empty`);
       }
 
       // Parse the candidate: URL + optional descriptor
@@ -56,18 +48,12 @@ export class SrcsetAttribute implements AttributeSpec {
 
       // URL must not start or end with comma
       if (url.startsWith(",") || url.endsWith(",")) {
-        return {
-          success: false,
-          message: `URL cannot start or end with comma: "${url}"`,
-        };
+        return invalid(`URL cannot start or end with comma: "${url}"`);
       }
 
       // URL must not be empty
       if (url === "") {
-        return {
-          success: false,
-          message: `URL in candidate string ${i + 1} is empty`,
-        };
+        return invalid(`URL in candidate string ${i + 1} is empty`);
       }
 
       // If there's a descriptor, validate it
@@ -80,10 +66,7 @@ export class SrcsetAttribute implements AttributeSpec {
           const width = parseInt(widthStr, 10);
 
           if (!/^\d+$/.test(widthStr) || width <= 0) {
-            return {
-              success: false,
-              message: `Invalid width descriptor: "${descriptor}" (must be positive integer followed by 'w')`,
-            };
+            return invalid(`Invalid width descriptor: "${descriptor}" (must be positive integer followed by 'w')`);
           }
         }
         // Pixel density descriptor: must be positive number followed by 'x'
@@ -95,18 +78,12 @@ export class SrcsetAttribute implements AttributeSpec {
             !/^-?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(densityStr) ||
             density <= 0
           ) {
-            return {
-              success: false,
-              message: `Invalid pixel density descriptor: "${descriptor}" (must be positive number followed by 'x')`,
-            };
+            return invalid(`Invalid pixel density descriptor: "${descriptor}" (must be positive number followed by 'x')`);
           }
         }
         // Invalid descriptor
         else {
-          return {
-            success: false,
-            message: `Invalid descriptor: "${descriptor}" (must end with 'w' or 'x')`,
-          };
+          return invalid(`Invalid descriptor: "${descriptor}" (must end with 'w' or 'x')`);
         }
 
         // There should be only one descriptor
@@ -114,17 +91,12 @@ export class SrcsetAttribute implements AttributeSpec {
           // Multiple tokens after URL - check if they're all whitespace or if there are extra descriptors
           const extraParts = parts.slice(1, -1);
           if (extraParts.some((p) => p !== "")) {
-            return {
-              success: false,
-              message: `Invalid image candidate string: "${candidate}" (extra tokens found)`,
-            };
+            return invalid(`Invalid image candidate string: "${candidate}" (extra tokens found)`);
           }
         }
       }
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

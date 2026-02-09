@@ -1,8 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 export type BooleanAttributeOptions = {
   attributeKey: string;
@@ -17,20 +18,15 @@ export class BooleanAttribute implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (!value || value === true) {
-      return {
-        success: true,
-      };
+      return valid();
     }
 
     if (this.attributeKey === value?.toLowerCase()) {
-      return {
-        success: true,
-      };
+      return valid();
     }
 
-    return {
-      success: false,
-      message: `Boolean attribute value must be empty or match the attribute name "${this.attributeKey}", got: "${value}"`,
-    };
+    return invalid(
+      `Boolean attribute value must be empty or match the attribute name "${this.attributeKey}", got: "${value}"`,
+    );
   }
 }

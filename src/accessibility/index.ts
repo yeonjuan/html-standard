@@ -1,1 +1,1 @@
-export * from "./implicit-role";
+export * from "./implicit-role.js";

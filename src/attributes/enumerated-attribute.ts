@@ -3,6 +3,7 @@ import type {
   AttributeSpecValidateResult,
   AttributeValue,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 export type EnumeratedAttributeOptions = {
   keywords: string[];
@@ -17,24 +18,16 @@ export class EnumeratedAttribute implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     const normalizedValue = value.toLowerCase();
     const isValid = this.options.keywords.includes(normalizedValue);
 
     if (!isValid) {
-      return {
-        success: false,
-        message: `Value "${value}" is not a valid keyword. Expected one of: ${this.options.keywords.join(", ")}`,
-      };
+      return invalid(`Value "${value}" is not a valid keyword. Expected one of: ${this.options.keywords.join(", ")}`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * Validates a regular expression pattern string.
@@ -18,23 +19,15 @@ export class RegularExpression implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     // Try to compile the regular expression to check if it's valid
     try {
       new RegExp(value);
-      return {
-        success: true,
-      };
+      return valid();
     } catch (error) {
-      return {
-        success: false,
-        message: `Invalid regular expression: "${value}" - ${error instanceof Error ? error.message : String(error)}`,
-      };
+      return invalid(`Invalid regular expression: "${value}" - ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 }

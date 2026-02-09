@@ -4,6 +4,7 @@ import type {
   AttributeValue,
 } from "../types";
 import { REGEX_ASCII_WHITESPACE } from "../constants";
+import { valid, invalid } from "./helpers/result";
 
 export type SpaceSeperatedTokensOptions = {
   unique: boolean;
@@ -25,10 +26,7 @@ export class SpaceSeperatedTokens implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     const tokens = this.parse(value).filter((token) => token !== "");
@@ -38,10 +36,7 @@ export class SpaceSeperatedTokens implements AttributeSpec {
       const uniqueTokens = new Set(tokens);
 
       if (tokens.length !== uniqueTokens.size) {
-        return {
-          success: false,
-          message: "Tokens must be unique",
-        };
+        return invalid("Tokens must be unique");
       }
     }
 
@@ -53,10 +48,7 @@ export class SpaceSeperatedTokens implements AttributeSpec {
         });
 
         if (!isAllowed) {
-          return {
-            success: false,
-            message: `Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`,
-          };
+          return invalid(`Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`);
         }
       }
     }
@@ -64,16 +56,11 @@ export class SpaceSeperatedTokens implements AttributeSpec {
     if (typeof this.options.validateToken === "function") {
       for (const token of tokens) {
         if (!this.options.validateToken(token)) {
-          return {
-            success: false,
-            message: `Invalid token: "${token}"`,
-          };
+          return invalid(`Invalid token: "${token}"`);
         }
       }
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

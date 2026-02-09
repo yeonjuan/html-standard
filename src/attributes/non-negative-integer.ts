@@ -1,8 +1,9 @@
-import {
+import type {
   AttributeSpec,
   AttributeSpecValidateResult,
   AttributeValue,
-} from "../types";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/result.js";
 
 export type NonNegativeIntegerOptions = {
   min?: number;
@@ -24,41 +25,29 @@ export class NonNegativeInteger implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     if (!NonNegativeInteger.PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Invalid non-negative integer: "${value}"`,
-      };
+      return invalid(`Invalid non-negative integer: "${value}"`);
     }
 
     const numValue = parseInt(value, 10);
 
     if (this.options?.min !== undefined) {
       if (numValue < this.options.min) {
-        return {
-          success: false,
-          message: `Value must be at least ${this.options.min}: "${value}"`,
-        };
+        return invalid(
+          `Value must be at least ${this.options.min}: "${value}"`,
+        );
       }
     }
 
     if (this.options?.max !== undefined) {
       if (numValue > this.options.max) {
-        return {
-          success: false,
-          message: `Value must be at most ${this.options.max}: "${value}"`,
-        };
+        return invalid(`Value must be at most ${this.options.max}: "${value}"`);
       }
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

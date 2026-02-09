@@ -3,6 +3,7 @@ import type {
   AttributeSpecValidateResult,
   AttributeValue,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 export class ID implements AttributeSpec {
   static type = "ID" as const;
@@ -10,14 +11,9 @@ export class ID implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * Validates a hash-name reference to an element.
@@ -19,29 +20,18 @@ export class HashNameReference implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     // Must start with # and have at least one character after it
     if (!value.startsWith("#")) {
-      return {
-        success: false,
-        message: `Hash-name reference must start with "#": "${value}"`,
-      };
+      return invalid(`Hash-name reference must start with "#": "${value}"`);
     }
 
     if (value.length === 1) {
-      return {
-        success: false,
-        message: `Hash-name reference must have a name after "#": "${value}"`,
-      };
+      return invalid(`Hash-name reference must have a name after "#": "${value}"`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

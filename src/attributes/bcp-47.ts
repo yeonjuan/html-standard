@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * BCP 47 language tag validator
@@ -32,25 +33,17 @@ export class BCP47 implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     // Empty string is valid (no language specified)
     if (value === "") {
-      return {
-        success: true,
-      };
+      return valid();
     }
 
     // Basic validation: check against pattern
     if (!BCP47.PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Invalid BCP 47 language tag: "${value}"`,
-      };
+      return invalid(`Invalid BCP 47 language tag: "${value}"`);
     }
 
     // Additional validation: check subtag lengths
@@ -61,10 +54,7 @@ export class BCP47 implements AttributeSpec {
 
       // Subtags must not be empty
       if (subtag.length === 0) {
-        return {
-          success: false,
-          message: `Invalid BCP 47 language tag: empty subtag in "${value}"`,
-        };
+        return invalid(`Invalid BCP 47 language tag: empty subtag in "${value}"`);
       }
 
       // First subtag (language or 'x' for private use) should be 2-8 letters
@@ -74,16 +64,11 @@ export class BCP47 implements AttributeSpec {
           continue;
         }
         if (!/^[a-zA-Z]{2,8}$/.test(subtag)) {
-          return {
-            success: false,
-            message: `Invalid language subtag in "${value}": "${subtag}"`,
-          };
+          return invalid(`Invalid language subtag in "${value}": "${subtag}"`);
         }
       }
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

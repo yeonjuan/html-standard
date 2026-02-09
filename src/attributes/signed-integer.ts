@@ -3,6 +3,7 @@ import {
   AttributeSpecValidateResult,
   AttributeValue,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * A string is a valid integer if it consists of one or more ASCII digits,
@@ -18,21 +19,13 @@ export class SignedInteger implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     if (!SignedInteger.PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Invalid signed integer: "${value}"`,
-      };
+      return invalid(`Invalid signed integer: "${value}"`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }

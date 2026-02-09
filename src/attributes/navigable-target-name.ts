@@ -3,6 +3,7 @@ import {
   AttributeSpec,
   AttributeSpecValidateResult,
 } from "../types";
+import { valid, invalid } from "./helpers/result";
 
 /**
  * Validates a navigable target name (browsing context name).
@@ -22,38 +23,24 @@ export class NavigableTargetName implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return {
-        success: false,
-        message: "Value must be a string",
-      };
+      return invalid("Value must be a string");
     }
 
     // Must have at least one character
     if (value.length === 0) {
-      return {
-        success: false,
-        message: "Navigable target name must have at least one character",
-      };
+      return invalid("Navigable target name must have at least one character");
     }
 
     // Cannot start with underscore (_) - reserved for keywords
     if (value.startsWith("_")) {
-      return {
-        success: false,
-        message: `Navigable target name cannot start with "_" (reserved for keywords like _blank, _self): "${value}"`,
-      };
+      return invalid(`Navigable target name cannot start with "_" (reserved for keywords like _blank, _self): "${value}"`);
     }
 
     // Cannot contain tab, newline, or <
     if (NavigableTargetName.INVALID_CHARS_PATTERN.test(value)) {
-      return {
-        success: false,
-        message: `Navigable target name cannot contain tab, newline, or "<" character: "${value}"`,
-      };
+      return invalid(`Navigable target name cannot contain tab, newline, or "<" character: "${value}"`);
     }
 
-    return {
-      success: true,
-    };
+    return valid();
   }
 }
