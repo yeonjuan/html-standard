@@ -20,9 +20,9 @@ import {
   MediaQueryList,
   SourceSizeList,
   FloatingPointNumberList,
-} from "./attributes";
-import { AnyAttribute } from "./attributes/any-attribute";
-import { ElementSpec } from "./types";
+} from "./attributes/index.js";
+import type { AnyAttribute } from "./attributes/any-attribute.js";
+import type { ElementSpec } from "./types/index.js";
 
 const empty: [string, AnyAttribute][] = [];
 
@@ -158,7 +158,7 @@ export const elements: Record<string, ElementSpec> = {
           type: SpaceSeperatedTokens.type,
           options: {
             unique: true,
-            validateToken(value) {
+            validateToken(value: string) {
               // Accept "any" (case-insensitive)
               if (value.toLowerCase() === "any") {
                 return true;
@@ -428,7 +428,7 @@ export const elements: Record<string, ElementSpec> = {
           type: SpaceSeperatedTokens.type,
           options: {
             unique: false,
-            validateToken(value) {
+            validateToken(value: string) {
               // URLs of the resources that are interested in being notified if the user follows the hyperlink.
               // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
               if (value.length === 0) {
@@ -1198,7 +1198,7 @@ export const elements: Record<string, ElementSpec> = {
           type: SpaceSeperatedTokens.type,
           options: {
             unique: false,
-            validateToken(value) {
+            validateToken(value: string) {
               // URLs of the resources that are interested in being notified if the user follows the hyperlink.
               // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
               if (value.length === 0) {

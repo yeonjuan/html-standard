@@ -97,6 +97,6 @@ export type AnyAttribute =
       type: typeof FloatingPointNumberList.type;
     }
   | {
-      type: "#or.js";
+      type: "#or";
       items: Exclude<AnyAttribute, { type: "#or" }>[];
     };

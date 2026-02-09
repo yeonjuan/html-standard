@@ -1,4 +1,4 @@
-import { AttributesOptions } from "./attributes-options";
+import type { AttributesOptions } from "./attributes-options.js";
 
 /**
  * Options for configuring element behavior and context.

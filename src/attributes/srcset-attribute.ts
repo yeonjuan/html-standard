@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * Validates srcset attribute values.
@@ -66,7 +66,9 @@ export class SrcsetAttribute implements AttributeSpec {
           const width = parseInt(widthStr, 10);
 
           if (!/^\d+$/.test(widthStr) || width <= 0) {
-            return invalid(`Invalid width descriptor: "${descriptor}" (must be positive integer followed by 'w')`);
+            return invalid(
+              `Invalid width descriptor: "${descriptor}" (must be positive integer followed by 'w')`,
+            );
           }
         }
         // Pixel density descriptor: must be positive number followed by 'x'
@@ -78,20 +80,26 @@ export class SrcsetAttribute implements AttributeSpec {
             !/^-?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(densityStr) ||
             density <= 0
           ) {
-            return invalid(`Invalid pixel density descriptor: "${descriptor}" (must be positive number followed by 'x')`);
+            return invalid(
+              `Invalid pixel density descriptor: "${descriptor}" (must be positive number followed by 'x')`,
+            );
           }
         }
         // Invalid descriptor
         else {
-          return invalid(`Invalid descriptor: "${descriptor}" (must end with 'w' or 'x')`);
+          return invalid(
+            `Invalid descriptor: "${descriptor}" (must end with 'w' or 'x')`,
+          );
         }
 
         // There should be only one descriptor
         if (parts.length > 2) {
           // Multiple tokens after URL - check if they're all whitespace or if there are extra descriptors
           const extraParts = parts.slice(1, -1);
-          if (extraParts.some((p) => p !== "")) {
-            return invalid(`Invalid image candidate string: "${candidate}" (extra tokens found)`);
+          if (extraParts.some((p: string) => p !== "")) {
+            return invalid(
+              `Invalid image candidate string: "${candidate}" (extra tokens found)`,
+            );
           }
         }
       }

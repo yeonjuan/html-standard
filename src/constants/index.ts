@@ -1,3 +1,3 @@
-export * from "./default-options";
-export * from "../accessibility/aria-roles";
-export * from "./regex";
+export * from "./default-options.js";
+export * from "../accessibility/aria-roles.js";
+export * from "./regex.js";

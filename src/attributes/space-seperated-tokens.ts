@@ -2,9 +2,9 @@ import type {
   AttributeSpec,
   AttributeSpecValidateResult,
   AttributeValue,
-} from "../types";
-import { REGEX_ASCII_WHITESPACE } from "../constants";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { REGEX_ASCII_WHITESPACE } from "../constants/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 export type SpaceSeperatedTokensOptions = {
   unique: boolean;
@@ -48,7 +48,9 @@ export class SpaceSeperatedTokens implements AttributeSpec {
         });
 
         if (!isAllowed) {
-          return invalid(`Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`);
+          return invalid(
+            `Invalid token: "${token}". Allowed tokens: ${this.options.allowed.join(", ")}`,
+          );
         }
       }
     }

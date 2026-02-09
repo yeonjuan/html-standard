@@ -2,8 +2,8 @@ import type {
   AttributeSpec,
   AttributeSpecValidateResult,
   AttributeValue,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * A set of comma-separated tokens is a string containing zero or more tokens each separated from the next by a single U+002C COMMA character (,), where tokens consist of any string of zero or more characters, neither beginning nor ending with ASCII whitespace, nor containing any U+002C COMMA characters (,), and optionally surrounded by ASCII whitespace.

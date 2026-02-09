@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * Validates a regular expression pattern string.
@@ -27,7 +27,9 @@ export class RegularExpression implements AttributeSpec {
       new RegExp(value);
       return valid();
     } catch (error) {
-      return invalid(`Invalid regular expression: "${value}" - ${error instanceof Error ? error.message : String(error)}`);
+      return invalid(
+        `Invalid regular expression: "${value}" - ${error instanceof Error ? error.message : String(error)}`,
+      );
     }
   }
 }

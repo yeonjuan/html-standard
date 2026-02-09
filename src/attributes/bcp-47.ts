@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * BCP 47 language tag validator
@@ -54,7 +54,9 @@ export class BCP47 implements AttributeSpec {
 
       // Subtags must not be empty
       if (subtag.length === 0) {
-        return invalid(`Invalid BCP 47 language tag: empty subtag in "${value}"`);
+        return invalid(
+          `Invalid BCP 47 language tag: empty subtag in "${value}"`,
+        );
       }
 
       // First subtag (language or 'x' for private use) should be 2-8 letters

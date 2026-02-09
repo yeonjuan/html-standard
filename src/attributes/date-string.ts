@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * Validates date strings and global date-time strings.

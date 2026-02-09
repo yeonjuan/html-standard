@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeSpec,
   AttributeSpecValidateResult,
   AttributeValue,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * A string is a valid integer if it consists of one or more ASCII digits,

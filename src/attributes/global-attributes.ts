@@ -1,12 +1,12 @@
-import { AnyAttribute } from "./any-attribute";
-import { BooleanAttribute } from "./boolean-attribute";
-import { EnumeratedAttribute } from "./enumerated-attribute";
-import { SignedInteger } from "./signed-integer";
-import { SpaceSeperatedTokens } from "./space-seperated-tokens";
-import { Text } from "./text";
-import { ValidURL } from "./valid-url";
-import { BCP47 } from "./bcp-47";
-import { NonNegativeInteger } from "./non-negative-integer";
+import type { AnyAttribute } from "./any-attribute.js";
+import { BooleanAttribute } from "./boolean-attribute.js";
+import { EnumeratedAttribute } from "./enumerated-attribute.js";
+import { SignedInteger } from "./signed-integer.js";
+import { SpaceSeperatedTokens } from "./space-seperated-tokens.js";
+import { Text } from "./text.js";
+import { ValidURL } from "./valid-url.js";
+import { BCP47 } from "./bcp-47.js";
+import { NonNegativeInteger } from "./non-negative-integer.js";
 
 /**
  * @see https://html.spec.whatwg.org/multipage/dom.html#global-attributes

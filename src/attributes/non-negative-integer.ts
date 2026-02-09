@@ -3,7 +3,7 @@ import type {
   AttributeSpecValidateResult,
   AttributeValue,
 } from "../types/index.js";
-import { valid, invalid } from "./helpers/result.js";
+import { valid, invalid } from "./helpers/index.js";
 
 export type NonNegativeIntegerOptions = {
   min?: number;

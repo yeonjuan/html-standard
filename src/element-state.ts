@@ -1,5 +1,5 @@
-import { ElementOptions } from "./types";
-import { AttributesState } from "./attributes-state";
+import type { ElementOptions } from "./types/index.js";
+import { AttributesState } from "./attributes-state.js";
 
 export class ElementState {
   public readonly name: string;

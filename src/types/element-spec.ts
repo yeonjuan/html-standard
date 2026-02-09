@@ -1,5 +1,5 @@
-import { AnyAttribute } from "../attributes/any-attribute";
-import { ElementState } from "../element-state";
+import type { AnyAttribute } from "../attributes/any-attribute.js";
+import type { ElementState } from "../element-state.js";
 
 export interface ElementSpec {
   globalAttributes: boolean;

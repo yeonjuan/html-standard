@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * Validates a navigable target name (browsing context name).
@@ -33,12 +33,16 @@ export class NavigableTargetName implements AttributeSpec {
 
     // Cannot start with underscore (_) - reserved for keywords
     if (value.startsWith("_")) {
-      return invalid(`Navigable target name cannot start with "_" (reserved for keywords like _blank, _self): "${value}"`);
+      return invalid(
+        `Navigable target name cannot start with "_" (reserved for keywords like _blank, _self): "${value}"`,
+      );
     }
 
     // Cannot contain tab, newline, or <
     if (NavigableTargetName.INVALID_CHARS_PATTERN.test(value)) {
-      return invalid(`Navigable target name cannot contain tab, newline, or "<" character: "${value}"`);
+      return invalid(
+        `Navigable target name cannot contain tab, newline, or "<" character: "${value}"`,
+      );
     }
 
     return valid();

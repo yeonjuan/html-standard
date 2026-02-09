@@ -2,8 +2,8 @@ import type {
   AttributeSpec,
   AttributeSpecValidateResult,
   AttributeValue,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 export type EnumeratedAttributeOptions = {
   keywords: string[];
@@ -25,7 +25,9 @@ export class EnumeratedAttribute implements AttributeSpec {
     const isValid = this.options.keywords.includes(normalizedValue);
 
     if (!isValid) {
-      return invalid(`Value "${value}" is not a valid keyword. Expected one of: ${this.options.keywords.join(", ")}`);
+      return invalid(
+        `Value "${value}" is not a valid keyword. Expected one of: ${this.options.keywords.join(", ")}`,
+      );
     }
 
     return valid();

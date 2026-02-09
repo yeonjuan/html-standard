@@ -1,4 +1,4 @@
-import { AttributeValue } from "./attribute-value";
+import type { AttributeValue } from "./attribute-value.js";
 
 export type AttributeSpecValidateResult = {
   success: boolean;

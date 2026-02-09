@@ -1,9 +1,9 @@
-import {
+import type {
   AttributeValue,
   AttributeSpec,
   AttributeSpecValidateResult,
-} from "../types";
-import { valid, invalid } from "./helpers/result";
+} from "../types/index.js";
+import { valid, invalid } from "./helpers/index.js";
 
 /**
  * Validates a hash-name reference to an element.
@@ -29,7 +29,9 @@ export class HashNameReference implements AttributeSpec {
     }
 
     if (value.length === 1) {
-      return invalid(`Hash-name reference must have a name after "#": "${value}"`);
+      return invalid(
+        `Hash-name reference must have a name after "#": "${value}"`,
+      );
     }
 
     return valid();
