@@ -23,13 +23,13 @@ element("nav").implicitRole(); // 'navigation'
 
 // Attribute-dependent roles
 element("a", {
-  attributes: { get: (key) => key === "href" ? "https://example.com" : null }
+  attributes: { get: (key) => (key === "href" ? "https://example.com" : null) },
 }).implicitRole(); // 'link'
 
 element("a").implicitRole(); // 'generic' (no href)
 
 element("input", {
-  attributes: { get: (key) => key === "type" ? "checkbox" : null }
+  attributes: { get: (key) => (key === "type" ? "checkbox" : null) },
 }).implicitRole(); // 'checkbox'
 ```
 

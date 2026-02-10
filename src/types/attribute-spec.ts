@@ -2,7 +2,7 @@ import type { AttributeValue } from "./attribute-value.js";
 
 export type AttributeSpecValidateResult = {
   valid: boolean;
-  message?: string;
+  reason?: string;
 };
 
 export interface AttributeSpec {

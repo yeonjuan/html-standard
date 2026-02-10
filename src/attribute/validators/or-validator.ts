@@ -32,7 +32,7 @@ export class OrValidator implements AttributeSpec {
         return valid();
       }
 
-      lastError = result.message;
+      lastError = result.reason;
     }
 
     // If all validators failed, return the last error
