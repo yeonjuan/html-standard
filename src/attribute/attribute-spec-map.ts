@@ -21,9 +21,6 @@ export class AttributeSpecMap implements types.AttributeSpecMap {
     let spec: AnyAttribute | null = null;
     if (def.globalAttributes) {
       spec = globalAttributes.get(key) ?? null;
-      if (!spec) {
-        return null;
-      }
     }
     spec = def?.attributes.find(([k]) => key.toLowerCase() === k)?.[1] ?? null;
     if (spec) {
