@@ -1,5 +1,5 @@
-import { DEFAULT_ATTRIBUTES_OPTIONS } from "./constants/index.js";
-import type { AttributesOptions, AttributeValue } from "./types/index.js";
+import { DEFAULT_ATTRIBUTES_OPTIONS } from "../constants/index.js";
+import type { AttributesOptions, AttributeValue } from "../types/index.js";
 
 export class AttributesState {
   constructor(

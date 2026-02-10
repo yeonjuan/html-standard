@@ -20,13 +20,13 @@ import {
   MediaQueryList,
   SourceSizeList,
   FloatingPointNumberList,
-} from "./attributes/index.js";
-import type { AnyAttribute } from "./attributes/any-attribute.js";
-import type { ElementSpec } from "./types/index.js";
+  type AnyAttribute,
+} from "../attributes/index.js";
+import { type ElementSpecDefinition } from "../types/index.js";
 
 const empty: [string, AnyAttribute][] = [];
 
-export const elements: Record<string, ElementSpec> = {
+export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   html: {
     globalAttributes: true,
     attributes: empty,

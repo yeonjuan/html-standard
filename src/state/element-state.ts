@@ -1,4 +1,4 @@
-import type { ElementOptions } from "./types/index.js";
+import type { ElementOptions } from "../types/index.js";
 import { AttributesState } from "./attributes-state.js";
 
 export class ElementState {
