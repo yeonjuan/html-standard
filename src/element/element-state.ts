@@ -30,7 +30,7 @@ export class ElementState {
     return new ElementState(first.value.name, first.value);
   }
 
-  anceters(): Iterable<
+  ancestors(): Iterable<
     {
       name: string;
     } & ElementOptions

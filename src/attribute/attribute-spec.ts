@@ -16,13 +16,12 @@ import {
   RegularExpression,
   SignedInteger,
   SourceSizeList,
-  SpaceSeperatedTokens,
+  SpaceSeparatedTokens,
   SrcsetAttribute,
   Text,
   ValidURL,
   type AnyAttribute,
 } from "./validators/index.js";
-import type { ElementState } from "../element/element-state.js";
 import * as types from "../types/index.js";
 
 export class AttributeSpec implements types.AttributeSpec {
@@ -42,8 +41,8 @@ function createAttributeSpec(
   def: AnyAttribute,
 ): types.AttributeSpec {
   switch (def.type) {
-    case SpaceSeperatedTokens.type: {
-      return new SpaceSeperatedTokens(def.options);
+    case SpaceSeparatedTokens.type: {
+      return new SpaceSeparatedTokens(def.options);
     }
     case EnumeratedAttribute.type: {
       return new EnumeratedAttribute(def.options);

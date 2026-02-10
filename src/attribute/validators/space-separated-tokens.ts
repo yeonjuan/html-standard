@@ -6,7 +6,7 @@ import type {
 import { REGEX_ASCII_WHITESPACE } from "../../shared/index.js";
 import { valid, invalid } from "../../shared/result.js";
 
-export type SpaceSeperatedTokensOptions = {
+export type SpaceSeparatedTokensOptions = {
   unique: boolean;
   allowed?: string[];
   validateToken?: (value: string) => boolean;
@@ -15,9 +15,9 @@ export type SpaceSeperatedTokensOptions = {
 /**
  * @see https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#space-separated-tokens
  */
-export class SpaceSeperatedTokens implements AttributeSpec {
-  static type = "SpaceSeperatedTokens" as const;
-  constructor(private options: SpaceSeperatedTokensOptions) {}
+export class SpaceSeparatedTokens implements AttributeSpec {
+  static type = "SpaceSeparatedTokens" as const;
+  constructor(private options: SpaceSeparatedTokensOptions) {}
 
   private parse(value: string) {
     const tokens = value.split(REGEX_ASCII_WHITESPACE);

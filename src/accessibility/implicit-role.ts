@@ -48,7 +48,7 @@ export const IMPLICIT_ROLE: Record<
   figure: () => ARIA_ROLES.FIGURE,
   footer: (element) => {
     const sectioningElements = ["article", "aside", "main", "nav", "section"];
-    for (const ancestor of element.anceters()) {
+    for (const ancestor of element.ancestors()) {
       if (sectioningElements.includes(ancestor.name.toLowerCase())) {
         return ARIA_ROLES.GENERIC;
       }

@@ -17,9 +17,9 @@ import {
 } from "./non-negative-integer.js";
 import { SignedInteger } from "./signed-integer.js";
 import {
-  SpaceSeperatedTokens,
-  type SpaceSeperatedTokensOptions,
-} from "./space-seperated-tokens.js";
+  SpaceSeparatedTokens,
+  type SpaceSeparatedTokensOptions,
+} from "./space-separated-tokens.js";
 import { Text } from "./text.js";
 import { ValidURL } from "./valid-url.js";
 import { HashNameReference } from "./hash-name-reference.js";
@@ -31,8 +31,8 @@ import { FloatingPointNumberList } from "./floating-point-number-list.js";
 
 export type AnyAttribute =
   | {
-      type: typeof SpaceSeperatedTokens.type;
-      options: SpaceSeperatedTokensOptions;
+      type: typeof SpaceSeparatedTokens.type;
+      options: SpaceSeparatedTokensOptions;
     }
   | {
       type: typeof EnumeratedAttribute.type;

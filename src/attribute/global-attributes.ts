@@ -2,7 +2,7 @@ import type { AnyAttribute } from "./validators/any-attribute.js";
 import { BooleanAttribute } from "./validators/boolean-attribute.js";
 import { EnumeratedAttribute } from "./validators/enumerated-attribute.js";
 import { SignedInteger } from "./validators/signed-integer.js";
-import { SpaceSeperatedTokens } from "./validators/space-seperated-tokens.js";
+import { SpaceSeparatedTokens } from "./validators/space-separated-tokens.js";
 import { Text } from "./validators/text.js";
 import { ValidURL } from "./validators/valid-url.js";
 import { BCP47 } from "./validators/bcp-47.js";
@@ -17,7 +17,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     // none of which are identical to another token and each of which must be exactly one code point in length.
     "accesskey",
     {
-      type: SpaceSeperatedTokens.type,
+      type: SpaceSeparatedTokens.type,
       options: {
         unique: true,
         validateToken(value) {
@@ -153,14 +153,14 @@ export const globalAttributes = new Map<string, AnyAttribute>([
   [
     "itemprop",
     {
-      type: SpaceSeperatedTokens.type,
+      type: SpaceSeparatedTokens.type,
       options: { unique: true },
     },
   ],
   [
     "itemref",
     {
-      type: SpaceSeperatedTokens.type,
+      type: SpaceSeparatedTokens.type,
       options: { unique: true },
     },
   ],
@@ -178,7 +178,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
   [
     "itemtype",
     {
-      type: SpaceSeperatedTokens.type,
+      type: SpaceSeparatedTokens.type,
       options: {
         unique: true,
         validateToken(value) {

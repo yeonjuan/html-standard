@@ -4,7 +4,7 @@ import {
   EnumeratedAttribute,
   NonNegativeInteger,
   SignedInteger,
-  SpaceSeperatedTokens,
+  SpaceSeparatedTokens,
   Text,
   ValidURL,
   ID,
@@ -82,7 +82,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "rel",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             allowed: [
@@ -155,7 +155,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "sizes",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: true,
             validateToken(value: string) {
@@ -226,7 +226,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "blocking",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true, allowed: ["render"] },
         },
       ],
@@ -314,7 +314,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "blocking",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true, allowed: ["render"] },
         },
       ],
@@ -425,7 +425,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "ping",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             validateToken(value: string) {
@@ -450,7 +450,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "rel",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             allowed: [
@@ -790,7 +790,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "sandbox",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: true,
             allowed: [
@@ -1195,7 +1195,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "ping",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             validateToken(value: string) {
@@ -1220,7 +1220,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "rel",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             allowed: [
@@ -1320,7 +1320,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "headers",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true },
         },
       ],
@@ -1348,7 +1348,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "headers",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true },
         },
       ],
@@ -1375,7 +1375,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "accept-charset",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true },
         },
       ],
@@ -1448,7 +1448,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "rel",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: {
             unique: false,
             allowed: [
@@ -2047,7 +2047,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "for",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true },
         },
       ],
@@ -2246,7 +2246,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "blocking",
         {
-          type: SpaceSeperatedTokens.type,
+          type: SpaceSeparatedTokens.type,
           options: { unique: true },
         },
       ],
