@@ -9,6 +9,7 @@ This is a TypeScript library that provides utilities for working with the HTML L
 ## Development Commands
 
 ### Testing
+
 ```bash
 npm test              # Run tests once
 npm run test:watch    # Run tests in watch mode
@@ -18,11 +19,13 @@ npm run test:ui       # Run tests with Vitest UI
 Tests are located alongside source files (e.g., `src/**/*.test.ts`). The project uses Vitest with globals enabled.
 
 ### Type Checking
+
 ```bash
 npm run ts            # Type check without emitting files (tsc --noEmit)
 ```
 
 ### Building
+
 ```bash
 npm run build         # Build using tsup (outputs to dist/)
 ```
@@ -41,11 +44,13 @@ The build produces both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) formats
 The codebase follows a three-layer architecture:
 
 1. **Spec Layer** (`ElementSpec`, `AttributeSpec`)
+
    - High-level API exposed to library users
    - `ElementSpec` provides access to element-specific functionality (implicit roles, attributes)
    - `AttributeSpec` provides attribute validation
 
 2. **State Layer** (`ElementState`, `AttributesState`)
+
    - Manages element and attribute state
    - Handles parent/ancestor relationships via `options.ancestors` iterator
    - Provides attribute access through `options.attributes.get(key)`
@@ -58,15 +63,18 @@ The codebase follows a three-layer architecture:
 ### Key Components
 
 #### Accessibility (`src/accessibility/`)
+
 - **`implicit-role.ts`**: Maps HTML elements to their implicit ARIA roles per W3C HTML-ARIA spec
 - Role determination can be attribute-dependent (e.g., `<a>` has role `link` only with `href`, otherwise `generic`)
 - Some roles check ancestor elements (e.g., `<footer>` role varies based on sectioning ancestors)
 
 #### Attribute System (`src/attributes/`)
+
 Contains ~20 attribute type validators representing HTML Standard attribute types:
+
 - `BooleanAttribute`: Presence/absence semantics
 - `EnumeratedAttribute`: Fixed set of keywords
-- `SpaceSeperatedTokens` / `CommaSeparatedTokens`: Token lists
+- `SpaceSeparatedTokens` / `CommaSeparatedTokens`: Token lists
 - `ValidURL`, `MIMEType`, `DateString`, `BCP47`: Format-specific validators
 - `SignedInteger`, `NonNegativeInteger`, `FloatingPointNumber`: Numeric types
 - And more specialized types
@@ -74,13 +82,15 @@ Contains ~20 attribute type validators representing HTML Standard attribute type
 Each attribute type implements a `validate(value)` method.
 
 #### Element Specifications (`src/specs/`)
+
 - **`element-spec-definition-map.ts`**: Large data structure mapping element names to their specifications
 - Each element defines:
   - Whether it accepts global attributes (`globalAttributes: true/false`)
   - Element-specific attributes as `[name, typeDefinition]` tuples
-- Example: `<link>` defines attributes like `href` (ValidURL), `crossorigin` (EnumeratedAttribute), `rel` (SpaceSeperatedTokens)
+- Example: `<link>` defines attributes like `href` (ValidURL), `crossorigin` (EnumeratedAttribute), `rel` (SpaceSeparatedTokens)
 
 #### State Management (`src/state/`)
+
 - **`ElementState`**: Holds element name and options, provides attribute access and ancestor traversal
 - **`AttributesState`**: Wraps the `options.attributes` interface for querying attribute values
 
@@ -102,6 +112,7 @@ Each attribute type implements a `validate(value)` method.
 ### TODOs in Code
 
 Some features are incomplete (marked with `// TODO` in `implicit-role.ts`):
+
 - `<header>` role logic (should return 'banner' or 'generic' based on ancestors)
 - `<li>` role logic (should return 'listitem' or 'generic' based on parent)
 
