@@ -1,4 +1,4 @@
-import type { AnyAttribute } from "../attributes/any-attribute.js";
+import type { AnyAttribute } from "../attribute/validators/any-attribute.js";
 
 export interface ElementSpecDefinition {
   globalAttributes: boolean;

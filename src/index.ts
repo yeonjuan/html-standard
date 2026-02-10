@@ -1,1 +1,1 @@
-export { element } from "./element.js";
+export { element } from "./element/element.js";
