@@ -4,154 +4,118 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`html-standard` is a TypeScript library that provides utilities for working with the HTML Living Standard specification. Currently, the library focuses on providing ARIA-related utilities, specifically the `getImplicitRole` function that returns implicit ARIA roles for HTML elements.
+This is a TypeScript library that provides utilities for working with the HTML Living Standard specification. The library focuses on providing programmatic access to HTML element specifications, attributes, and accessibility features (particularly implicit ARIA roles).
 
-**Status**: This project is in an experimental stage and may introduce breaking changes frequently.
+## Development Commands
 
-## Commands
+### Testing
 
-### Development
-- `npm run build` - Build the library using tsup (outputs to `dist/` with ESM and CJS formats)
-- `npm run ts` - Type-check TypeScript without emitting files
-- `npm test` - Run tests using Vitest
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:ui` - Run tests with UI
-
-## Architecture
-
-### Core Concepts
-
-**Implicit ARIA Roles**: The library provides utilities to determine the implicit ARIA role of HTML elements according to the [HTML-ARIA specification](https://www.w3.org/TR/html-aria/). These roles can be static or vary based on element attributes.
-
-**Public API**: The library exports the `getImplicitRole(element, options?)` function:
-- `element: string` - The HTML element name (case-insensitive)
-- `options?: GetImplicitRoleOptions` - Optional configuration
-  - `attribute: (key: string) => string | number | null` - Function to retrieve attribute values
-
-### Directory Structure
-
-```
-src/
-├── html-aria/
-│   └── implicit-role/
-│       ├── get-implicit-role.ts    # Public API function
-│       ├── implicit-role.ts        # Core implementation with role mappings
-│       ├── types.ts                # Type definitions
-│       ├── index.ts                # Exports
-│       └── tests/
-│           └── get-implicit-role.test.ts  # Comprehensive test suite
-├── constants/
-│   └── roles.ts                    # ARIA role constants
-└── index.ts                        # Main entry point
+```bash
+npm test              # Run tests once
+npm run test:watch    # Run tests in watch mode
+npm run test:ui       # Run tests with Vitest UI
 ```
 
-### Key Files
+Tests are located alongside source files (e.g., `src/**/*.test.ts`). The project uses Vitest with globals enabled.
 
-**[src/html-aria/implicit-role/get-implicit-role.ts](src/html-aria/implicit-role/get-implicit-role.ts)**: Public API that accepts element name and options, provides default attribute getter.
+### Type Checking
 
-**[src/html-aria/implicit-role/implicit-role.ts](src/html-aria/implicit-role/implicit-role.ts)**: Core implementation containing the `IMPLICIT_ROLE` mapping object. Each element has a function that receives `get` and `has` helpers to check attributes and return the appropriate role.
-
-**[src/html-aria/implicit-role/types.ts](src/html-aria/implicit-role/types.ts)**: Defines `GetAttributeValue` type and `GetImplicitRoleOptions` interface.
-
-**[src/constants/roles.ts](src/constants/roles.ts)**: Defines the `ROLES` constant object with all ARIA role string literals.
-
-**[src/html-aria/implicit-role/tests/get-implicit-role.test.ts](src/html-aria/implicit-role/tests/get-implicit-role.test.ts)**: Comprehensive test suite with 45+ tests covering all HTML elements and their attribute-dependent behaviors.
-
-### How Implicit Role Mapping Works
-
-The implicit role system follows this pattern:
-
-1. Each HTML element has an entry in the `IMPLICIT_ROLE` object
-2. Each entry is a function that receives `{ get, has }` helpers for checking attributes
-3. The function returns a role string or `null` (no implicit role)
-4. Element names are normalized to lowercase for case-insensitive matching
-
-**Example (static role)**:
-```typescript
-button: () => ROLES.BUTTON,  // Always returns "button"
+```bash
+npm run ts            # Type check without emitting files (tsc --noEmit)
 ```
 
-**Example (attribute-dependent role)**:
-```typescript
-a: ({ has }) => (has("href") ? ROLES.LINK : ROLES.GENERIC),
-// Returns "link" with href, "generic" without
+### Building
+
+```bash
+npm run build         # Build using tsup (outputs to dist/)
 ```
 
-**Example (complex attribute logic)**:
-```typescript
-input: ({ get }) => {
-  const type = get("type") || "text";
-  switch (type) {
-    case "button": return ROLES.BUTTON;
-    case "checkbox": return ROLES.CHECKBOX;
-    case "text": return ROLES.TEXTBOX;
-    // ... more cases
-  }
-}
-```
+The build produces both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) formats with TypeScript declarations and source maps.
 
-### Testing Strategy
+## Architecture Overview
 
-Tests are organized by element categories:
-- Elements with no implicit role
-- Generic role elements
-- Structural elements (article, aside, nav, etc.)
-- Heading elements (h1-h6)
-- List, table, and form elements
-- Text semantic elements
-- Attribute-dependent roles (detailed tests for `<a>`, `<area>`, `<img>`, `<input>`, `<select>`)
-- Case insensitivity
+### Core Entry Points
 
-Use **Vitest** for testing:
-- Configuration in [vitest.config.ts](vitest.config.ts)
-- Tests use `describe`, `it`, `expect` from Vitest
-- Run with `npm test`, `npm run test:watch`, or `npm run test:ui`
+- **`element(name, options)`**: Main factory function that creates `ElementSpec` instances
+- **Element name normalization**: All element names are automatically converted to lowercase
 
-### Build Configuration
+### Layered Architecture
 
-The project uses **tsup** for building ([tsup.config.ts](tsup.config.ts)):
-- Entry point: `src/index.ts`
-- Outputs both ESM (`dist/index.js`) and CJS (`dist/index.cjs`)
-- Generates TypeScript declarations (`dist/index.d.ts`)
-- Creates sourcemaps
+The codebase follows a three-layer architecture:
 
-## Adding New Features
+1. **Spec Layer** (`ElementSpec`, `AttributeSpec`)
 
-### Adding Support for a New HTML Element
+   - High-level API exposed to library users
+   - `ElementSpec` provides access to element-specific functionality (implicit roles, attributes)
+   - `AttributeSpec` provides attribute validation
 
-1. Open [src/html-aria/implicit-role/implicit-role.ts](src/html-aria/implicit-role/implicit-role.ts)
-2. Add an entry to the `IMPLICIT_ROLE` object with the element name
-3. Implement the role function:
-   - For static roles: `elementName: () => ROLES.ROLE_NAME`
-   - For attribute-dependent: Use `get` or `has` to check attributes
-4. Add tests in [src/html-aria/implicit-role/tests/get-implicit-role.test.ts](src/html-aria/implicit-role/tests/get-implicit-role.test.ts)
-5. If adding a new role constant, update [src/constants/roles.ts](src/constants/roles.ts)
+2. **State Layer** (`ElementState`, `AttributesState`)
 
-### Adding New Role Constants
+   - Manages element and attribute state
+   - Handles parent/ancestor relationships via `options.ancestors` iterator
+   - Provides attribute access through `options.attributes.get(key)`
 
-1. Open [src/constants/roles.ts](src/constants/roles.ts)
-2. Add the new role to the `ROLES` object:
-   ```typescript
-   export const ROLES = {
-     // ... existing roles
-     NEW_ROLE: "new-role",
-   } as const;
-   ```
+3. **Definition Layer** (`element-spec-definition-map.ts`, attribute types in `src/attributes/`)
+   - Contains HTML Standard specifications as data structures
+   - Maps element names to their allowed attributes and specifications
+   - Defines attribute types (enumerated, boolean, text, URL, etc.)
 
-### Writing Tests
+### Key Components
 
-Follow the existing test structure:
-```typescript
-describe("element category", () => {
-  it("should return correct role", () => {
-    expect(getImplicitRole("element")).toBe("expected-role");
-  });
+#### Accessibility (`src/accessibility/`)
 
-  it("should handle attributes", () => {
-    const result = getImplicitRole("element", {
-      attribute: (key) => key === "attr" ? "value" : null,
-    });
-    expect(result).toBe("expected-role");
-  });
-});
-```
+- **`implicit-role.ts`**: Maps HTML elements to their implicit ARIA roles per W3C HTML-ARIA spec
+- Role determination can be attribute-dependent (e.g., `<a>` has role `link` only with `href`, otherwise `generic`)
+- Some roles check ancestor elements (e.g., `<footer>` role varies based on sectioning ancestors)
+
+#### Attribute System (`src/attributes/`)
+
+Contains ~20 attribute type validators representing HTML Standard attribute types:
+
+- `BooleanAttribute`: Presence/absence semantics
+- `EnumeratedAttribute`: Fixed set of keywords
+- `SpaceSeparatedTokens` / `CommaSeparatedTokens`: Token lists
+- `ValidURL`, `MIMEType`, `DateString`, `BCP47`: Format-specific validators
+- `SignedInteger`, `NonNegativeInteger`, `FloatingPointNumber`: Numeric types
+- And more specialized types
+
+Each attribute type implements a `validate(value)` method.
+
+#### Element Specifications (`src/specs/`)
+
+- **`element-spec-definition-map.ts`**: Large data structure mapping element names to their specifications
+- Each element defines:
+  - Whether it accepts global attributes (`globalAttributes: true/false`)
+  - Element-specific attributes as `[name, typeDefinition]` tuples
+- Example: `<link>` defines attributes like `href` (ValidURL), `crossorigin` (EnumeratedAttribute), `rel` (SpaceSeparatedTokens)
+
+#### State Management (`src/state/`)
+
+- **`ElementState`**: Holds element name and options, provides attribute access and ancestor traversal
+- **`AttributesState`**: Wraps the `options.attributes` interface for querying attribute values
+
+### Data Flow
+
+1. User calls `element("div", { attributes: { get: (key) => ... } })`
+2. Creates `ElementSpec` → `ElementState` (normalizes name to lowercase)
+3. User accesses `.implicitRole()` → looks up element in `IMPLICIT_ROLE` map → executes role function with state
+4. User accesses `.attributes` → creates `AttributeSpecMap` → looks up element in `elementSpecDefinitionMap`
+5. User calls `.attributes.get("class")` → finds attribute definition → creates `AttributeSpec` → provides validation
+
+### Important Implementation Details
+
+- **Element name is case-insensitive**: Always lowercased in `ElementState` constructor
+- **Ancestor traversal**: The `options.ancestors` is a function returning an iterable, not a static array
+- **Lazy instantiation**: `AttributeSpecMap` and `AttributeSpec` are created on-demand, not stored
+- **Global attributes**: Handled separately from element-specific attributes (see `src/attributes/global-attributes.ts`)
+
+### TODOs in Code
+
+Some features are incomplete (marked with `// TODO` in `implicit-role.ts`):
+
+- `<header>` role logic (should return 'banner' or 'generic' based on ancestors)
+- `<li>` role logic (should return 'listitem' or 'generic' based on parent)
+
+### File Extensions
+
+All imports use `.js` extensions even for TypeScript files (required for ESM compatibility with TypeScript's `verbatimModuleSyntax` setting).

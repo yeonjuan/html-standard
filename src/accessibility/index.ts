@@ -1,1 +1,1 @@
-export { accessibility } from "./accessibility";
+export * from "./implicit-role.js";

@@ -1,5 +1,5 @@
 // ARIA roles used in implicit role mapping
-export const ROLES = {
+export const ARIA_ROLES = {
   ARTICLE: "article",
   BLOCKQUOTE: "blockquote",
   BUTTON: "button",

@@ -1,5 +1,5 @@
-import { ElementOptions } from "../types";
-import { AttributeState } from "./attribute-state";
+import type { ElementOptions } from "../types/index.js";
+import { AttributesState } from "../attribute/attributes-state.js";
 
 export class ElementState {
   public readonly name: string;
@@ -11,8 +11,8 @@ export class ElementState {
     this.name = name.toLowerCase();
   }
 
-  get attributes(): AttributeState {
-    return new AttributeState(this.options.attributes);
+  get attributes(): AttributesState {
+    return new AttributesState(this.options.attributes);
   }
 
   parent(): ElementState | null {
@@ -30,7 +30,7 @@ export class ElementState {
     return new ElementState(first.value.name, first.value);
   }
 
-  anceters(): Iterable<
+  ancestors(): Iterable<
     {
       name: string;
     } & ElementOptions
