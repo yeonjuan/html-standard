@@ -1,4 +1,5 @@
 import {
+  AutocompleteAttribute,
   BooleanAttribute,
   CommaSeparatedTokens,
   EnumeratedAttribute,
@@ -1497,7 +1498,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [
@@ -1856,7 +1857,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [
@@ -1953,7 +1954,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [

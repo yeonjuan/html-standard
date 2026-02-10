@@ -20,4 +20,5 @@ export * from "./media-query-list.js";
 export * from "./source-size-list.js";
 export * from "./floating-point-number-list.js";
 export * from "./or-validator.js";
+export * from "./autocomplete-attribute.js";
 export * from "./any-attribute.js";

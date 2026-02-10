@@ -1,4 +1,5 @@
 import {
+  AutocompleteAttribute,
   BCP47,
   BooleanAttribute,
   CommaSeparatedTokens,
@@ -95,6 +96,9 @@ export function createAttributeSpec(
     }
     case OrValidator.type: {
       return new OrValidator({ items: def.items });
+    }
+    case AutocompleteAttribute.type: {
+      return new AutocompleteAttribute();
     }
   }
 }
