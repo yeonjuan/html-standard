@@ -4,6 +4,7 @@ import type {
   AttributeValue,
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 /**
  * A string is a valid floating-point number if it consists of:
@@ -39,7 +40,7 @@ export class FloatingPointNumber implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     if (!FloatingPointNumber.PATTERN.test(value)) {

@@ -5,6 +5,7 @@ import type {
 } from "../../types/index.js";
 import { REGEX_ASCII_WHITESPACE } from "../../shared/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 export type SpaceSeparatedTokensOptions = {
   unique: boolean;
@@ -26,7 +27,7 @@ export class SpaceSeparatedTokens implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     const tokens = this.parse(value).filter((token) => token !== "");

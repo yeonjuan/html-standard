@@ -5,6 +5,7 @@ import type {
 } from "../../types/index.js";
 import { FloatingPointNumber } from "./floating-point-number";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 /**
  * A valid list of floating-point numbers is a number of valid floating-point numbers separated by U+002C COMMA characters, with no other characters (e.g. no ASCII whitespace). In addition, there might be restrictions on the number of floating-point numbers that can be given, or on the range of values allowed.
@@ -18,12 +19,12 @@ export class FloatingPointNumberList implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     // Empty string is not valid
     if (value.length === 0) {
-      return invalid("Value cannot be empty");
+      return invalid(ERROR_MESSAGES.VALUE_CANNOT_BE_EMPTY);
     }
 
     // Split by comma (no whitespace allowed)

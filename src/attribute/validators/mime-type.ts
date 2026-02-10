@@ -4,6 +4,7 @@ import type {
   AttributeSpecValidateResult,
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 /**
  * A valid MIME type string represents a MIME type.
@@ -25,7 +26,7 @@ export class MIMEType implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     if (!MIMEType.PATTERN.test(value)) {

@@ -4,6 +4,7 @@ import type {
   AttributeSpecValidateResult,
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 /**
  * Validates a navigable target name (browsing context name).
@@ -23,7 +24,7 @@ export class NavigableTargetName implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     // Must have at least one character

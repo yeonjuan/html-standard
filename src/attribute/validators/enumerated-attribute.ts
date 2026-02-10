@@ -4,6 +4,7 @@ import type {
   AttributeValue,
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 export type EnumeratedAttributeOptions = {
   keywords: string[];
@@ -18,7 +19,7 @@ export class EnumeratedAttribute implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     const normalizedValue = value.toLowerCase();

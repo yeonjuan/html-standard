@@ -4,6 +4,7 @@ import type {
   AttributeSpecValidateResult,
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
+import { ERROR_MESSAGES } from "./error-messages.js";
 
 /**
  * Validates srcset attribute values.
@@ -25,7 +26,7 @@ export class SrcsetAttribute implements AttributeSpec {
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
     if (value === true) {
-      return invalid("Value must be a string");
+      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
     }
 
     if (value.trim() === "") {
