@@ -23,10 +23,6 @@ export class NavigableTargetName implements AttributeSpec {
   private static readonly INVALID_CHARS_PATTERN = /[\t\n<]/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Must have at least one character
     if (value.length === 0) {
       return invalid("Navigable target name must have at least one character");

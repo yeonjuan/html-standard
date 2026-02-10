@@ -101,12 +101,6 @@ describe("AutocompleteAttribute", () => {
   });
 
   describe("error cases", () => {
-    it("should reject boolean true", () => {
-      const result = validator.validate(true);
-      expect(result.valid).toBe(false);
-      expect(result.reason).toBe("Value must be a string");
-    });
-
     it("should accept empty string", () => {
       const result = validator.validate("");
       expect(result.valid).toBe(true);

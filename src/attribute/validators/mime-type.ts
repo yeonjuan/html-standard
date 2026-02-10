@@ -25,10 +25,6 @@ export class MIMEType implements AttributeSpec {
     /^[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+\/[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+(?:\s*;\s*[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+=(?:[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+|"[^"]*"))*$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     if (!MIMEType.PATTERN.test(value)) {
       return invalid(`Invalid MIME type: "${value}"`);
     }

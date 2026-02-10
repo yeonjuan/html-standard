@@ -11,10 +11,6 @@ export class ID implements AttributeSpec {
   constructor() {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     return valid();
   }
 }

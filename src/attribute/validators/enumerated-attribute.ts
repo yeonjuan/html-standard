@@ -18,10 +18,6 @@ export class EnumeratedAttribute implements AttributeSpec {
   constructor(private options: EnumeratedAttributeOptions) {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     const normalizedValue = value.toLowerCase();
     const isValid = this.options.keywords.includes(normalizedValue);
 

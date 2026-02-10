@@ -25,10 +25,6 @@ export class NonNegativeInteger implements AttributeSpec {
   private static readonly PATTERN = /^\d+$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     if (!NonNegativeInteger.PATTERN.test(value)) {
       return invalid(`Invalid non-negative integer: "${value}"`);
     }

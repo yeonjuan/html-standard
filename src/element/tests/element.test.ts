@@ -22,10 +22,6 @@ describe("element", () => {
       // Validate with valid string value
       const validResult = acceptAttribute!.validate("image/png");
       expect(validResult.valid).toBe(true);
-
-      // Validate with invalid value (boolean true should trigger error constant)
-      const invalidResult = acceptAttribute!.validate(true);
-      expect(invalidResult.valid).toBe(false);
     });
   });
 });

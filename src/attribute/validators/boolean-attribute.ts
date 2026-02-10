@@ -17,7 +17,7 @@ export class BooleanAttribute implements AttributeSpec {
   constructor(private attributeKey: string) {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (!value || value === true) {
+    if (!value) {
       return valid();
     }
 

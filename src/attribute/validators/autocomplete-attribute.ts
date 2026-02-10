@@ -88,10 +88,6 @@ export class AutocompleteAttribute implements AttributeSpec {
   ]);
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Empty string means default behavior
     if (value === "") {
       return valid();
@@ -143,17 +139,13 @@ export class AutocompleteAttribute implements AttributeSpec {
         );
       }
     } else {
-      return invalid(
-        "Autocomplete value must include an autofill field name",
-      );
+      return invalid("Autocomplete value must include an autofill field name");
     }
 
     // Optional: webauthn
     if (index < tokens.length) {
       if (tokens[index] === "webauthn") {
-        if (
-          !AutocompleteAttribute.WEBAUTHN_COMPATIBLE_FIELDS.has(fieldName)
-        ) {
+        if (!AutocompleteAttribute.WEBAUTHN_COMPATIBLE_FIELDS.has(fieldName)) {
           return invalid(
             `"webauthn" token is only valid with username or current-password fields, not "${fieldName}"`,
           );

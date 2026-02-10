@@ -22,6 +22,7 @@ import {
   SourceSizeList,
   FloatingPointNumberList,
   type AnyAttribute,
+  OrValidator,
 } from "../attribute/validators/index.js";
 import { type ElementSpecDefinition } from "../types/index.js";
 
@@ -2190,7 +2191,18 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "type",
         {
-          type: MIMEType.type,
+          type: OrValidator.type,
+          items: [
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["module", "importmap", "speculationrules"],
+              },
+            },
+            {
+              type: MIMEType.type,
+            },
+          ],
         },
       ],
       [

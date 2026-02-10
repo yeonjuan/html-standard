@@ -18,10 +18,6 @@ export class FloatingPointNumberList implements AttributeSpec {
   private floatingPointNumberValidator = new FloatingPointNumber();
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Empty string is not valid
     if (value.length === 0) {
       return invalid(ERROR_MESSAGES.VALUE_CANNOT_BE_EMPTY);

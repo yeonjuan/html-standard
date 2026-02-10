@@ -10,9 +10,6 @@ export class SourceSizeList implements AttributeSpec {
   static type = "SourceSizeList" as const;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (!value || value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
     // TODO: Implementation
     return valid();
   }
