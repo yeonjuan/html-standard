@@ -40,7 +40,7 @@ export class FloatingPointNumberList implements AttributeSpec {
 
       // Validate using FloatingPointNumber validator
       const result = this.floatingPointNumberValidator.validate(number);
-      if (!result.success) {
+      if (!result.valid) {
         return invalid(
           `Invalid floating-point number at position ${i + 1}: "${number}"`,
         );

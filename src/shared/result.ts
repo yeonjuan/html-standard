@@ -1,7 +1,7 @@
 import type { AttributeSpecValidateResult } from "../types/index.js";
 
 const VALID: AttributeSpecValidateResult = {
-  success: true,
+  valid: true,
 };
 
 export function valid(): AttributeSpecValidateResult {
@@ -10,7 +10,7 @@ export function valid(): AttributeSpecValidateResult {
 
 export function invalid(message: string): AttributeSpecValidateResult {
   return {
-    success: false,
+    valid: false,
     message,
   };
 }
