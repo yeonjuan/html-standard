@@ -1,64 +1,8 @@
 # html-standard
 
-A TypeScript library that provides utilities for working with the HTML Living Standard specification.
+A TypeScript library for working with the HTML Living Standard specification.
 
-> ⚠️ **Experimental**: This project is currently in an experimental stage and may introduce breaking changes frequently.
-
-## Features
-
-### Element API
-
-Create an element instance to access various HTML standard utilities:
-
-```typescript
-import { element } from "html-standard";
-
-// Basic usage without attributes
-const button = element("button");
-button.accessibility.implicitRole(); // 'button'
-
-const nav = element("nav");
-nav.accessibility.implicitRole(); // 'navigation'
-
-// Elements with attributes
-const anchor = element("a", {
-  attributes: {
-    get: (key) => (key === "href" ? "https://example.com" : null),
-  },
-});
-anchor.accessibility.implicitRole(); // 'link'
-
-const anchorWithoutHref = element("a");
-anchorWithoutHref.accessibility.implicitRole(); // 'generic'
-
-const checkbox = element("input", {
-  attributes: {
-    get: (key) => (key === "type" ? "checkbox" : null),
-  },
-});
-checkbox.accessibility.implicitRole(); // 'checkbox'
-```
-
-### Accessibility API
-
-Access accessibility utilities directly:
-
-```typescript
-import { accessibility } from "html-standard";
-
-const buttonA11y = accessibility("button", {
-  attributes: {
-    get: () => null,
-  },
-});
-buttonA11y.implicitRole(); // 'button'
-```
-
-**Key Features:**
-
-- **Implicit ARIA Roles**: Get the default ARIA role for HTML elements according to the [HTML-ARIA specification](https://www.w3.org/TR/html-aria/)
-- **Attribute-Dependent Roles**: Supports roles that vary based on element attributes (e.g., `<a>`, `<input>`, `<img>`, `<select>`)
-- **Case-Insensitive**: Element names are handled case-insensitively
+> ⚠️ **Experimental**: This project may introduce breaking changes frequently.
 
 ## Installation
 
@@ -66,24 +10,47 @@ buttonA11y.implicitRole(); // 'button'
 npm install html-standard
 ```
 
-## Development
+## Usage
 
-```bash
-# Run tests
-npm test
+### Get Implicit ARIA Roles
 
-# Run tests in watch mode
-npm run test:watch
+```typescript
+import { element } from "html-standard";
 
-# Run tests with UI
-npm run test:ui
+// Basic elements
+element("button").implicitRole(); // 'button'
+element("nav").implicitRole(); // 'navigation'
 
-# Type check
-npm run ts
+// Attribute-dependent roles
+element("a", {
+  attributes: { get: (key) => key === "href" ? "https://example.com" : null }
+}).implicitRole(); // 'link'
 
-# Build
-npm run build
+element("a").implicitRole(); // 'generic' (no href)
+
+element("input", {
+  attributes: { get: (key) => key === "type" ? "checkbox" : null }
+}).implicitRole(); // 'checkbox'
 ```
+
+### Validate Attributes
+
+```typescript
+import { element } from "html-standard";
+
+const link = element("link");
+
+// Validate 'rel' attribute
+link.attributes.get("rel")?.validate("stylesheet"); // { valid: true, ... }
+link.attributes.get("rel")?.validate("invalid-value"); // { valid: false, ... }
+```
+
+## Features
+
+- Implicit ARIA roles per [HTML-ARIA spec](https://www.w3.org/TR/html-aria/)
+- Attribute validation based on HTML Standard
+- Case-insensitive element names
+- TypeScript support
 
 ## License
 

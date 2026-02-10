@@ -4,98 +4,107 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a TypeScript library that provides utilities for working with the HTML Living Standard specification. The primary focus is on providing programmatic access to HTML element specifications, including attribute validation and accessibility (ARIA) role computation.
-
-**Status**: Experimental - breaking changes may occur frequently.
+This is a TypeScript library that provides utilities for working with the HTML Living Standard specification. The library focuses on providing programmatic access to HTML element specifications, attributes, and accessibility features (particularly implicit ARIA roles).
 
 ## Development Commands
 
 ### Testing
-- `npm test` - Run all tests once
-- `npm run test:watch` - Run tests in watch mode
-- `npm run test:ui` - Open Vitest UI for interactive testing
+```bash
+npm test              # Run tests once
+npm run test:watch    # Run tests in watch mode
+npm run test:ui       # Run tests with Vitest UI
+```
+
+Tests are located alongside source files (e.g., `src/**/*.test.ts`). The project uses Vitest with globals enabled.
 
 ### Type Checking
-- `npm run ts` - Type check without emitting files
+```bash
+npm run ts            # Type check without emitting files (tsc --noEmit)
+```
 
 ### Building
-- `npm run build` - Build the library using tsup (outputs to `dist/` with ESM and CJS formats)
+```bash
+npm run build         # Build using tsup (outputs to dist/)
+```
 
-## Architecture
+The build produces both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) formats with TypeScript declarations and source maps.
 
-### Core Concepts
+## Architecture Overview
 
-The library is built around three main abstractions:
+### Core Entry Points
 
-1. **Element Specification System** - Defines what attributes are valid for each HTML element
-2. **Attribute Validation System** - Validates attribute values against HTML spec rules
-3. **Accessibility System** - Computes implicit ARIA roles based on element type and attributes
+- **`element(name, options)`**: Main factory function that creates `ElementSpec` instances
+- **Element name normalization**: All element names are automatically converted to lowercase
 
-### Key Files and Their Roles
+### Layered Architecture
 
-#### Element System
-- **[src/element-spec.ts](src/element-spec.ts)** - `ElementSpec` class that wraps an element's state and provides the main API
-- **[src/state/element-state.ts](src/state/element-state.ts)** - `ElementState` tracks element name, options, and provides access to attributes and ancestors
-- **[src/specs/element-spec-definition-map.ts](src/specs/element-spec-definition-map.ts)** - Central registry mapping HTML element names to their attribute specifications (e.g., `link`, `input`, `button`, etc.)
+The codebase follows a three-layer architecture:
 
-#### Attribute System
-- **[src/attribute-spec.ts](src/attribute-spec.ts)** - `AttributeSpec` class for validating individual attribute values
-- **[src/attribute-spec-map.ts](src/attribute-spec-map.ts)** - Maps attribute names to their specifications for a given element
-- **[src/state/attributes-state.ts](src/state/attributes-state.ts)** - `AttributesState` provides attribute getter interface
-- **[src/attributes/](src/attributes/)** - Individual attribute type validators implementing the HTML spec's microsyntax rules:
-  - `BooleanAttribute` - Validates boolean attributes (must be empty or match attribute name)
-  - `EnumeratedAttribute` - Validates against a fixed set of keywords
-  - `SpaceSeperatedTokens` - Space-separated token lists with uniqueness rules
-  - `CommaSeparatedTokens` - Comma-separated values
-  - `SignedInteger`, `NonNegativeInteger`, `FloatingPointNumber` - Numeric types
-  - `ValidURL`, `ID`, `CSSColor`, `BCP47`, `MIMEType`, `DateString`, `RegularExpression` - Specialized formats
-  - `SrcsetAttribute`, `MediaQueryList`, `SourceSizeList` - Complex HTML-specific formats
+1. **Spec Layer** (`ElementSpec`, `AttributeSpec`)
+   - High-level API exposed to library users
+   - `ElementSpec` provides access to element-specific functionality (implicit roles, attributes)
+   - `AttributeSpec` provides attribute validation
 
-#### Accessibility System
-- **[src/accessibility/implicit-role.ts](src/accessibility/implicit-role.ts)** - Contains the `IMPLICIT_ROLE` map that computes implicit ARIA roles per the HTML-ARIA specification. Many roles are context-dependent:
-  - `<a>` is "link" with `href`, otherwise "generic"
-  - `<input>` role varies by `type` attribute (button, checkbox, textbox, etc.)
-  - `<img>` is "img" unless `alt=""` (decorative image)
-  - `<select>` is "listbox" with `multiple`, otherwise "combobox"
-  - `<footer>`/`<header>` roles depend on ancestor elements
-- **[src/accessibility/aria-roles.ts](src/accessibility/aria-roles.ts)** - Constants for ARIA role names
+2. **State Layer** (`ElementState`, `AttributesState`)
+   - Manages element and attribute state
+   - Handles parent/ancestor relationships via `options.ancestors` iterator
+   - Provides attribute access through `options.attributes.get(key)`
+
+3. **Definition Layer** (`element-spec-definition-map.ts`, attribute types in `src/attributes/`)
+   - Contains HTML Standard specifications as data structures
+   - Maps element names to their allowed attributes and specifications
+   - Defines attribute types (enumerated, boolean, text, URL, etc.)
+
+### Key Components
+
+#### Accessibility (`src/accessibility/`)
+- **`implicit-role.ts`**: Maps HTML elements to their implicit ARIA roles per W3C HTML-ARIA spec
+- Role determination can be attribute-dependent (e.g., `<a>` has role `link` only with `href`, otherwise `generic`)
+- Some roles check ancestor elements (e.g., `<footer>` role varies based on sectioning ancestors)
+
+#### Attribute System (`src/attributes/`)
+Contains ~20 attribute type validators representing HTML Standard attribute types:
+- `BooleanAttribute`: Presence/absence semantics
+- `EnumeratedAttribute`: Fixed set of keywords
+- `SpaceSeperatedTokens` / `CommaSeparatedTokens`: Token lists
+- `ValidURL`, `MIMEType`, `DateString`, `BCP47`: Format-specific validators
+- `SignedInteger`, `NonNegativeInteger`, `FloatingPointNumber`: Numeric types
+- And more specialized types
+
+Each attribute type implements a `validate(value)` method.
+
+#### Element Specifications (`src/specs/`)
+- **`element-spec-definition-map.ts`**: Large data structure mapping element names to their specifications
+- Each element defines:
+  - Whether it accepts global attributes (`globalAttributes: true/false`)
+  - Element-specific attributes as `[name, typeDefinition]` tuples
+- Example: `<link>` defines attributes like `href` (ValidURL), `crossorigin` (EnumeratedAttribute), `rel` (SpaceSeperatedTokens)
+
+#### State Management (`src/state/`)
+- **`ElementState`**: Holds element name and options, provides attribute access and ancestor traversal
+- **`AttributesState`**: Wraps the `options.attributes` interface for querying attribute values
 
 ### Data Flow
 
-1. User creates an element via `element(name, options)` where `options` contains an `attributes` getter
-2. `ElementSpec` wraps an `ElementState` which normalizes the element name (lowercased) and stores options
-3. When accessing attributes, `AttributesState` is created from the options
-4. For implicit roles, the `IMPLICIT_ROLE` map is consulted with the element's state
-5. Attribute validation uses definitions from `elementSpecDefinitionMap` paired with validator classes
+1. User calls `element("div", { attributes: { get: (key) => ... } })`
+2. Creates `ElementSpec` → `ElementState` (normalizes name to lowercase)
+3. User accesses `.implicitRole()` → looks up element in `IMPLICIT_ROLE` map → executes role function with state
+4. User accesses `.attributes` → creates `AttributeSpecMap` → looks up element in `elementSpecDefinitionMap`
+5. User calls `.attributes.get("class")` → finds attribute definition → creates `AttributeSpec` → provides validation
 
-### Important Patterns
+### Important Implementation Details
 
-- **Case-insensitive element names**: Element names are always lowercased in `ElementState` constructor
-- **Lazy attribute access**: `AttributesState` is created on-demand via getter
-- **Type system integration**: All validators implement the `AttributeSpec` interface with a `validate()` method returning `AttributeSpecValidateResult`
-- **Static type property**: Each attribute validator class has a static `type` property used for runtime type discrimination
-- **Attribute options abstraction**: Element options include an `attributes.get(key)` function allowing flexible attribute value resolution
-- **Ancestor tracking**: Element options can include an `ancestors()` function for context-dependent role computation
+- **Element name is case-insensitive**: Always lowercased in `ElementState` constructor
+- **Ancestor traversal**: The `options.ancestors` is a function returning an iterable, not a static array
+- **Lazy instantiation**: `AttributeSpecMap` and `AttributeSpec` are created on-demand, not stored
+- **Global attributes**: Handled separately from element-specific attributes (see `src/attributes/global-attributes.ts`)
 
-### Global Attributes
+### TODOs in Code
 
-Global attributes (applicable to all HTML elements) are defined in [src/attributes/global-attributes.ts](src/attributes/global-attributes.ts).
+Some features are incomplete (marked with `// TODO` in `implicit-role.ts`):
+- `<header>` role logic (should return 'banner' or 'generic' based on ancestors)
+- `<li>` role logic (should return 'listitem' or 'generic' based on parent)
 
-### Adding New Features
+### File Extensions
 
-When adding support for new HTML elements:
-1. Add element entry to `elementSpecDefinitionMap` in [src/specs/element-spec-definition-map.ts](src/specs/element-spec-definition-map.ts)
-2. Define its attributes using existing validator classes or create new ones if needed
-3. Add implicit role mapping to `IMPLICIT_ROLE` in [src/accessibility/implicit-role.ts](src/accessibility/implicit-role.ts)
-
-When adding new attribute types:
-1. Create a new validator class in [src/attributes/](src/attributes/) implementing the `AttributeSpec` interface
-2. Add static `type` property for type discrimination
-3. Export from [src/attributes/index.ts](src/attributes/index.ts)
-4. Add case to `createAttributeSpec()` function in [src/attribute-spec.ts](src/attribute-spec.ts)
-
-## Build Configuration
-
-- **TypeScript**: ES2016 target with ESNext modules, strict mode enabled ([tsconfig.json](tsconfig.json))
-- **Build tool**: tsup configured to output ESM and CJS formats with sourcemaps, minification, and type declarations ([tsup.config.ts](tsup.config.ts))
-- **Test framework**: Vitest with globals enabled, tests located in `src/**/*.{test,spec}.{js,ts}` ([vitest.config.ts](vitest.config.ts))
+All imports use `.js` extensions even for TypeScript files (required for ESM compatibility with TypeScript's `verbatimModuleSyntax` setting).

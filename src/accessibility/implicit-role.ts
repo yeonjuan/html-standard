@@ -1,5 +1,5 @@
 import { ARIA_ROLES } from "./aria-roles.js";
-import { ElementState } from "../element-state.js";
+import { ElementState } from "../state/index.js";
 
 /**
  * https://www.w3.org/TR/html-aria/
