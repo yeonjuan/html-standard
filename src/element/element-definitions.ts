@@ -86,29 +86,29 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
-            allowed: [
-              "alternate",
-              "canonical",
-              "author",
-              "dns-prefetch",
-              "expect",
-              "help",
-              "icon",
-              "manifest",
-              "modulepreload",
-              "license",
-              "next",
-              "pingback",
-              "preconnect",
-              "prefetch",
-              "preload",
-              "prev",
-              "privacy-policy",
-              "search",
-              "stylesheet",
-              "terms-of-service",
-            ],
+            unique: true,
+            // allowed: [
+            //   "alternate",
+            //   "canonical",
+            //   "author",
+            //   "dns-prefetch",
+            //   "expect",
+            //   "help",
+            //   "icon",
+            //   "manifest",
+            //   "modulepreload",
+            //   "license",
+            //   "next",
+            //   "pingback",
+            //   "preconnect",
+            //   "prefetch",
+            //   "preload",
+            //   "prev",
+            //   "privacy-policy",
+            //   "search",
+            //   "stylesheet",
+            //   "terms-of-service",
+            // ],
           },
         },
       ],
@@ -455,7 +455,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "alternate",
               "author",
@@ -1228,7 +1228,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "alternate",
               "author",
@@ -1457,7 +1457,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "external",
               "help",
