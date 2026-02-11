@@ -495,6 +495,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -681,7 +682,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -717,6 +718,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -846,6 +848,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -969,7 +972,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -984,7 +987,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["none", "metadata", "auto"],
+            keywords: ["", "none", "metadata", "auto"],
           },
         },
       ],
@@ -1048,7 +1051,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -1057,7 +1060,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["none", "metadata", "auto"],
+            keywords: ["", "none", "metadata", "auto"],
           },
         },
       ],
@@ -1253,6 +1256,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -2229,7 +2233,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -2245,6 +2249,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
