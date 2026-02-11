@@ -25,7 +25,7 @@ export class SpaceSeparatedTokens implements AttributeSpec {
     return tokens;
   }
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     const tokens = this.parse(value).filter((token) => token !== "");
 
     // Check uniqueness

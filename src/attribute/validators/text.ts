@@ -8,7 +8,7 @@ import { valid } from "../../shared/result.js";
 export class Text implements AttributeSpec {
   static type = "Text" as const;
 
-  validate(_: AttributeValue): AttributeSpecValidateResult {
+  validateValue(_: AttributeValue): AttributeSpecValidateResult {
     return valid();
   }
 }

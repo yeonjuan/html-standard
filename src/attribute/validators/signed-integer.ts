@@ -18,7 +18,7 @@ export class SignedInteger implements AttributeSpec {
   // Matches: optional hyphen-minus, followed by one or more digits
   private static readonly PATTERN = /^-?\d+$/;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     if (!SignedInteger.PATTERN.test(value)) {
       return invalid(`Invalid signed integer: "${value}"`);
     }

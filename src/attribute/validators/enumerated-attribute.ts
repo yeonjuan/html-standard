@@ -17,7 +17,7 @@ export class EnumeratedAttribute implements AttributeSpec {
   static type = "EnumeratedAttribute" as const;
   constructor(private options: EnumeratedAttributeOptions) {}
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     const normalizedValue = value.toLowerCase();
     const isValid = this.options.keywords.includes(normalizedValue);
 

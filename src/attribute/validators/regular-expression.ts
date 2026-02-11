@@ -18,7 +18,7 @@ export class RegularExpression implements AttributeSpec {
   static type = "RegularExpression" as const;
   constructor() {}
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Try to compile the regular expression to check if it's valid
     try {
       new RegExp(value);

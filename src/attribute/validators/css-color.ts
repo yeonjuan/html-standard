@@ -9,7 +9,7 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class CSSColor implements AttributeSpec {
   static type = "CSSColor" as const;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     return valid();
   }
 }

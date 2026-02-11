@@ -10,7 +10,7 @@ export class ID implements AttributeSpec {
   static type = "ID" as const;
   constructor() {}
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     return valid();
   }
 }

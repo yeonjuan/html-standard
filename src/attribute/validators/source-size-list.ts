@@ -9,7 +9,7 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class SourceSizeList implements AttributeSpec {
   static type = "SourceSizeList" as const;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // TODO: Implementation
     return valid();
   }

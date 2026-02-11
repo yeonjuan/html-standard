@@ -14,7 +14,7 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class CommaSeparatedTokens implements AttributeSpec {
   static type = "CommaSeparatedTokens" as const;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // According to the spec:
     // - Tokens can be zero or more characters
     // - Tokens are separated by commas

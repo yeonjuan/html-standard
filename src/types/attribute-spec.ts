@@ -6,5 +6,5 @@ export type AttributeSpecValidateResult = {
 };
 
 export interface AttributeSpec {
-  validate(value: AttributeValue): AttributeSpecValidateResult;
+  validateValue(value: AttributeValue): AttributeSpecValidateResult;
 }

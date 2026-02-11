@@ -16,7 +16,7 @@ export class BooleanAttribute implements AttributeSpec {
   static type = "BooleanAttribute" as const;
   constructor(private attributeKey: string) {}
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     if (!value) {
       return valid();
     }

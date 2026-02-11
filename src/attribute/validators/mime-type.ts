@@ -24,7 +24,7 @@ export class MIMEType implements AttributeSpec {
   private static readonly PATTERN =
     /^[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+\/[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+(?:\s*;\s*[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+=(?:[a-zA-Z0-9!#$%&'*+\-.^_`{|}~]+|"[^"]*"))*$/;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     if (!MIMEType.PATTERN.test(value)) {
       return invalid(`Invalid MIME type: "${value}"`);
     }

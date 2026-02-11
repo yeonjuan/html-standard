@@ -23,7 +23,7 @@ import { valid, invalid } from "../../shared/result.js";
 export class SrcsetAttribute implements AttributeSpec {
   static type = "SrcsetAttribute" as const;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     if (value.trim() === "") {
       return invalid("Srcset cannot be empty");
     }

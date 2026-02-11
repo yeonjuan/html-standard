@@ -32,7 +32,7 @@ export class BCP47 implements AttributeSpec {
   private static readonly PATTERN =
     /^[a-zA-Z]{2,3}(?:-[a-zA-Z]{3}){0,3}(?:-[a-zA-Z]{4})?(?:-(?:[a-zA-Z]{2}|[0-9]{3}))?(?:-(?:[a-zA-Z0-9]{5,8}|[0-9][a-zA-Z0-9]{3}))*(?:-[0-9a-wyzA-WYZ](?:-[a-zA-Z0-9]{2,8})+)*(?:-x(?:-[a-zA-Z0-9]{1,8})+)?$|^x(?:-[a-zA-Z0-9]{1,8})+$|^[a-zA-Z]{4,8}$/;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Empty string is valid (no language specified)
     if (value === "") {
       return valid();

@@ -41,8 +41,8 @@ import { element } from "html-standard";
 const link = element("link");
 
 // Validate 'rel' attribute
-link.attributes.get("rel")?.validate("stylesheet"); // { valid: true, ... }
-link.attributes.get("rel")?.validate("invalid-value"); // { valid: false, ... }
+link.attributes.get("rel")?.validateValue("stylesheet"); // { valid: true, ... }
+link.attributes.get("rel")?.validateValue("invalid-value"); // { valid: false, ... }
 ```
 
 ## Features

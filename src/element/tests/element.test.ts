@@ -20,7 +20,7 @@ describe("element", () => {
       expect(acceptAttribute).not.toBeNull();
 
       // Validate with valid string value
-      const validResult = acceptAttribute!.validate("image/png");
+      const validResult = acceptAttribute!.validateValue("image/png");
       expect(validResult.valid).toBe(true);
     });
   });

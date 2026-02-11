@@ -17,7 +17,7 @@ export class FloatingPointNumberList implements AttributeSpec {
 
   private floatingPointNumberValidator = new FloatingPointNumber();
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Empty string is not valid
     if (value.length === 0) {
       return invalid(ERROR_MESSAGES.VALUE_CANNOT_BE_EMPTY);
@@ -36,7 +36,7 @@ export class FloatingPointNumberList implements AttributeSpec {
       }
 
       // Validate using FloatingPointNumber validator
-      const result = this.floatingPointNumberValidator.validate(number);
+      const result = this.floatingPointNumberValidator.validateValue(number);
       if (!result.valid) {
         return invalid(
           `Invalid floating-point number at position ${i + 1}: "${number}"`,

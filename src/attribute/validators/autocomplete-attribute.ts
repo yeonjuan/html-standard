@@ -87,7 +87,7 @@ export class AutocompleteAttribute implements AttributeSpec {
     "current-password",
   ]);
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Empty string means default behavior
     if (value === "") {
       return valid();

@@ -24,7 +24,7 @@ export class NonNegativeInteger implements AttributeSpec {
   // Matches: one or more digits (no hyphen-minus allowed)
   private static readonly PATTERN = /^\d+$/;
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     if (!NonNegativeInteger.PATTERN.test(value)) {
       return invalid(`Invalid non-negative integer: "${value}"`);
     }

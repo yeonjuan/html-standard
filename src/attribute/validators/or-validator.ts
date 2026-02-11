@@ -20,13 +20,13 @@ export class OrValidator implements AttributeSpec {
   static type = "#or" as const;
   constructor(private options: OrValidatorOptions) {}
 
-  validate(value: AttributeValue): AttributeSpecValidateResult {
+  validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Try each validator in order
     let lastError: string | undefined;
 
     for (const item of this.options.items) {
       const spec = createAttributeSpec("", item);
-      const result = spec.validate(value);
+      const result = spec.validateValue(value);
 
       if (result.valid) {
         return valid();
