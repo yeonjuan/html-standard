@@ -19,10 +19,6 @@ export class RegularExpression implements AttributeSpec {
   constructor() {}
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Try to compile the regular expression to check if it's valid
     try {
       new RegExp(value);

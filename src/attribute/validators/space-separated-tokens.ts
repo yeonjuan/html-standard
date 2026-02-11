@@ -26,10 +26,6 @@ export class SpaceSeparatedTokens implements AttributeSpec {
   }
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     const tokens = this.parse(value).filter((token) => token !== "");
 
     // Check uniqueness

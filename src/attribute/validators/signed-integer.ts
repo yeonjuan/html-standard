@@ -19,10 +19,6 @@ export class SignedInteger implements AttributeSpec {
   private static readonly PATTERN = /^-?\d+$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     if (!SignedInteger.PATTERN.test(value)) {
       return invalid(`Invalid signed integer: "${value}"`);
     }

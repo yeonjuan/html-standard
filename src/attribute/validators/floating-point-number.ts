@@ -39,10 +39,6 @@ export class FloatingPointNumber implements AttributeSpec {
     /^-?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     if (!FloatingPointNumber.PATTERN.test(value)) {
       return invalid(`Invalid floating-point number: "${value}"`);
     }

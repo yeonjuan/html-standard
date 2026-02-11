@@ -20,10 +20,6 @@ export class HashNameReference implements AttributeSpec {
   static type = "HashNameReference" as const;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Must start with # and have at least one character after it
     if (!value.startsWith("#")) {
       return invalid(`Hash-name reference must start with "#": "${value}"`);

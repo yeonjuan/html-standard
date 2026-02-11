@@ -15,10 +15,6 @@ export class CommaSeparatedTokens implements AttributeSpec {
   static type = "CommaSeparatedTokens" as const;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // According to the spec:
     // - Tokens can be zero or more characters
     // - Tokens are separated by commas

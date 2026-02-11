@@ -28,6 +28,7 @@ import { SrcsetAttribute } from "./srcset-attribute.js";
 import { MediaQueryList } from "./media-query-list.js";
 import { SourceSizeList } from "./source-size-list.js";
 import { FloatingPointNumberList } from "./floating-point-number-list.js";
+import { AutocompleteAttribute } from "./autocomplete-attribute.js";
 
 export type AnyAttribute =
   | {
@@ -95,6 +96,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof FloatingPointNumberList.type;
+    }
+  | {
+      type: typeof AutocompleteAttribute.type;
     }
   | {
       type: "#or";

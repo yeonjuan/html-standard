@@ -1,4 +1,5 @@
 import {
+  AutocompleteAttribute,
   BooleanAttribute,
   CommaSeparatedTokens,
   EnumeratedAttribute,
@@ -21,6 +22,7 @@ import {
   SourceSizeList,
   FloatingPointNumberList,
   type AnyAttribute,
+  OrValidator,
 } from "../attribute/validators/index.js";
 import { type ElementSpecDefinition } from "../types/index.js";
 
@@ -75,7 +77,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -84,29 +86,29 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
-            allowed: [
-              "alternate",
-              "canonical",
-              "author",
-              "dns-prefetch",
-              "expect",
-              "help",
-              "icon",
-              "manifest",
-              "modulepreload",
-              "license",
-              "next",
-              "pingback",
-              "preconnect",
-              "prefetch",
-              "preload",
-              "prev",
-              "privacy-policy",
-              "search",
-              "stylesheet",
-              "terms-of-service",
-            ],
+            unique: true,
+            // allowed: [
+            //   "alternate",
+            //   "canonical",
+            //   "author",
+            //   "dns-prefetch",
+            //   "expect",
+            //   "help",
+            //   "icon",
+            //   "manifest",
+            //   "modulepreload",
+            //   "license",
+            //   "next",
+            //   "pingback",
+            //   "preconnect",
+            //   "prefetch",
+            //   "preload",
+            //   "prev",
+            //   "privacy-policy",
+            //   "search",
+            //   "stylesheet",
+            //   "terms-of-service",
+            // ],
           },
         },
       ],
@@ -140,6 +142,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -452,7 +455,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "alternate",
               "author",
@@ -492,6 +495,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -678,7 +682,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -714,6 +718,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -843,6 +848,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -966,7 +972,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -981,7 +987,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["none", "metadata", "auto"],
+            keywords: ["", "none", "metadata", "auto"],
           },
         },
       ],
@@ -1045,7 +1051,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -1054,7 +1060,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["none", "metadata", "auto"],
+            keywords: ["", "none", "metadata", "auto"],
           },
         },
       ],
@@ -1222,7 +1228,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "alternate",
               "author",
@@ -1250,6 +1256,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",
@@ -1450,7 +1457,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: SpaceSeparatedTokens.type,
           options: {
-            unique: false,
+            unique: true,
             allowed: [
               "external",
               "help",
@@ -1497,7 +1504,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [
@@ -1856,7 +1863,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [
@@ -1953,7 +1960,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "autocomplete",
         {
-          type: Text.type,
+          type: AutocompleteAttribute.type,
         },
       ],
       [
@@ -2189,7 +2196,18 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       [
         "type",
         {
-          type: MIMEType.type,
+          type: OrValidator.type,
+          items: [
+            {
+              type: EnumeratedAttribute.type,
+              options: {
+                keywords: ["module", "importmap", "speculationrules"],
+              },
+            },
+            {
+              type: MIMEType.type,
+            },
+          ],
         },
       ],
       [
@@ -2215,7 +2233,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["anonymous", "use-credentials"],
+            keywords: ["", "anonymous", "use-credentials"],
           },
         },
       ],
@@ -2231,6 +2249,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: EnumeratedAttribute.type,
           options: {
             keywords: [
+              "",
               "no-referrer",
               "no-referrer-when-downgrade",
               "same-origin",

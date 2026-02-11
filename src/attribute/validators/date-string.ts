@@ -27,10 +27,6 @@ export class DateString implements AttributeSpec {
     /^\d{4,}-\d{2}-\d{2}[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})?$/;
 
   validate(value: AttributeValue): AttributeSpecValidateResult {
-    if (value === true) {
-      return invalid(ERROR_MESSAGES.VALUE_MUST_BE_STRING);
-    }
-
     // Check if it matches either date or datetime format
     if (
       !DateString.DATE_PATTERN.test(value) &&

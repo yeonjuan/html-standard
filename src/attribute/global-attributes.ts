@@ -110,7 +110,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     {
       type: EnumeratedAttribute.type,
       options: {
-        keywords: ["until-found", "hidden"],
+        keywords: ["", "until-found", "hidden"],
       },
     },
   ],
@@ -217,7 +217,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
         {
           type: EnumeratedAttribute.type,
           options: {
-            keywords: ["auto", "manual", "hint"],
+            keywords: ["", "auto", "manual", "hint"],
           },
         },
       ],
@@ -228,7 +228,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     {
       type: EnumeratedAttribute.type,
       options: {
-        keywords: ["true", "false"],
+        keywords: ["", "true", "false"],
       },
     },
   ],
@@ -255,7 +255,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     {
       type: EnumeratedAttribute.type,
       options: {
-        keywords: ["yes", "no"],
+        keywords: ["", "yes", "no"],
       },
     },
   ],
@@ -264,7 +264,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     {
       type: EnumeratedAttribute.type,
       options: {
-        keywords: ["true", "false"],
+        keywords: ["", "true", "false"],
       },
     },
   ],

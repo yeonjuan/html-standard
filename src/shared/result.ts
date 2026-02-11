@@ -8,9 +8,9 @@ export function valid(): AttributeSpecValidateResult {
   return VALID;
 }
 
-export function invalid(message: string): AttributeSpecValidateResult {
+export function invalid(reason: string): AttributeSpecValidateResult {
   return {
     valid: false,
-    message,
+    reason,
   };
 }
