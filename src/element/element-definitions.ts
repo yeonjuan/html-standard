@@ -190,18 +190,21 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only valid when rel="preload" and as="image"
       [
         "imagesrcset",
         {
           type: SrcsetAttribute.type,
         },
       ],
+      // TODO: conditional - only valid when rel="preload", as="image", and imagesrcset is present
       [
         "imagesizes",
         {
           type: SourceSizeList.type,
         },
       ],
+      // TODO: conditional - only valid when rel contains "preload" or "modulepreload"
       [
         "as",
         {
@@ -616,18 +619,21 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: MediaQueryList.type,
         },
       ],
+      // TODO: conditional - only valid when parent is <audio> or <video> (invalid when parent is <picture>)
       [
         "src",
         {
           type: ValidURL.type,
         },
       ],
+      // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
       [
         "srcset",
         {
           type: SrcsetAttribute.type,
         },
       ],
+      // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
       [
         "sizes",
         {
@@ -686,12 +692,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - invalid when <img> is a descendant of <a> or <button>
       [
         "usemap",
         {
           type: HashNameReference.type,
         },
       ],
+      // TODO: conditional - only valid when <img> is a descendant of <a> with href attribute
       [
         "ismap",
         {
@@ -1175,6 +1183,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: ValidURL.type,
         },
       ],
+      // TODO: conditional - only applicable when href attribute is present
       [
         "target",
         {
@@ -1192,12 +1201,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           ],
         },
       ],
+      // TODO: conditional - only applicable when href attribute is present
       [
         "download",
         {
           type: Text.type,
         },
       ],
+      // TODO: conditional - only applicable when href attribute is present
       [
         "ping",
         {
@@ -1223,6 +1234,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only applicable when href attribute is present
       [
         "rel",
         {
@@ -1250,6 +1262,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only applicable when href attribute is present
       [
         "referrerpolicy",
         {
@@ -1489,12 +1502,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   input: {
     globalAttributes: true,
     attributes: [
+      // TODO: conditional - only valid when type="file"
       [
         "accept",
         {
           type: CommaSeparatedTokens.type,
         },
       ],
+      // TODO: conditional - only valid when type="image"
       [
         "alt",
         {
@@ -1507,6 +1522,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: AutocompleteAttribute.type,
         },
       ],
+      // TODO: conditional - only valid when type="checkbox" or type="radio"
       [
         "checked",
         {
@@ -1582,6 +1598,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           ],
         },
       ],
+      // TODO: conditional - only valid when type="image"
       [
         "height",
         {
@@ -1595,6 +1612,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: ID.type,
         },
       ],
+      // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "max",
         {
@@ -1609,6 +1627,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: {},
         },
       ],
+      // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "min",
         {
@@ -1623,6 +1642,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: {},
         },
       ],
+      // TODO: conditional - only valid when type="file" or type="email"
       [
         "multiple",
         {
@@ -1635,6 +1655,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: Text.type,
         },
       ],
+      // TODO: conditional - only applicable to text-based input types (excludes checkbox, radio, hidden, submit, image, reset, button, range, color)
       [
         "pattern",
         {
@@ -1683,12 +1704,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only valid when type="image"
       [
         "src",
         {
           type: ValidURL.type,
         },
       ],
+      // TODO: conditional - only valid when type is one of: date, month, week, time, datetime-local, number, range
       [
         "step",
         {
@@ -1744,6 +1767,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: Text.type,
         },
       ],
+      // TODO: conditional - only valid when type="image"
       [
         "width",
         {
@@ -1768,12 +1792,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: ID.type,
         },
       ],
+      // TODO: conditional - only valid when type="submit"
       [
         "formaction",
         {
           type: ValidURL.type,
         },
       ],
+      // TODO: conditional - only valid when type="submit"
       [
         "formenctype",
         {
@@ -1787,6 +1813,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only valid when type="submit"
       [
         "formmethod",
         {
@@ -1796,12 +1823,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
+      // TODO: conditional - only valid when type="submit"
       [
         "formnovalidate",
         {
           type: BooleanAttribute.type,
         },
       ],
+      // TODO: conditional - only valid when type="submit"
       [
         "formtarget",
         {
@@ -2210,18 +2239,21 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           ],
         },
       ],
+      // TODO: conditional - only meaningful for classic scripts (not type="module")
       [
         "nomodule",
         {
           type: BooleanAttribute.type,
         },
       ],
+      // TODO: conditional - applicable when src attribute is present or type="module"
       [
         "async",
         {
           type: BooleanAttribute.type,
         },
       ],
+      // TODO: conditional - only applicable to classic scripts (not type="module")
       [
         "defer",
         {
