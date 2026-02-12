@@ -51,7 +51,9 @@ describe("AutocompleteAttribute", () => {
     });
 
     it("should accept section with shipping", () => {
-      const result = validator.validateValue("section-red shipping street-address");
+      const result = validator.validateValue(
+        "section-red shipping street-address",
+      );
       expect(result.valid).toBe(true);
     });
   });

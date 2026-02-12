@@ -44,11 +44,13 @@ The build produces both ESM (`dist/index.js`) and CJS (`dist/index.cjs`) formats
 The codebase follows a three-layer architecture:
 
 1. **Spec Layer** (`ElementSpec`, `AttributeSpec`)
+
    - High-level API exposed to library users
    - `ElementSpec` provides access to element-specific functionality (implicit roles, attributes)
    - `AttributeSpec` provides attribute validation
 
 2. **State Layer** (`ElementState`, `AttributesState`)
+
    - Manages element and attribute state
    - Handles parent/ancestor relationships via `options.ancestors` iterator
    - Provides attribute access through `options.attributes.get(key)`
