@@ -8,7 +8,9 @@ export class AttributeSpec implements types.AttributeSpec {
     private definition: AnyAttribute,
   ) {}
 
-  validateValue(value: types.AttributeValue): types.AttributeSpecValidateResult {
+  validateValue(
+    value: types.AttributeValue,
+  ): types.AttributeSpecValidateResult {
     const spec = createAttributeSpec(this.key, this.definition);
     return spec.validateValue(value);
   }

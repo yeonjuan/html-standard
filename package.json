@@ -18,7 +18,9 @@
     "ts": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "yeonjuan",
   "license": "MIT",
