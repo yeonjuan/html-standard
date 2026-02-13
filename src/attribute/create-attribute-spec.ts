@@ -47,7 +47,7 @@ export function createAttributeSpec(
       return new Text();
     }
     case ValidURL.type: {
-      return new ValidURL();
+      return new ValidURL(def.options);
     }
     case NonNegativeInteger.type: {
       return new NonNegativeInteger(def.options);

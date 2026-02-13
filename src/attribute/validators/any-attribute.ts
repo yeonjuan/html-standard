@@ -21,7 +21,7 @@ import {
   type SpaceSeparatedTokensOptions,
 } from "./space-separated-tokens.js";
 import { Text } from "./text.js";
-import { ValidURL } from "./valid-url.js";
+import { ValidURL, type ValidURLOptions } from "./valid-url.js";
 import { HashNameReference } from "./hash-name-reference.js";
 import { NavigableTargetName } from "./navigable-target-name.js";
 import { SrcsetAttribute } from "./srcset-attribute.js";
@@ -50,6 +50,7 @@ export type AnyAttribute =
     }
   | {
       type: typeof ValidURL.type;
+      options: ValidURLOptions;
     }
   | {
       type: typeof NonNegativeInteger.type;
