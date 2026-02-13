@@ -148,6 +148,10 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "itemid",
     {
       type: ValidURL.type,
+      options: {
+        nonEmpty: false,
+        potentiallySurroundedBySpaces: true,
+      },
     },
   ],
   [
