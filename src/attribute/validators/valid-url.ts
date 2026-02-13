@@ -6,8 +6,16 @@ import type {
 import { valid, invalid } from "../../shared/result.js";
 
 export type ValidURLOptions = {
-  nonEmpty: boolean;
-  potentiallySurroundedBySpaces: boolean;
+  /**
+   * If true, empty strings are not allowed.
+   * If false, empty strings are valid (treated as relative URLs).
+   */
+  nonEmpty?: boolean;
+  /**
+   * If true, leading and trailing ASCII whitespace characters are allowed and will be stripped.
+   * If false, URLs with surrounding spaces are invalid.
+   */
+  potentiallySurroundedBySpaces?: boolean;
 };
 
 /**
@@ -35,9 +43,13 @@ export class ValidURL implements AttributeSpec {
     },
   };
 
-  constructor(private options: ValidURLOptions) {}
+  constructor(private options: ValidURLOptions = {}) {}
 
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
+    if (typeof value !== "string") {
+      return invalid("Value must be a string");
+    }
+
     let processedValue = value;
 
     if (this.options.potentiallySurroundedBySpaces) {
