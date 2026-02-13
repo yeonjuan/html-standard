@@ -38,12 +38,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   base: {
     globalAttributes: true,
     attributes: [
-      [
-        "href",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["href", ValidURL.PotentiallySurroundedBySpaces],
       [
         "target",
         {
@@ -66,12 +61,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   link: {
     globalAttributes: true,
     attributes: [
-      [
-        "href",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["href", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "crossorigin",
         {
@@ -340,14 +330,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   pre: { globalAttributes: true, attributes: empty },
   blockquote: {
     globalAttributes: true,
-    attributes: [
-      [
-        "cite",
-        {
-          type: ValidURL.type,
-        },
-      ],
-    ],
+    attributes: [["cite", ValidURL.PotentiallySurroundedBySpaces]],
   },
   ol: {
     globalAttributes: true,
@@ -399,12 +382,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   a: {
     globalAttributes: true,
     attributes: [
-      [
-        "href",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["href", ValidURL.PotentiallySurroundedBySpaces],
       [
         "target",
         {
@@ -520,14 +498,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   cite: { globalAttributes: true, attributes: empty },
   q: {
     globalAttributes: true,
-    attributes: [
-      [
-        "cite",
-        {
-          type: ValidURL.type,
-        },
-      ],
-    ],
+    attributes: [["cite", ValidURL.PotentiallySurroundedBySpaces]],
   },
   dfn: { globalAttributes: true, attributes: empty },
   abbr: { globalAttributes: true, attributes: empty },
@@ -572,12 +543,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   ins: {
     globalAttributes: true,
     attributes: [
-      [
-        "cite",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["cite", ValidURL.PotentiallySurroundedBySpaces],
       [
         "datetime",
         {
@@ -589,12 +555,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   del: {
     globalAttributes: true,
     attributes: [
-      [
-        "cite",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["cite", ValidURL.PotentiallySurroundedBySpaces],
       [
         "datetime",
         {
@@ -620,12 +581,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when parent is <audio> or <video> (invalid when parent is <picture>)
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
       [
         "srcset",
@@ -665,12 +621,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: Text.type,
         },
       ],
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "srcset",
         {
@@ -771,12 +722,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   iframe: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "srcdoc",
         {
@@ -883,12 +829,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   embed: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
@@ -914,12 +855,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   object: {
     globalAttributes: true,
     attributes: [
-      [
-        "data",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["data", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
@@ -969,12 +905,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   video: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "crossorigin",
         {
@@ -984,12 +915,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "poster",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["poster", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "preload",
         {
@@ -1048,12 +974,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   audio: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "crossorigin",
         {
@@ -1116,12 +1037,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "srclang",
         {
@@ -1177,12 +1093,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "href",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["href", ValidURL.PotentiallySurroundedBySpaces],
       // TODO: conditional - only applicable when href attribute is present
       [
         "target",
@@ -1399,12 +1310,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: { unique: true },
         },
       ],
-      [
-        "action",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["action", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "autocomplete",
         {
@@ -1547,12 +1453,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: ID.type,
         },
       ],
-      [
-        "formaction",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "formenctype",
         {
@@ -1705,12 +1606,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="image"
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type is one of: date, month, week, time, datetime-local, number, range
       [
         "step",
@@ -1793,12 +1689,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="submit"
-      [
-        "formaction",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type="submit"
       [
         "formenctype",
@@ -2216,12 +2107,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   script: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
