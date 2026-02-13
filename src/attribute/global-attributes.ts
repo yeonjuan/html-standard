@@ -144,16 +144,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       type: Text.type,
     },
   ],
-  [
-    "itemid",
-    {
-      type: ValidURL.type,
-      options: {
-        nonEmpty: false,
-        potentiallySurroundedBySpaces: true,
-      },
-    },
-  ],
+  ["itemid", ValidURL.PotentiallySurroundedBySpaces],
   [
     "itemprop",
     {

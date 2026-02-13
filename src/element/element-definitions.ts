@@ -38,16 +38,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   base: {
     globalAttributes: true,
     attributes: [
-      [
-        "href",
-        {
-          type: ValidURL.type,
-          options: {
-            nonEmpty: false,
-            potentiallySurroundedBySpaces: true,
-          },
-        },
-      ],
+      ["href", ValidURL.PotentiallySurroundedBySpaces],
       [
         "target",
         {
@@ -838,12 +829,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   embed: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
@@ -869,12 +855,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   object: {
     globalAttributes: true,
     attributes: [
-      [
-        "data",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["data", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
@@ -924,12 +905,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   video: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "crossorigin",
         {
@@ -939,12 +915,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "poster",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["poster", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "preload",
         {
@@ -1003,12 +974,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   audio: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "crossorigin",
         {
@@ -1071,12 +1037,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "srclang",
         {
@@ -1132,12 +1093,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "href",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["href", ValidURL.PotentiallySurroundedBySpaces],
       // TODO: conditional - only applicable when href attribute is present
       [
         "target",
@@ -1354,12 +1310,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: { unique: true },
         },
       ],
-      [
-        "action",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["action", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "autocomplete",
         {
@@ -1502,12 +1453,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: ID.type,
         },
       ],
-      [
-        "formaction",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "formenctype",
         {
@@ -1660,12 +1606,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="image"
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type is one of: date, month, week, time, datetime-local, number, range
       [
         "step",
@@ -1748,12 +1689,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="submit"
-      [
-        "formaction",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type="submit"
       [
         "formenctype",
@@ -2171,12 +2107,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   script: {
     globalAttributes: true,
     attributes: [
-      [
-        "src",
-        {
-          type: ValidURL.type,
-        },
-      ],
+      ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "type",
         {
