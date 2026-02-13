@@ -76,6 +76,11 @@ describe("ValidURL", () => {
       expect(result.valid).toBe(true);
     });
 
+    it("should accept relative URLs with path", () => {
+      const result = validator.validateValue("path/to/page");
+      expect(result.valid).toBe(true);
+    });
+
     it("should accept relative URLs with query", () => {
       const result = validator.validateValue("?query=test");
       expect(result.valid).toBe(true);
