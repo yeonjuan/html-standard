@@ -41,12 +41,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       keywords: ["on", "off"],
     },
   ],
-  [
-    "autofocus",
-    {
-      type: BooleanAttribute.type,
-    },
-  ],
+  ["autofocus", BooleanAttribute.Type],
   [
     "contenteditable",
     {
@@ -83,12 +78,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       max: 8,
     },
   ],
-  [
-    "headingreset",
-    {
-      type: BooleanAttribute.type,
-    },
-  ],
+  ["headingreset", BooleanAttribute.Type],
   [
     "hidden",
     {
@@ -96,12 +86,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       keywords: ["", "until-found", "hidden"],
     },
   ],
-  [
-    "inert",
-    {
-      type: BooleanAttribute.type,
-    },
-  ],
+  ["inert", BooleanAttribute.Type],
   [
     "inputmode",
     {
@@ -118,12 +103,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       ],
     },
   ],
-  [
-    "is",
-    {
-      type: Text.type,
-    },
-  ],
+  ["is", Text.Type],
   ["itemid", ValidURL.PotentiallySurroundedBySpaces],
   [
     "itemprop",
@@ -139,12 +119,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       unique: true,
     },
   ],
-  [
-    "itemscope",
-    {
-      type: BooleanAttribute.type,
-    },
-  ],
+  ["itemscope", BooleanAttribute.Type],
   /**
    * The itemtype attribute, if specified, must have a value that is an unordered set of unique space-separated tokens,
    * none of which are identical to another token and each of which is a valid URL string that is an absolute URL,
@@ -167,26 +142,14 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       },
     },
   ],
-  [
-    "lang",
-    {
-      type: BCP47.type,
-    },
-  ],
-  [
-    "nonce",
-    {
-      type: Text.type,
-    },
-  ],
+  ["lang", BCP47.Type],
+  ["nonce", Text.Type],
   [
     "popover",
     {
       type: "#or",
       items: [
-        {
-          type: BooleanAttribute.type,
-        },
+        BooleanAttribute.Type,
         {
           type: EnumeratedAttribute.type,
           keywords: ["", "auto", "manual", "hint"],
@@ -201,24 +164,9 @@ export const globalAttributes = new Map<string, AnyAttribute>([
       keywords: ["", "true", "false"],
     },
   ],
-  [
-    "style",
-    {
-      type: Text.type,
-    },
-  ],
-  [
-    "tabindex",
-    {
-      type: SignedInteger.type,
-    },
-  ],
-  [
-    "title",
-    {
-      type: Text.type,
-    },
-  ],
+  ["style", Text.Type],
+  ["tabindex", SignedInteger.Type],
+  ["title", Text.Type],
   [
     "translate",
     {
