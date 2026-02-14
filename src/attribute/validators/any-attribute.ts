@@ -35,10 +35,9 @@ export type AnyAttribute =
       type: typeof SpaceSeparatedTokens.type;
       options: SpaceSeparatedTokensOptions;
     }
-  | {
+  | ({
       type: typeof EnumeratedAttribute.type;
-      options: EnumeratedAttributeOptions;
-    }
+    } & EnumeratedAttributeOptions)
   | {
       type: typeof BooleanAttribute.type;
     }

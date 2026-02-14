@@ -47,9 +47,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -64,9 +62,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "crossorigin",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "anonymous", "use-credentials"],
-          },
+          keywords: ["", "anonymous", "use-credentials"],
         },
       ],
       [
@@ -113,19 +109,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
       [
@@ -172,24 +166,22 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "as",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "fetch",
-              "font",
-              "image",
-              "script",
-              "style",
-              "track",
-              "json",
-              "style",
-              "audioworklet",
-              "paintworklet",
-              "script",
-              "serviceworker",
-              "sharedworker",
-              "worker",
-            ],
-          },
+          keywords: [
+            "fetch",
+            "font",
+            "image",
+            "script",
+            "style",
+            "track",
+            "json",
+            "style",
+            "audioworklet",
+            "paintworklet",
+            "script",
+            "serviceworker",
+            "sharedworker",
+            "worker",
+          ],
         },
       ],
       [
@@ -210,9 +202,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "fetchpriority",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["high", "low", "auto"],
-          },
+          keywords: ["high", "low", "auto"],
         },
       ],
     ],
@@ -225,17 +215,15 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "http-equiv",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "content-language",
-              "content-type",
-              "default-style",
-              "refresh",
-              "set-cookie",
-              "x-ua-compatible",
-              "content-security-policy",
-            ],
-          },
+          keywords: [
+            "content-language",
+            "content-type",
+            "default-style",
+            "refresh",
+            "set-cookie",
+            "x-ua-compatible",
+            "content-security-policy",
+          ],
         },
       ],
       ["content", Text.Type],
@@ -243,9 +231,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "charset",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["utf-8"],
-          },
+          keywords: ["utf-8"],
         },
       ],
       ["media", MediaQueryList.Type],
@@ -289,9 +275,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "type",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["1", "a", "A", "i", "I"],
-          },
+          keywords: ["1", "a", "A", "i", "I"],
         },
       ],
     ],
@@ -322,9 +306,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -393,19 +375,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
     ],
@@ -515,9 +495,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "crossorigin",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "anonymous", "use-credentials"],
-          },
+          keywords: ["", "anonymous", "use-credentials"],
         },
       ],
       // TODO: conditional - invalid when <img> is a descendant of <a> or <button>
@@ -547,46 +525,38 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
       [
         "decoding",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["sync", "async", "auto"],
-          },
+          keywords: ["sync", "async", "auto"],
         },
       ],
       [
         "loading",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["eager", "lazy"],
-          },
+          keywords: ["eager", "lazy"],
         },
       ],
       [
         "fetchpriority",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["high", "low", "auto"],
-          },
+          keywords: ["high", "low", "auto"],
         },
       ],
     ],
@@ -604,9 +574,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -655,28 +623,24 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
       [
         "loading",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["eager", "lazy"],
-          },
+          keywords: ["eager", "lazy"],
         },
       ],
     ],
@@ -715,9 +679,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -748,9 +710,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "crossorigin",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "anonymous", "use-credentials"],
-          },
+          keywords: ["", "anonymous", "use-credentials"],
         },
       ],
       ["poster", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
@@ -758,9 +718,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "preload",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "none", "metadata", "auto"],
-          },
+          keywords: ["", "none", "metadata", "auto"],
         },
       ],
       ["autoplay", BooleanAttribute.Type],
@@ -792,18 +750,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "crossorigin",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "anonymous", "use-credentials"],
-          },
+          keywords: ["", "anonymous", "use-credentials"],
         },
       ],
       [
         "preload",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "none", "metadata", "auto"],
-          },
+          keywords: ["", "none", "metadata", "auto"],
         },
       ],
       ["autoplay", BooleanAttribute.Type],
@@ -819,15 +773,13 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "kind",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "subtitles",
-              "captions",
-              "descriptions",
-              "chapters",
-              "metadata",
-            ],
-          },
+          keywords: [
+            "subtitles",
+            "captions",
+            "descriptions",
+            "chapters",
+            "metadata",
+          ],
         },
       ],
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
@@ -859,9 +811,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "shape",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["circle", "default", "poly", "rect"],
-          },
+          keywords: ["circle", "default", "poly", "rect"],
         },
       ],
       ["href", ValidURL.PotentiallySurroundedBySpaces],
@@ -874,9 +824,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -942,19 +890,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
     ],
@@ -1051,9 +997,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "scope",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["row", "col", "rowgroup", "colgroup"],
-          },
+          keywords: ["row", "col", "rowgroup", "colgroup"],
         },
       ],
       ["abbr", Text.Type],
@@ -1074,31 +1018,25 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "autocomplete",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["on", "off"],
-          },
+          keywords: ["on", "off"],
         },
       ],
       [
         "enctype",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "application/x-www-form-urlencoded",
-              "multipart/form-data",
-              "text/plain",
-            ],
-          },
+          keywords: [
+            "application/x-www-form-urlencoded",
+            "multipart/form-data",
+            "text/plain",
+          ],
         },
       ],
       [
         "method",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["get", "post", "dialog"],
-          },
+          keywords: ["get", "post", "dialog"],
         },
       ],
       ["name", Text.Type],
@@ -1111,9 +1049,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -1173,22 +1109,18 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "formenctype",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "application/x-www-form-urlencoded",
-              "multipart/form-data",
-              "text/plain",
-            ],
-          },
+          keywords: [
+            "application/x-www-form-urlencoded",
+            "multipart/form-data",
+            "text/plain",
+          ],
         },
       ],
       [
         "formmethod",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["get", "post", "dialog"],
-          },
+          keywords: ["get", "post", "dialog"],
         },
       ],
       ["formnovalidate", BooleanAttribute.Type],
@@ -1200,9 +1132,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -1262,9 +1192,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "popovertargetaction",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["hide", "show", "toggle"],
-          },
+          keywords: ["hide", "show", "toggle"],
         },
       ],
       ["readonly", BooleanAttribute.Type],
@@ -1291,9 +1219,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             },
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["any"],
-              },
+              keywords: ["any"],
             },
           ],
         },
@@ -1302,32 +1228,30 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "type",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "hidden",
-              "text",
-              "search",
-              "tel",
-              "url",
-              "email",
-              "password",
-              "date",
-              "month",
-              "week",
-              "time",
-              "datetime-local",
-              "number",
-              "range",
-              "color",
-              "checkbox",
-              "radio",
-              "file",
-              "submit",
-              "image",
-              "reset",
-              "button",
-            ],
-          },
+          keywords: [
+            "hidden",
+            "text",
+            "search",
+            "tel",
+            "url",
+            "email",
+            "password",
+            "date",
+            "month",
+            "week",
+            "time",
+            "datetime-local",
+            "number",
+            "range",
+            "color",
+            "checkbox",
+            "radio",
+            "file",
+            "submit",
+            "image",
+            "reset",
+            "button",
+          ],
         },
       ],
       ["value", Text.Type],
@@ -1353,13 +1277,11 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "formenctype",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "application/x-www-form-urlencoded",
-              "multipart/form-data",
-              "text/plain",
-            ],
-          },
+          keywords: [
+            "application/x-www-form-urlencoded",
+            "multipart/form-data",
+            "text/plain",
+          ],
         },
       ],
       // TODO: conditional - only valid when type="submit"
@@ -1367,9 +1289,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "formmethod",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["get", "post", "dialog"],
-          },
+          keywords: ["get", "post", "dialog"],
         },
       ],
       // TODO: conditional - only valid when type="submit"
@@ -1383,9 +1303,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
             NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["_blank", "_self", "_parent", "_top"],
-              },
+              keywords: ["_blank", "_self", "_parent", "_top"],
             },
           ],
         },
@@ -1396,18 +1314,15 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "popovertargetaction",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["hide", "show", "toggle"],
-          },
+
+          keywords: ["hide", "show", "toggle"],
         },
       ],
       [
         "type",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["submit", "reset", "button"],
-          },
+          keywords: ["submit", "reset", "button"],
         },
       ],
       ["value", Text.Type],
@@ -1507,9 +1422,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "wrap",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["soft", "hard"],
-          },
+          keywords: ["soft", "hard"],
         },
       ],
     ],
@@ -1579,9 +1492,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           items: [
             {
               type: EnumeratedAttribute.type,
-              options: {
-                keywords: ["module", "importmap", "speculationrules"],
-              },
+              keywords: ["module", "importmap", "speculationrules"],
             },
             MIMEType.Type,
           ],
@@ -1597,9 +1508,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "crossorigin",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "anonymous", "use-credentials"],
-          },
+          keywords: ["", "anonymous", "use-credentials"],
         },
       ],
       ["integrity", Text.Type],
@@ -1607,19 +1516,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "referrerpolicy",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: [
-              "",
-              "no-referrer",
-              "no-referrer-when-downgrade",
-              "same-origin",
-              "origin",
-              "strict-origin",
-              "origin-when-cross-origin",
-              "strict-origin-when-cross-origin",
-              "unsafe-url",
-            ],
-          },
+          keywords: [
+            "",
+            "no-referrer",
+            "no-referrer-when-downgrade",
+            "same-origin",
+            "origin",
+            "strict-origin",
+            "origin-when-cross-origin",
+            "strict-origin-when-cross-origin",
+            "unsafe-url",
+          ],
         },
       ],
       [
@@ -1633,9 +1540,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "fetchpriority",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["high", "low", "auto"],
-          },
+          keywords: ["high", "low", "auto"],
         },
       ],
     ],
@@ -1648,9 +1553,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "shadowrootmode",
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["open", "closed"],
-          },
+          keywords: ["open", "closed"],
         },
       ],
       ["shadowrootdelegatesfocus", BooleanAttribute.Type],
