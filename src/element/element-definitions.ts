@@ -100,12 +100,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "media",
-        {
-          type: MediaQueryList.type,
-        },
-      ],
+      ["media", MediaQueryList.Type],
       ["integrity", Text.Type],
       [
         "hreflang",
@@ -113,12 +108,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: BCP47.type,
         },
       ],
-      [
-        "type",
-        {
-          type: MIMEType.type,
-        },
-      ],
+      ["type", MIMEType.Type],
       [
         "referrerpolicy",
         {
@@ -268,23 +258,13 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "media",
-        {
-          type: MediaQueryList.type,
-        },
-      ],
+      ["media", MediaQueryList.Type],
     ],
   },
   style: {
     globalAttributes: true,
     attributes: [
-      [
-        "media",
-        {
-          type: MediaQueryList.type,
-        },
-      ],
+      ["media", MediaQueryList.Type],
       [
         "blocking",
         {
@@ -430,12 +410,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: BCP47.type,
         },
       ],
-      [
-        "type",
-        {
-          type: MIMEType.type,
-        },
-      ],
+      ["type", MIMEType.Type],
       [
         "referrerpolicy",
         {
@@ -527,18 +502,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   source: {
     globalAttributes: true,
     attributes: [
-      [
-        "type",
-        {
-          type: MIMEType.type,
-        },
-      ],
-      [
-        "media",
-        {
-          type: MediaQueryList.type,
-        },
-      ],
+      ["type", MIMEType.Type],
+      ["media", MediaQueryList.Type],
       // TODO: conditional - only valid when parent is <audio> or <video> (invalid when parent is <picture>)
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
@@ -762,12 +727,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
-      [
-        "type",
-        {
-          type: MIMEType.type,
-        },
-      ],
+      ["type", MIMEType.Type],
       [
         "width",
         {
@@ -788,12 +748,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["data", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
-      [
-        "type",
-        {
-          type: MIMEType.type,
-        },
-      ],
+      ["type", MIMEType.Type],
       [
         "name",
         {
@@ -1670,9 +1625,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
                 keywords: ["module", "importmap", "speculationrules"],
               },
             },
-            {
-              type: MIMEType.type,
-            },
+            MIMEType.Type,
           ],
         },
       ],

@@ -16,6 +16,11 @@ import { ERROR_MESSAGES } from "./error-messages.js";
  */
 export class MIMEType implements AttributeSpec {
   static type = "MIMEType" as const;
+
+  static Type = {
+    type: MIMEType.type,
+  };
+
   constructor() {}
 
   // Matches: type/subtype with optional parameters
