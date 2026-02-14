@@ -23,6 +23,10 @@ import { REGEX_ASCII_WHITESPACE } from "../../shared/index.js";
 export class AutocompleteAttribute implements AttributeSpec {
   static type = "AutocompleteAttribute" as const;
 
+  static Type = {
+    type: AutocompleteAttribute.type,
+  };
+
   // Autofill field names per HTML Standard
   private static readonly AUTOFILL_FIELD_NAMES = new Set([
     "name",

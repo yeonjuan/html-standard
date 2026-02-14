@@ -472,12 +472,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - invalid when <img> is a descendant of <a> or <button>
-      [
-        "usemap",
-        {
-          type: HashNameReference.type,
-        },
-      ],
+      ["usemap", HashNameReference.Type],
       // TODO: conditional - only valid when <img> is a descendant of <a> with href attribute
       ["ismap", BooleanAttribute.Type],
       [
@@ -1061,12 +1056,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ],
       // TODO: conditional - only valid when type="image"
       ["alt", Text.Type],
-      [
-        "autocomplete",
-        {
-          type: AutocompleteAttribute.type,
-        },
-      ],
+      ["autocomplete", AutocompleteAttribute.Type],
       // TODO: conditional - only valid when type="checkbox" or type="radio"
       ["checked", BooleanAttribute.Type],
       ["dirname", Text.Type],
@@ -1117,10 +1107,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "max",
-        {
-          // TODO: varies based on type
-          type: Text.type,
-        },
+        // TODO: varies based on type
+        Text.Type,
       ],
       [
         "maxlength",
@@ -1132,10 +1120,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "min",
-        {
-          // TODO: varies based on type
-          type: Text.type,
-        },
+        // TODO: varies based on type
+        Text.Type,
       ],
       [
         "minlength",
@@ -1297,12 +1283,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   select: {
     globalAttributes: true,
     attributes: [
-      [
-        "autocomplete",
-        {
-          type: AutocompleteAttribute.type,
-        },
-      ],
+      ["autocomplete", AutocompleteAttribute.Type],
       ["disabled", BooleanAttribute.Type],
       ["form", ID.Type],
       ["multiple", BooleanAttribute.Type],
@@ -1339,12 +1320,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   textarea: {
     globalAttributes: true,
     attributes: [
-      [
-        "autocomplete",
-        {
-          type: AutocompleteAttribute.type,
-        },
-      ],
+      ["autocomplete", AutocompleteAttribute.Type],
       [
         "cols",
         {
