@@ -164,19 +164,9 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when rel="preload" and as="image"
-      [
-        "imagesrcset",
-        {
-          type: SrcsetAttribute.type,
-        },
-      ],
+      ["imagesrcset", SrcsetAttribute.Type],
       // TODO: conditional - only valid when rel="preload", as="image", and imagesrcset is present
-      [
-        "imagesizes",
-        {
-          type: SourceSizeList.type,
-        },
-      ],
+      ["imagesizes", SourceSizeList.Type],
       // TODO: conditional - only valid when rel contains "preload" or "modulepreload"
       [
         "as",
@@ -495,19 +485,9 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       // TODO: conditional - only valid when parent is <audio> or <video> (invalid when parent is <picture>)
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
-      [
-        "srcset",
-        {
-          type: SrcsetAttribute.type,
-        },
-      ],
+      ["srcset", SrcsetAttribute.Type],
       // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
-      [
-        "sizes",
-        {
-          type: SourceSizeList.type,
-        },
-      ],
+      ["sizes", SourceSizeList.Type],
       [
         "width",
         {
@@ -529,18 +509,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     attributes: [
       ["alt", Text.Type],
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
-      [
-        "srcset",
-        {
-          type: SrcsetAttribute.type,
-        },
-      ],
-      [
-        "sizes",
-        {
-          type: SourceSizeList.type,
-        },
-      ],
+      ["srcset", SrcsetAttribute.Type],
+      ["sizes", SourceSizeList.Type],
       [
         "crossorigin",
         {
