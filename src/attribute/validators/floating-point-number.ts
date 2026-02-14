@@ -25,6 +25,10 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class FloatingPointNumber implements AttributeSpec {
   static type = "FloatingPointNumber" as const;
 
+  static Type = {
+    type: FloatingPointNumber.type,
+  };
+
   // Matches valid floating-point numbers according to HTML spec
   // Pattern breakdown:
   // -?              : optional minus sign

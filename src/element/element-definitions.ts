@@ -1634,59 +1634,19 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   progress: {
     globalAttributes: true,
     attributes: [
-      [
-        "value",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "max",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
+      ["value", FloatingPointNumber.Type],
+      ["max", FloatingPointNumber.Type],
     ],
   },
   meter: {
     globalAttributes: true,
     attributes: [
-      [
-        "value",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "min",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "max",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "low",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "high",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
-      [
-        "optimum",
-        {
-          type: FloatingPointNumber.type,
-        },
-      ],
+      ["value", FloatingPointNumber.Type],
+      ["min", FloatingPointNumber.Type],
+      ["max", FloatingPointNumber.Type],
+      ["low", FloatingPointNumber.Type],
+      ["high", FloatingPointNumber.Type],
+      ["optimum", FloatingPointNumber.Type],
     ],
   },
   fieldset: {
