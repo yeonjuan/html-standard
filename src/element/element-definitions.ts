@@ -186,12 +186,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: { unique: true, allowed: ["render"] },
         },
       ],
-      [
-        "color",
-        {
-          type: CSSColor.type,
-        },
-      ],
+      ["color", CSSColor.Type],
       ["disabled", BooleanAttribute.Type],
       [
         "fetchpriority",
