@@ -19,6 +19,15 @@ export type NonNegativeIntegerOptions = {
 export class NonNegativeInteger implements AttributeSpec {
   static type = "NonNegativeInteger" as const;
 
+  static Type = {
+    type: NonNegativeInteger.type,
+  };
+
+  static GreaterThanZero = {
+    type: NonNegativeInteger.type,
+    min: 1,
+  };
+
   constructor(private options?: NonNegativeIntegerOptions) {}
 
   // Matches: one or more digits (no hyphen-minus allowed)

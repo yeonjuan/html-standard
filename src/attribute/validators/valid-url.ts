@@ -29,18 +29,14 @@ export class ValidURL implements AttributeSpec {
 
   static PotentiallySurroundedBySpaces = {
     type: ValidURL.type,
-    options: {
-      nonEmpty: false,
-      potentiallySurroundedBySpaces: true,
-    },
+    nonEmpty: false,
+    potentiallySurroundedBySpaces: true,
   };
 
   static NonEmptyPotentiallySurroundedBySpaces = {
     type: ValidURL.type,
-    options: {
-      nonEmpty: true,
-      potentiallySurroundedBySpaces: true,
-    },
+    nonEmpty: true,
+    potentiallySurroundedBySpaces: true,
   };
 
   constructor(private options: ValidURLOptions = {}) {}

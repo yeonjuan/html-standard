@@ -69,31 +69,29 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "rel",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            // allowed: [
-            //   "alternate",
-            //   "canonical",
-            //   "author",
-            //   "dns-prefetch",
-            //   "expect",
-            //   "help",
-            //   "icon",
-            //   "manifest",
-            //   "modulepreload",
-            //   "license",
-            //   "next",
-            //   "pingback",
-            //   "preconnect",
-            //   "prefetch",
-            //   "preload",
-            //   "prev",
-            //   "privacy-policy",
-            //   "search",
-            //   "stylesheet",
-            //   "terms-of-service",
-            // ],
-          },
+          unique: true,
+          // allowed: [
+          //   "alternate",
+          //   "canonical",
+          //   "author",
+          //   "dns-prefetch",
+          //   "expect",
+          //   "help",
+          //   "icon",
+          //   "manifest",
+          //   "modulepreload",
+          //   "license",
+          //   "next",
+          //   "pingback",
+          //   "preconnect",
+          //   "prefetch",
+          //   "preload",
+          //   "prev",
+          //   "privacy-policy",
+          //   "search",
+          //   "stylesheet",
+          //   "terms-of-service",
+          // ],
         },
       ],
       ["media", MediaQueryList.Type],
@@ -121,34 +119,32 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "sizes",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            validateToken(value: string) {
-              // Accept "any" (case-insensitive)
-              if (value.toLowerCase() === "any") {
-                return true;
-              }
-
-              // Accept dimension pairs: NNNxMMM or NNNxMMM (e.g., "100x200")
-              // Must be two non-negative integers without leading zeros, separated by 'x' or 'X'
-              const dimensionPattern = /^([1-9]\d*|0)[xX]([1-9]\d*|0)$/;
-              const match = value.match(dimensionPattern);
-
-              if (!match) {
-                return false;
-              }
-
-              // Check that neither number has a leading zero (except for "0" itself)
-              const [, width, height] = match;
-              if (
-                (width.length > 1 && width.startsWith("0")) ||
-                (height.length > 1 && height.startsWith("0"))
-              ) {
-                return false;
-              }
-
+          unique: true,
+          validateToken(value: string) {
+            // Accept "any" (case-insensitive)
+            if (value.toLowerCase() === "any") {
               return true;
-            },
+            }
+
+            // Accept dimension pairs: NNNxMMM or NNNxMMM (e.g., "100x200")
+            // Must be two non-negative integers without leading zeros, separated by 'x' or 'X'
+            const dimensionPattern = /^([1-9]\d*|0)[xX]([1-9]\d*|0)$/;
+            const match = value.match(dimensionPattern);
+
+            if (!match) {
+              return false;
+            }
+
+            // Check that neither number has a leading zero (except for "0" itself)
+            const [, width, height] = match;
+            if (
+              (width.length > 1 && width.startsWith("0")) ||
+              (height.length > 1 && height.startsWith("0"))
+            ) {
+              return false;
+            }
+
+            return true;
           },
         },
       ],
@@ -183,7 +179,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "blocking",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true, allowed: ["render"] },
+          unique: true,
+          allowed: ["render"],
         },
       ],
       ["color", CSSColor.Type],
@@ -235,7 +232,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "blocking",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true, allowed: ["render"] },
+          unique: true,
+          allowed: ["render"],
         },
       ],
     ],
@@ -306,24 +304,22 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "ping",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: false,
-            validateToken(value: string) {
-              // URLs of the resources that are interested in being notified if the user follows the hyperlink.
-              // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
-              if (value.length === 0) {
-                return false;
-              }
+          unique: false,
+          validateToken(value: string) {
+            // URLs of the resources that are interested in being notified if the user follows the hyperlink.
+            // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
+            if (value.length === 0) {
+              return false;
+            }
 
-              try {
-                const url = new URL(value);
-                // Check if the scheme is http or https
-                return url.protocol === "http:" || url.protocol === "https:";
-              } catch {
-                // Invalid URL format
-                return false;
-              }
-            },
+            try {
+              const url = new URL(value);
+              // Check if the scheme is http or https
+              return url.protocol === "http:" || url.protocol === "https:";
+            } catch {
+              // Invalid URL format
+              return false;
+            }
           },
         },
       ],
@@ -331,27 +327,25 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "rel",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            allowed: [
-              "alternate",
-              "author",
-              "bookmark",
-              "external",
-              "help",
-              "license",
-              "next",
-              "nofollow",
-              "noopener",
-              "noreferrer",
-              "opener",
-              "prev",
-              "privacy-policy",
-              "search",
-              "tag",
-              "terms-of-service",
-            ],
-          },
+          unique: true,
+          allowed: [
+            "alternate",
+            "author",
+            "bookmark",
+            "external",
+            "help",
+            "license",
+            "next",
+            "nofollow",
+            "noopener",
+            "noreferrer",
+            "opener",
+            "prev",
+            "privacy-policy",
+            "search",
+            "tag",
+            "terms-of-service",
+          ],
         },
       ],
       ["hreflang", BCP47.Type],
@@ -436,20 +430,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ["srcset", SrcsetAttribute.Type],
       // TODO: conditional - only valid when parent is <picture> (invalid when parent is <audio> or <video>)
       ["sizes", SourceSizeList.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
     ],
   },
   img: {
@@ -470,20 +452,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ["usemap", HashNameReference.Type],
       // TODO: conditional - only valid when <img> is a descendant of <a> with href attribute
       ["ismap", BooleanAttribute.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
       [
         "referrerpolicy",
         {
@@ -546,42 +516,28 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "sandbox",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            allowed: [
-              "allow-downloads",
-              "allow-forms",
-              "allow-modals",
-              "allow-orientation-lock",
-              "allow-pointer-lock",
-              "allow-popups",
-              "allow-popups-to-escape-sandbox",
-              "allow-presentation",
-              "allow-same-origin",
-              "allow-scripts",
-              "allow-top-navigation",
-              "allow-top-navigation-by-user-activation",
-              "allow-top-navigation-to-custom-protocols",
-            ],
-          },
+          unique: true,
+          allowed: [
+            "allow-downloads",
+            "allow-forms",
+            "allow-modals",
+            "allow-orientation-lock",
+            "allow-pointer-lock",
+            "allow-popups",
+            "allow-popups-to-escape-sandbox",
+            "allow-presentation",
+            "allow-same-origin",
+            "allow-scripts",
+            "allow-top-navigation",
+            "allow-top-navigation-by-user-activation",
+            "allow-top-navigation-to-custom-protocols",
+          ],
         },
       ],
       ["allow", Text.Type],
       ["allowfullscreen", BooleanAttribute.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
       [
         "referrerpolicy",
         {
@@ -613,20 +569,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     attributes: [
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       ["type", MIMEType.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
     ],
   },
   object: {
@@ -649,20 +593,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ],
 
       ["form", ID.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
     ],
   },
   video: {
@@ -689,20 +621,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ["loop", BooleanAttribute.Type],
       ["muted", BooleanAttribute.Type],
       ["controls", BooleanAttribute.Type],
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
     ],
   },
   audio: {
@@ -794,24 +714,22 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "ping",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: false,
-            validateToken(value: string) {
-              // URLs of the resources that are interested in being notified if the user follows the hyperlink.
-              // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
-              if (value.length === 0) {
-                return false;
-              }
+          unique: false,
+          validateToken(value: string) {
+            // URLs of the resources that are interested in being notified if the user follows the hyperlink.
+            // Each token must be a valid non-empty URL whose scheme is an HTTP(S) scheme.
+            if (value.length === 0) {
+              return false;
+            }
 
-              try {
-                const url = new URL(value);
-                // Check if the scheme is http or https
-                return url.protocol === "http:" || url.protocol === "https:";
-              } catch {
-                // Invalid URL format
-                return false;
-              }
-            },
+            try {
+              const url = new URL(value);
+              // Check if the scheme is http or https
+              return url.protocol === "http:" || url.protocol === "https:";
+            } catch {
+              // Invalid URL format
+              return false;
+            }
           },
         },
       ],
@@ -820,27 +738,25 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "rel",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            allowed: [
-              "alternate",
-              "author",
-              "bookmark",
-              "external",
-              "help",
-              "license",
-              "next",
-              "nofollow",
-              "noopener",
-              "noreferrer",
-              "opener",
-              "prev",
-              "privacy-policy",
-              "search",
-              "tag",
-              "terms-of-service",
-            ],
-          },
+          unique: true,
+          allowed: [
+            "alternate",
+            "author",
+            "bookmark",
+            "external",
+            "help",
+            "license",
+            "next",
+            "nofollow",
+            "noopener",
+            "noreferrer",
+            "opener",
+            "prev",
+            "privacy-policy",
+            "search",
+            "tag",
+            "terms-of-service",
+          ],
         },
       ],
       // TODO: conditional - only applicable when href attribute is present
@@ -867,31 +783,11 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   caption: { globalAttributes: true, attributes: empty },
   colgroup: {
     globalAttributes: true,
-    attributes: [
-      [
-        "span",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
-    ],
+    attributes: [["span", NonNegativeInteger.GreaterThanZero]],
   },
   col: {
     globalAttributes: true,
-    attributes: [
-      [
-        "span",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
-    ],
+    attributes: [["span", NonNegativeInteger.GreaterThanZero]],
   },
   tbody: { globalAttributes: true, attributes: empty },
   thead: { globalAttributes: true, attributes: empty },
@@ -900,27 +796,13 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   td: {
     globalAttributes: true,
     attributes: [
-      [
-        "colspan",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
-      [
-        "rowspan",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["colspan", NonNegativeInteger.GreaterThanZero],
+      ["rowspan", NonNegativeInteger.Type],
       [
         "headers",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true },
+          unique: true,
         },
       ],
     ],
@@ -928,27 +810,13 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   th: {
     globalAttributes: true,
     attributes: [
-      [
-        "colspan",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
-      [
-        "rowspan",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["colspan", NonNegativeInteger.GreaterThanZero],
+      ["rowspan", NonNegativeInteger.Type],
       [
         "headers",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true },
+          unique: true,
         },
       ],
       [
@@ -968,7 +836,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "accept-charset",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true },
+          unique: true,
         },
       ],
       ["action", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
@@ -1016,21 +884,19 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "rel",
         {
           type: SpaceSeparatedTokens.type,
-          options: {
-            unique: true,
-            allowed: [
-              "external",
-              "help",
-              "license",
-              "next",
-              "nofollow",
-              "noopener",
-              "noreferrer",
-              "opener",
-              "prev",
-              "search",
-            ],
-          },
+          unique: true,
+          allowed: [
+            "external",
+            "help",
+            "license",
+            "next",
+            "nofollow",
+            "noopener",
+            "noreferrer",
+            "opener",
+            "prev",
+            "search",
+          ],
         },
       ],
     ],
@@ -1091,13 +957,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="image"
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["height", NonNegativeInteger.Type],
       ["list", ID.Type],
       // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
@@ -1105,26 +965,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         // TODO: varies based on type
         Text.Type,
       ],
-      [
-        "maxlength",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["maxlength", NonNegativeInteger.Type],
       // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "min",
         // TODO: varies based on type
         Text.Type,
       ],
-      [
-        "minlength",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["minlength", NonNegativeInteger.Type],
       // TODO: conditional - only valid when type="file" or type="email"
       ["multiple", BooleanAttribute.Type],
       ["name", Text.Type],
@@ -1146,15 +994,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ],
       ["readonly", BooleanAttribute.Type],
       ["required", BooleanAttribute.Type],
-      [
-        "size",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
+      ["size", NonNegativeInteger.GreaterThanZero],
       // TODO: conditional - only valid when type="image"
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type is one of: date, month, week, time, datetime-local, number, range
@@ -1203,13 +1043,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ],
       ["value", Text.Type],
       // TODO: conditional - only valid when type="image"
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
     ],
   },
   button: {
@@ -1284,15 +1118,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ["multiple", BooleanAttribute.Type],
       ["name", Text.Type],
       ["required", BooleanAttribute.Type],
-      [
-        "size",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
+      ["size", NonNegativeInteger.GreaterThanZero],
     ],
   },
   datalist: { globalAttributes: true, attributes: empty },
@@ -1316,45 +1142,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["autocomplete", AutocompleteAttribute.Type],
-      [
-        "cols",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
+      ["cols", NonNegativeInteger.GreaterThanZero],
       ["dirname", Text.Type],
       ["disabled", BooleanAttribute.Type],
       ["form", ID.Type],
-      [
-        "maxlength",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "minlength",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["maxlength", NonNegativeInteger.Type],
+      ["minlength", NonNegativeInteger.Type],
       ["name", Text.Type],
       ["placeholder", Text.Type],
       ["readonly", BooleanAttribute.Type],
       ["required", BooleanAttribute.Type],
-      [
-        "rows",
-        {
-          type: NonNegativeInteger.type,
-          options: {
-            min: 1,
-          },
-        },
-      ],
+      ["rows", NonNegativeInteger.GreaterThanZero],
       [
         "wrap",
         {
@@ -1371,7 +1169,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "for",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true },
+          unique: true,
         },
       ],
       ["form", ID.Type],
@@ -1470,7 +1268,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         "blocking",
         {
           type: SpaceSeparatedTokens.type,
-          options: { unique: true },
+          unique: true,
         },
       ],
       [
@@ -1505,20 +1303,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   canvas: {
     globalAttributes: true,
     attributes: [
-      [
-        "width",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
-      [
-        "height",
-        {
-          type: NonNegativeInteger.type,
-          options: {},
-        },
-      ],
+      ["width", NonNegativeInteger.Type],
+      ["height", NonNegativeInteger.Type],
     ],
   },
 };

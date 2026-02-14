@@ -18,14 +18,12 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "accesskey",
     {
       type: SpaceSeparatedTokens.type,
-      options: {
-        unique: true,
-        validateToken(value) {
-          // Each token must be exactly one code point in length
-          // Use Array.from to properly handle Unicode code points (e.g., emojis, surrogate pairs)
-          const codePoints = Array.from(value);
-          return codePoints.length === 1;
-        },
+      unique: true,
+      validateToken(value) {
+        // Each token must be exactly one code point in length
+        // Use Array.from to properly handle Unicode code points (e.g., emojis, surrogate pairs)
+        const codePoints = Array.from(value);
+        return codePoints.length === 1;
       },
     },
   ],
@@ -33,18 +31,14 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "autocapitalize",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["off", "none", "on", "sentences", "words", "characters"],
-      },
+      keywords: ["off", "none", "on", "sentences", "words", "characters"],
     },
   ],
   [
     "autocorrect",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["on", "off"],
-      },
+      keywords: ["on", "off"],
     },
   ],
   [
@@ -57,46 +51,36 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "contenteditable",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["true", "false", "plaintext-only"],
-      },
+      keywords: ["true", "false", "plaintext-only"],
     },
   ],
   [
     "dir",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["ltr", "rtl", "auto"],
-      },
+      keywords: ["ltr", "rtl", "auto"],
     },
   ],
   [
     "draggable",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["true", "false"],
-      },
+      keywords: ["true", "false"],
     },
   ],
   [
     "enterkeyhint",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["enter", "done", "go", "next", "previous", "search", "send"],
-      },
+      keywords: ["enter", "done", "go", "next", "previous", "search", "send"],
     },
   ],
   [
     "headingoffset",
     {
       type: NonNegativeInteger.type,
-      options: {
-        min: 0,
-        max: 8,
-      },
+      min: 0,
+      max: 8,
     },
   ],
   [
@@ -109,9 +93,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "hidden",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["", "until-found", "hidden"],
-      },
+      keywords: ["", "until-found", "hidden"],
     },
   ],
   [
@@ -124,18 +106,16 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "inputmode",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: [
-          "none",
-          "text",
-          "tel",
-          "url",
-          "email",
-          "numeric",
-          "decimal",
-          "search",
-        ],
-      },
+      keywords: [
+        "none",
+        "text",
+        "tel",
+        "url",
+        "email",
+        "numeric",
+        "decimal",
+        "search",
+      ],
     },
   ],
   [
@@ -149,14 +129,14 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "itemprop",
     {
       type: SpaceSeparatedTokens.type,
-      options: { unique: true },
+      unique: true,
     },
   ],
   [
     "itemref",
     {
       type: SpaceSeparatedTokens.type,
-      options: { unique: true },
+      unique: true,
     },
   ],
   [
@@ -174,18 +154,16 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "itemtype",
     {
       type: SpaceSeparatedTokens.type,
-      options: {
-        unique: true,
-        validateToken(value) {
-          // Each token must be a valid absolute URL
-          try {
-            new URL(value);
-            // URL constructor only accepts absolute URLs, so if it succeeds, it's absolute
-            return true;
-          } catch {
-            return false;
-          }
-        },
+      unique: true,
+      validateToken(value) {
+        // Each token must be a valid absolute URL
+        try {
+          new URL(value);
+          // URL constructor only accepts absolute URLs, so if it succeeds, it's absolute
+          return true;
+        } catch {
+          return false;
+        }
       },
     },
   ],
@@ -211,9 +189,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
         },
         {
           type: EnumeratedAttribute.type,
-          options: {
-            keywords: ["", "auto", "manual", "hint"],
-          },
+          keywords: ["", "auto", "manual", "hint"],
         },
       ],
     },
@@ -222,9 +198,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "spellcheck",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["", "true", "false"],
-      },
+      keywords: ["", "true", "false"],
     },
   ],
   [
@@ -249,18 +223,14 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "translate",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["", "yes", "no"],
-      },
+      keywords: ["", "yes", "no"],
     },
   ],
   [
     "writingsuggestions",
     {
       type: EnumeratedAttribute.type,
-      options: {
-        keywords: ["", "true", "false"],
-      },
+      keywords: ["", "true", "false"],
     },
   ],
 ]);
