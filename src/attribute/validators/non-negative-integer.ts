@@ -28,7 +28,7 @@ export class NonNegativeInteger implements AttributeSpec {
     min: 1,
   };
 
-  constructor(private options?: NonNegativeIntegerOptions) {}
+  constructor(private options: NonNegativeIntegerOptions) {}
 
   // Matches: one or more digits (no hyphen-minus allowed)
   private static readonly PATTERN = /^\d+$/;
