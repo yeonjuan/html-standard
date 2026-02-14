@@ -14,6 +14,10 @@ export class MediaQueryList implements AttributeSpec {
   static type = "MediaQueryList" as const;
   private cssLanguageService = getCSSLanguageService();
 
+  static Type = {
+    type: MediaQueryList.type,
+  };
+
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
     try {
       const cssText = `@media ${value} {}`;

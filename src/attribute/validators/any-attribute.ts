@@ -31,14 +31,12 @@ import { FloatingPointNumberList } from "./floating-point-number-list.js";
 import { AutocompleteAttribute } from "./autocomplete-attribute.js";
 
 export type AnyAttribute =
-  | {
+  | ({
       type: typeof SpaceSeparatedTokens.type;
-      options: SpaceSeparatedTokensOptions;
-    }
-  | {
+    } & SpaceSeparatedTokensOptions)
+  | ({
       type: typeof EnumeratedAttribute.type;
-      options: EnumeratedAttributeOptions;
-    }
+    } & EnumeratedAttributeOptions)
   | {
       type: typeof BooleanAttribute.type;
     }
@@ -48,14 +46,12 @@ export type AnyAttribute =
   | {
       type: typeof Text.type;
     }
-  | {
+  | ({
       type: typeof ValidURL.type;
-      options: ValidURLOptions;
-    }
-  | {
+    } & ValidURLOptions)
+  | ({
       type: typeof NonNegativeInteger.type;
-      options: NonNegativeIntegerOptions;
-    }
+    } & NonNegativeIntegerOptions)
   | {
       type: typeof ID.type;
     }

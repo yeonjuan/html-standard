@@ -17,6 +17,11 @@ import { ERROR_MESSAGES } from "./error-messages.js";
  */
 export class NavigableTargetName implements AttributeSpec {
   static type = "NavigableTargetName" as const;
+
+  static Type = {
+    type: NavigableTargetName.type,
+  };
+
   constructor() {}
 
   // Pattern to detect invalid characters: tab, newline, or <

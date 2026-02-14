@@ -32,10 +32,16 @@ export function createAttributeSpec(
 ): types.AttributeSpec {
   switch (def.type) {
     case SpaceSeparatedTokens.type: {
-      return new SpaceSeparatedTokens(def.options);
+      return new SpaceSeparatedTokens({
+        unique: def.unique,
+        allowed: def.allowed,
+        validateToken: def.validateToken,
+      });
     }
     case EnumeratedAttribute.type: {
-      return new EnumeratedAttribute(def.options);
+      return new EnumeratedAttribute({
+        keywords: def.keywords,
+      });
     }
     case BooleanAttribute.type: {
       return new BooleanAttribute(key);
@@ -47,10 +53,16 @@ export function createAttributeSpec(
       return new Text();
     }
     case ValidURL.type: {
-      return new ValidURL(def.options);
+      return new ValidURL({
+        nonEmpty: def.nonEmpty,
+        potentiallySurroundedBySpaces: def.potentiallySurroundedBySpaces,
+      });
     }
     case NonNegativeInteger.type: {
-      return new NonNegativeInteger(def.options);
+      return new NonNegativeInteger({
+        min: def.min,
+        max: def.max,
+      });
     }
     case ID.type: {
       return new ID();

@@ -19,6 +19,10 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class HashNameReference implements AttributeSpec {
   static type = "HashNameReference" as const;
 
+  static Type = {
+    type: HashNameReference.type,
+  };
+
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Must start with # and have at least one character after it
     if (!value.startsWith("#")) {

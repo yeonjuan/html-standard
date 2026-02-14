@@ -26,6 +26,10 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class BCP47 implements AttributeSpec {
   static type = "BCP47" as const;
 
+  static Type = {
+    type: BCP47.type,
+  };
+
   // Simplified BCP 47 pattern
   // This is a practical implementation that covers most common cases
   // Full RFC 5646 compliance would require more complex parsing
