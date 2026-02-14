@@ -14,6 +14,11 @@ export type BooleanAttributeOptions = {
  */
 export class BooleanAttribute implements AttributeSpec {
   static type = "BooleanAttribute" as const;
+
+  static Type = {
+    type: BooleanAttribute.type,
+  };
+
   constructor(private attributeKey: string) {}
 
   validateValue(value: AttributeValue): AttributeSpecValidateResult {

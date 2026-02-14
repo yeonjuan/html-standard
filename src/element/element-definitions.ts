@@ -108,12 +108,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: MediaQueryList.type,
         },
       ],
-      [
-        "integrity",
-        {
-          type: Text.type,
-        },
-      ],
+      ["integrity", Text.Type],
       [
         "hreflang",
         {
@@ -232,12 +227,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: CSSColor.type,
         },
       ],
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
       [
         "fetchpriority",
         {
@@ -252,12 +242,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   meta: {
     globalAttributes: true,
     attributes: [
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
+      ["name", Text.Type],
       [
         "http-equiv",
         {
@@ -275,12 +260,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "content",
-        {
-          type: Text.type,
-        },
-      ],
+      ["content", Text.Type],
       [
         "charset",
         {
@@ -335,12 +315,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   ol: {
     globalAttributes: true,
     attributes: [
-      [
-        "reversed",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["reversed", BooleanAttribute.Type],
       [
         "start",
         {
@@ -400,12 +375,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           ],
         },
       ],
-      [
-        "download",
-        {
-          type: Text.type,
-        },
-      ],
+      ["download", Text.Type],
       [
         "ping",
         {
@@ -507,14 +477,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   rp: { globalAttributes: true, attributes: empty },
   data: {
     globalAttributes: true,
-    attributes: [
-      [
-        "value",
-        {
-          type: Text.type,
-        },
-      ],
-    ],
+    attributes: [["value", Text.Type]],
   },
   time: {
     globalAttributes: true,
@@ -615,12 +578,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   img: {
     globalAttributes: true,
     attributes: [
-      [
-        "alt",
-        {
-          type: Text.type,
-        },
-      ],
+      ["alt", Text.Type],
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "srcset",
@@ -651,12 +609,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when <img> is a descendant of <a> with href attribute
-      [
-        "ismap",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["ismap", BooleanAttribute.Type],
       [
         "width",
         {
@@ -723,12 +676,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
-      [
-        "srcdoc",
-        {
-          type: Text.type,
-        },
-      ],
+      ["srcdoc", Text.Type],
       [
         "name",
         {
@@ -770,18 +718,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "allow",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "allowfullscreen",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["allow", Text.Type],
+      ["allowfullscreen", BooleanAttribute.Type],
       [
         "width",
         {
@@ -880,12 +818,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
 
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
+      ["form", ID.Type],
       [
         "width",
         {
@@ -925,36 +858,11 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "autoplay",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "playsinline",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "loop",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "muted",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "controls",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["autoplay", BooleanAttribute.Type],
+      ["playsinline", BooleanAttribute.Type],
+      ["loop", BooleanAttribute.Type],
+      ["muted", BooleanAttribute.Type],
+      ["controls", BooleanAttribute.Type],
       [
         "width",
         {
@@ -993,30 +901,10 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "autoplay",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "loop",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "muted",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "controls",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["autoplay", BooleanAttribute.Type],
+      ["loop", BooleanAttribute.Type],
+      ["muted", BooleanAttribute.Type],
+      ["controls", BooleanAttribute.Type],
     ],
   },
   track: {
@@ -1044,40 +932,18 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: BCP47.type,
         },
       ],
-      [
-        "label",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "default",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["label", Text.Type],
+      ["default", BooleanAttribute.Type],
     ],
   },
   map: {
     globalAttributes: true,
-    attributes: [
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-    ],
+    attributes: [["name", Text.Type]],
   },
   area: {
     globalAttributes: true,
     attributes: [
-      [
-        "alt",
-        {
-          type: Text.type,
-        },
-      ],
+      ["alt", Text.Type],
       [
         "coords",
         {
@@ -1113,12 +979,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only applicable when href attribute is present
-      [
-        "download",
-        {
-          type: Text.type,
-        },
-      ],
+      ["download", Text.Type],
       // TODO: conditional - only applicable when href attribute is present
       [
         "ping",
@@ -1292,12 +1153,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "abbr",
-        {
-          type: Text.type,
-        },
-      ],
+      ["abbr", Text.Type],
     ],
   },
   form: {
@@ -1342,18 +1198,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "novalidate",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["name", Text.Type],
+      ["novalidate", BooleanAttribute.Type],
       [
         "target",
         {
@@ -1396,14 +1242,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   },
   label: {
     globalAttributes: true,
-    attributes: [
-      [
-        "for",
-        {
-          type: ID.type,
-        },
-      ],
-    ],
+    attributes: [["for", ID.Type]],
   },
   input: {
     globalAttributes: true,
@@ -1416,12 +1255,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="image"
-      [
-        "alt",
-        {
-          type: Text.type,
-        },
-      ],
+      ["alt", Text.Type],
       [
         "autocomplete",
         {
@@ -1429,30 +1263,10 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="checkbox" or type="radio"
-      [
-        "checked",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "dirname",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
+      ["checked", BooleanAttribute.Type],
+      ["dirname", Text.Type],
+      ["disabled", BooleanAttribute.Type],
+      ["form", ID.Type],
       ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       [
         "formenctype",
@@ -1476,12 +1290,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "formnovalidate",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["formnovalidate", BooleanAttribute.Type],
       [
         "formtarget",
         {
@@ -1507,12 +1316,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: {},
         },
       ],
-      [
-        "list",
-        {
-          type: ID.type,
-        },
-      ],
+      ["list", ID.Type],
       // TODO: conditional - allowed value format varies based on type attribute (date, number, range, etc.)
       [
         "max",
@@ -1544,18 +1348,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="file" or type="email"
-      [
-        "multiple",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
+      ["multiple", BooleanAttribute.Type],
+      ["name", Text.Type],
       // TODO: conditional - only applicable to text-based input types (excludes checkbox, radio, hidden, submit, image, reset, button, range, color)
       [
         "pattern",
@@ -1563,18 +1357,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: RegularExpression.type,
         },
       ],
-      [
-        "placeholder",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "popovertarget",
-        {
-          type: Text.type,
-        },
-      ],
+      ["placeholder", Text.Type],
+      ["popovertarget", Text.Type],
       [
         "popovertargetaction",
         {
@@ -1584,18 +1368,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "readonly",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "required",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["readonly", BooleanAttribute.Type],
+      ["required", BooleanAttribute.Type],
       [
         "size",
         {
@@ -1657,12 +1431,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "value",
-        {
-          type: Text.type,
-        },
-      ],
+      ["value", Text.Type],
       // TODO: conditional - only valid when type="image"
       [
         "width",
@@ -1676,18 +1445,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   button: {
     globalAttributes: true,
     attributes: [
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
+      ["form", ID.Type],
       // TODO: conditional - only valid when type="submit"
       ["formaction", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
       // TODO: conditional - only valid when type="submit"
@@ -1715,12 +1474,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only valid when type="submit"
-      [
-        "formnovalidate",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["formnovalidate", BooleanAttribute.Type],
       // TODO: conditional - only valid when type="submit"
       [
         "formtarget",
@@ -1739,18 +1493,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           ],
         },
       ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "popovertarget",
-        {
-          type: Text.type,
-        },
-      ],
+      ["name", Text.Type],
+      ["popovertarget", Text.Type],
       [
         "popovertargetaction",
         {
@@ -1769,12 +1513,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "value",
-        {
-          type: Text.type,
-        },
-      ],
+      ["value", Text.Type],
     ],
   },
   select: {
@@ -1786,36 +1525,11 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           type: AutocompleteAttribute.type,
         },
       ],
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
-      [
-        "multiple",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "required",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
+      ["form", ID.Type],
+      ["multiple", BooleanAttribute.Type],
+      ["name", Text.Type],
+      ["required", BooleanAttribute.Type],
       [
         "size",
         {
@@ -1831,47 +1545,17 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   optgroup: {
     globalAttributes: true,
     attributes: [
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "label",
-        {
-          type: Text.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
+      ["label", Text.Type],
     ],
   },
   option: {
     globalAttributes: true,
     attributes: [
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "label",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "selected",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "value",
-        {
-          type: Text.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
+      ["label", Text.Type],
+      ["selected", BooleanAttribute.Type],
+      ["value", Text.Type],
     ],
   },
   textarea: {
@@ -1892,24 +1576,9 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "dirname",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
+      ["dirname", Text.Type],
+      ["disabled", BooleanAttribute.Type],
+      ["form", ID.Type],
       [
         "maxlength",
         {
@@ -1924,30 +1593,10 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: {},
         },
       ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "placeholder",
-        {
-          type: Text.type,
-        },
-      ],
-      [
-        "readonly",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "required",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["name", Text.Type],
+      ["placeholder", Text.Type],
+      ["readonly", BooleanAttribute.Type],
+      ["required", BooleanAttribute.Type],
       [
         "rows",
         {
@@ -1978,18 +1627,8 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           options: { unique: true },
         },
       ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
+      ["form", ID.Type],
+      ["name", Text.Type],
     ],
   },
   progress: {
@@ -2053,24 +1692,9 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   fieldset: {
     globalAttributes: true,
     attributes: [
-      [
-        "disabled",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "form",
-        {
-          type: ID.type,
-        },
-      ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
+      ["disabled", BooleanAttribute.Type],
+      ["form", ID.Type],
+      ["name", Text.Type],
     ],
   },
   legend: { globalAttributes: true, attributes: empty },
@@ -2078,31 +1702,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   details: {
     globalAttributes: true,
     attributes: [
-      [
-        "open",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
+      ["open", BooleanAttribute.Type],
+      ["name", Text.Type],
     ],
   },
   summary: { globalAttributes: true, attributes: empty },
   dialog: {
     globalAttributes: true,
-    attributes: [
-      [
-        "open",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-    ],
+    attributes: [["open", BooleanAttribute.Type]],
   },
   script: {
     globalAttributes: true,
@@ -2126,26 +1733,11 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       // TODO: conditional - only meaningful for classic scripts (not type="module")
-      [
-        "nomodule",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["nomodule", BooleanAttribute.Type],
       // TODO: conditional - applicable when src attribute is present or type="module"
-      [
-        "async",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["async", BooleanAttribute.Type],
       // TODO: conditional - only applicable to classic scripts (not type="module")
-      [
-        "defer",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["defer", BooleanAttribute.Type],
       [
         "crossorigin",
         {
@@ -2155,12 +1747,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "integrity",
-        {
-          type: Text.type,
-        },
-      ],
+      ["integrity", Text.Type],
       [
         "referrerpolicy",
         {
@@ -2211,36 +1798,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "shadowrootdelegatesfocus",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "shadowrootclonable",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
-      [
-        "shadowrootserializable",
-        {
-          type: BooleanAttribute.type,
-        },
-      ],
+      ["shadowrootdelegatesfocus", BooleanAttribute.Type],
+      ["shadowrootclonable", BooleanAttribute.Type],
+      ["shadowrootserializable", BooleanAttribute.Type],
     ],
   },
   slot: {
     globalAttributes: true,
-    attributes: [
-      [
-        "name",
-        {
-          type: Text.type,
-        },
-      ],
-    ],
+    attributes: [["name", Text.Type]],
   },
   canvas: {
     globalAttributes: true,
