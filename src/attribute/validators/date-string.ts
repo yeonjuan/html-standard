@@ -17,6 +17,11 @@ import { ERROR_MESSAGES } from "./error-messages.js";
  */
 export class DateString implements AttributeSpec {
   static type = "DateString" as const;
+
+  static Type = {
+    type: DateString.type,
+  };
+
   constructor() {}
 
   // Valid date string: YYYY-MM-DD (year must be 4+ digits)

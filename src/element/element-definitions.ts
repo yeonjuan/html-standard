@@ -410,14 +410,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   },
   time: {
     globalAttributes: true,
-    attributes: [
-      [
-        "datetime",
-        {
-          type: DateString.type,
-        },
-      ],
-    ],
+    attributes: [["datetime", DateString.Type]],
   },
   code: { globalAttributes: true, attributes: empty },
   var: { globalAttributes: true, attributes: empty },
@@ -436,24 +429,14 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["cite", ValidURL.PotentiallySurroundedBySpaces],
-      [
-        "datetime",
-        {
-          type: DateString.type,
-        },
-      ],
+      ["datetime", DateString.Type],
     ],
   },
   del: {
     globalAttributes: true,
     attributes: [
       ["cite", ValidURL.PotentiallySurroundedBySpaces],
-      [
-        "datetime",
-        {
-          type: DateString.type,
-        },
-      ],
+      ["datetime", DateString.Type],
     ],
   },
   picture: { globalAttributes: true, attributes: empty },
