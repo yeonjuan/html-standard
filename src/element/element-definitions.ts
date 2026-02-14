@@ -977,12 +977,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ["multiple", BooleanAttribute.Type],
       ["name", Text.Type],
       // TODO: conditional - only applicable to text-based input types (excludes checkbox, radio, hidden, submit, image, reset, button, range, color)
-      [
-        "pattern",
-        {
-          type: RegularExpression.type,
-        },
-      ],
+      ["pattern", RegularExpression.Type],
       ["placeholder", Text.Type],
       ["popovertarget", Text.Type],
       [

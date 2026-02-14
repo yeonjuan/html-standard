@@ -16,6 +16,10 @@ import { ERROR_MESSAGES } from "./error-messages.js";
  */
 export class RegularExpression implements AttributeSpec {
   static type = "RegularExpression" as const;
+  static Type = {
+    type: RegularExpression.type,
+  };
+
   constructor() {}
 
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
