@@ -44,9 +44,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -363,9 +361,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -682,9 +678,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -805,9 +799,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -966,9 +958,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -1205,9 +1195,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -1296,9 +1284,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
@@ -1481,9 +1467,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: NavigableTargetName.type,
-            },
+            NavigableTargetName.Type,
             {
               type: EnumeratedAttribute.type,
               options: {
