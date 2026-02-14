@@ -98,12 +98,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
       ],
       ["media", MediaQueryList.Type],
       ["integrity", Text.Type],
-      [
-        "hreflang",
-        {
-          type: BCP47.type,
-        },
-      ],
+      ["hreflang", BCP47.Type],
       ["type", MIMEType.Type],
       [
         "referrerpolicy",
@@ -364,12 +359,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
           },
         },
       ],
-      [
-        "hreflang",
-        {
-          type: BCP47.type,
-        },
-      ],
+      ["hreflang", BCP47.Type],
       ["type", MIMEType.Type],
       [
         "referrerpolicy",
@@ -766,12 +756,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         },
       ],
       ["src", ValidURL.NonEmptyPotentiallySurroundedBySpaces],
-      [
-        "srclang",
-        {
-          type: BCP47.type,
-        },
-      ],
+      ["srclang", BCP47.Type],
       ["label", Text.Type],
       ["default", BooleanAttribute.Type],
     ],
@@ -1197,9 +1182,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
         {
           type: "#or",
           items: [
-            {
-              type: FloatingPointNumber.type,
-            },
+            FloatingPointNumber.Type,
             {
               type: EnumeratedAttribute.type,
               keywords: ["any"],
