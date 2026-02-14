@@ -294,12 +294,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
     globalAttributes: true,
     attributes: [
       ["reversed", BooleanAttribute.Type],
-      [
-        "start",
-        {
-          type: SignedInteger.type,
-        },
-      ],
+      ["start", SignedInteger.Type],
       [
         "type",
         {
@@ -315,14 +310,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   menu: { globalAttributes: true, attributes: empty },
   li: {
     globalAttributes: true,
-    attributes: [
-      [
-        "value",
-        {
-          type: SignedInteger.type,
-        },
-      ],
-    ],
+    attributes: [["value", SignedInteger.Type]],
   },
   dl: { globalAttributes: true, attributes: empty },
   dt: { globalAttributes: true, attributes: empty },

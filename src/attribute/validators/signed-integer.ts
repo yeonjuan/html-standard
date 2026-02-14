@@ -15,6 +15,10 @@ import { ERROR_MESSAGES } from "./error-messages.js";
 export class SignedInteger implements AttributeSpec {
   static type = "SignedInteger" as const;
 
+  static Type = {
+    type: SignedInteger.type,
+  };
+
   // Matches: optional hyphen-minus, followed by one or more digits
   private static readonly PATTERN = /^-?\d+$/;
 
