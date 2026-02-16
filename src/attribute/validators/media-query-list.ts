@@ -5,10 +5,8 @@ import type {
 } from "../../types/index.js";
 import { valid, invalid } from "../../shared/result.js";
 import { ERROR_MESSAGES } from "./error-messages.js";
-import {
-  getCSSLanguageService,
-  TextDocument,
-} from "vscode-css-languageservice";
+import { getCSSLanguageService } from "vscode-css-languageservice";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 export class MediaQueryList implements AttributeSpec {
   static type = "MediaQueryList" as const;
