@@ -27,10 +27,11 @@
   "devDependencies": {
     "@vitest/ui": "^4.0.18",
     "prettier": "^3.5.3",
-    "tsup": "^8.4.0",
+    "tsup": "^8.5.1",
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "vscode-css-languageservice": "^6.3.9"
+    "vscode-css-languageservice": "^6.3.9",
+    "vscode-languageserver-textdocument": "^1.0.12"
   }
 }
