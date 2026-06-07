@@ -11,6 +11,10 @@ export type ValidURLOptions = {
    * If false, URLs with surrounding spaces are invalid.
    */
   potentiallySurroundedBySpaces?: boolean;
+  /**
+   * If true, empty strings (after optional whitespace stripping) are invalid.
+   */
+  nonEmpty?: boolean;
 };
 
 /**
@@ -35,6 +39,10 @@ export class ValidURL implements AttributeSpec {
   constructor(private options: ValidURLOptions = {}) {}
 
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
+    if (typeof value !== "string") {
+      return invalid("Value must be a string");
+    }
+
     let processedValue = value;
 
     if (this.options.potentiallySurroundedBySpaces) {
@@ -42,6 +50,9 @@ export class ValidURL implements AttributeSpec {
     }
 
     if (processedValue === "") {
+      if (this.options.nonEmpty) {
+        return invalid("Value cannot be empty");
+      }
       return valid();
     }
 
