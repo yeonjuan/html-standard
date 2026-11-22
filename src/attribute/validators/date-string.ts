@@ -27,9 +27,10 @@ export class DateString implements AttributeSpec {
   // Valid date string: YYYY-MM-DD (year must be 4+ digits)
   private static readonly DATE_PATTERN = /^\d{4,}-\d{2}-\d{2}$/;
 
-  // Valid global date-time string: YYYY-MM-DD[T| ]HH:MM[:SS[.sss]][Z|±HH:MM]
+  // Valid global date-time string: YYYY-MM-DD[T| ]HH:MM[:SS[.sss]][Z|±HH:MM|±HHMM]
+  // The time-zone offset's colon is optional per spec.
   private static readonly DATETIME_PATTERN =
-    /^\d{4,}-\d{2}-\d{2}[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})?$/;
+    /^\d{4,}-\d{2}-\d{2}[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:?\d{2})?$/;
 
   validateValue(value: AttributeValue): AttributeSpecValidateResult {
     // Check if it matches either date or datetime format

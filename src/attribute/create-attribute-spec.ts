@@ -5,6 +5,7 @@ import {
   CommaSeparatedTokens,
   CSSColor,
   DateString,
+  TimeString,
   EnumeratedAttribute,
   FloatingPointNumber,
   FloatingPointNumberList,
@@ -84,6 +85,9 @@ export function createAttributeSpec(
     }
     case DateString.type: {
       return new DateString();
+    }
+    case TimeString.type: {
+      return new TimeString();
     }
     case RegularExpression.type: {
       return new RegularExpression();

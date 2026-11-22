@@ -38,7 +38,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "autocorrect",
     {
       type: EnumeratedAttribute.type,
-      keywords: ["on", "off"],
+      keywords: ["", "on", "off"],
     },
   ],
   ["autofocus", BooleanAttribute.Type],
@@ -46,7 +46,7 @@ export const globalAttributes = new Map<string, AnyAttribute>([
     "contenteditable",
     {
       type: EnumeratedAttribute.type,
-      keywords: ["true", "false", "plaintext-only"],
+      keywords: ["", "true", "false", "plaintext-only"],
     },
   ],
   [

@@ -12,6 +12,7 @@ export * from "./css-color.js";
 export * from "./bcp-47.js";
 export * from "./mime-type.js";
 export * from "./date-string.js";
+export * from "./time-string.js";
 export * from "./regular-expression.js";
 export * from "./hash-name-reference.js";
 export * from "./navigable-target-name.js";

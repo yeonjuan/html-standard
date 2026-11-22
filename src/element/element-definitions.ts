@@ -14,6 +14,7 @@ import {
   BCP47,
   MIMEType,
   DateString,
+  TimeString,
   RegularExpression,
   HashNameReference,
   NavigableTargetName,
@@ -389,7 +390,7 @@ export const elementSpecDefinitionMap: Record<string, ElementSpecDefinition> = {
   },
   time: {
     globalAttributes: true,
-    attributes: [["datetime", DateString.Type]],
+    attributes: [["datetime", TimeString.Type]],
   },
   code: { globalAttributes: true, attributes: empty },
   var: { globalAttributes: true, attributes: empty },
