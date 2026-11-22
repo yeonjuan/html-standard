@@ -4,6 +4,7 @@ import { BooleanAttribute } from "./boolean-attribute.js";
 import { CommaSeparatedTokens } from "./comma-separated-tokens.js";
 import { CSSColor } from "./css-color.js";
 import { DateString } from "./date-string.js";
+import { TimeString } from "./time-string.js";
 import {
   EnumeratedAttribute,
   type EnumeratedAttributeOptions,
@@ -72,6 +73,9 @@ export type AnyAttribute =
     }
   | {
       type: typeof DateString.type;
+    }
+  | {
+      type: typeof TimeString.type;
     }
   | {
       type: typeof RegularExpression.type;
